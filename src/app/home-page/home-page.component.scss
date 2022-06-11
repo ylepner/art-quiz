@@ -16,16 +16,22 @@ img {
 }
 
 .title-buttons-container {
-  transform: translate(-50%, -130%);
+  transform: translate(-50%, -35%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-height: 100%;
+  height: 530px;
+  width: 40%;
 }
 
 .title {
-  font-size: 130px;
+  font-size: 120px;
   font-family: "Gilroy-bold";
 }
 
 .circle {
-  border: 3px solid white;
+  border: 4px solid white;
   border-radius: 50%;
   width: 180px;
   height: 180px;
@@ -33,9 +39,21 @@ img {
 }
 
 .circle-1 {
-  left: -11%;
+  left: 12%;
 }
 
 .circle-2 {
-  left: 12%;
+  left: 27%;
+}
+
+.game-button {
+  width: 280px;
+  height: 62px;
+  border: 3px solid white;
+  border-radius: 35px;
+  display: flex;
+  color: white;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
 }
