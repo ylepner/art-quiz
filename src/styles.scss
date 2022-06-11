@@ -5,4 +5,15 @@
 body {
   margin: 0;
   padding: 0;
+  font-family: "Gilroy";
+}
+
+@font-face {
+  font-family: "Gilroy";
+  src: url("assets/fonts/Gilroy-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Gilroy-bold";
+  src: url("assets/fonts/Gilroy-ExtraBold.otf") format("opentype");
 }
