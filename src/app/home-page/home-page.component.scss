@@ -14,3 +14,28 @@ button {
 img {
   width: 36px;
 }
+
+.title-buttons-container {
+  transform: translate(-50%, -130%);
+}
+
+.title {
+  font-size: 130px;
+  font-family: "Gilroy-bold";
+}
+
+.circle {
+  border: 3px solid white;
+  border-radius: 50%;
+  width: 180px;
+  height: 180px;
+  position: absolute;
+}
+
+.circle-1 {
+  left: -11%;
+}
+
+.circle-2 {
+  left: 12%;
+}

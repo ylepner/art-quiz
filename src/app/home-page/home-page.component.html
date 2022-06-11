@@ -1,7 +1,19 @@
-<div class="main-container flex">
-  <div class="settings">
-    <button (click)="goToSettings()">
-      <img src="assets/img/settings-64.png" alt="">
+<div class="main-container relative">
+  <div class="settings flex justify-end">
+    <button (click)="goToSettings()" class="pr-16 pt-16">
+      <img src="assets/img/settings-64.png" alt="settings icon">
     </button>
   </div>
+  <div class="title-buttons-container absolute left-2/4 top-2/4">
+    <div class="title-container flex h-40 justify-center items-center relative">
+      <div class="circle circle-1"></div>
+      <div class="circle circle-2"></div>
+      <div class="title text-white">Art Quiz</div>
+    </div>
+    <div class="game-options-buttons">
+      <div class="go-to-artquiz-button"></div>
+      <div class="go-to-pictures-quiz-button"></div>
+    </div>
+  </div>
+
 </div>
