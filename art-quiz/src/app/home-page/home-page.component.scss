@@ -1,3 +1,14 @@
 .main-container {
   background-image: url('j-retrato-de-cardenal-rafael.jpg');
+  background-repeat: none;
+  width: 100vw;
+  height: 100vh;
+}
+
+button {
+  background: none;
+}
+
+img {
+  width: 36px;
 }
