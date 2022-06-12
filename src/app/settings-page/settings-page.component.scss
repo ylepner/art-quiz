@@ -17,3 +17,42 @@
   align-items: center;
   justify-content: space-evenly;
 }
+
+.toggle-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  display: inline-block;
+  width: 4rem;
+  height: 1.9rem;
+  margin: 0;
+  vertical-align: top;
+  background: #ffffff;
+  border: 1px solid #bbc1e1;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+}
+
+.toggle-button::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 3px;
+  top: 1.5px;
+  width: 1.5rem;
+  height: 1.5rem;
+  background-color: var(--pink);
+  border-radius: 50%;
+  transform: translateX(0);
+}
+
+.toggle-button:checked::after {
+  transform: translateX(calc(120%));
+  background-color: #fff;  
+}
+
+.toggle-button:checked {
+  background-color: var(--pink);
+}
