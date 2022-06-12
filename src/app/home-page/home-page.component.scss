@@ -1,6 +1,5 @@
 .main-container {
   background-image: url('j-retrato-de-cardenal-rafael.jpg');
-  background-repeat: none;
   background-size: cover;
   background-position: center;
   width: 100vw;
@@ -21,8 +20,9 @@ img {
   flex-direction: column;
   justify-content: space-between;
   max-height: 100%;
-  height: 530px;
-  width: 40%;
+  max-width: 100%;
+  height: 38rem;
+  width: 50rem;
 }
 
 .title {
