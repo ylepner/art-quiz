@@ -13,6 +13,7 @@ module.exports = {
     extend: {
       colors: {
         'whitesmoke': '#f5f5f5',
+        'accent': 'FFBCA2',
       },
       screens: {
         'sm': { 'max': '520px' },

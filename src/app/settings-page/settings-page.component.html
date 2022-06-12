@@ -1,2 +1,28 @@
-<p>settings-page works!</p>
-<button (click)="goToHome()">Home</button>
+<div class="settings-container bg-black w-screen h-screen text-white">
+  <div class="nav-settings flex justify-between text-3xl p-16">
+    <div class="back-icon text-4xl flex items-center"> &lt;
+      <div class="back-title text-2xl pl-4">Settings </div>
+    </div>
+    <button (click)="goToHome()">
+      <img src="assets/img/close-icon.png" alt="close">
+    </button>
+  </div>
+  <div class="options pl-20">
+    <div class="volume flex flex-col w-80 pt-8 pb-8">
+      <label for="volume-input">Volume</label>
+      <input id="volume-input" type="range">
+    </div>
+    <div class="time-game flex flex-col pt-8 pb-8">
+      <label for="time-toggle">Time game</label>
+      <input id="time-toggle" class="toggle-button" type="checkbox">
+    </div>
+    <div class="time-to-answer flex flex-col pt-8 pb-8">
+      <div class="time-option-title">Time</div>
+      <div class="time-buttons flex flex-row w-32 justify-between items-center">
+        <button class="time-button less-time">-</button>
+        <div class="time-amount text-2xl">20</div>
+        <button class="time-button more-time">+</button>
+      </div>
+    </div>
+  </div>
+</div>
