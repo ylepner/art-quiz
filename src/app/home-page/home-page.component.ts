@@ -13,4 +13,8 @@ export class HomePageComponent {
   goToSettings() {
     this.router.navigate(['settings'])
   }
+
+  goToCategories() {
+    this.router.navigate(['categories'])
+  }
 }

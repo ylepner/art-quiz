@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CategoriesComponent } from './categories/categories.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 
@@ -11,6 +12,10 @@ const routes: Routes = [
   {
     path: 'settings',
     component: SettingsPageComponent
+  },
+  {
+    path: 'categories',
+    component: CategoriesComponent
   },
   {
     path: '',
