@@ -1,13 +1,13 @@
 <div class="categoties-container text-white">
   <div class="nav-panel flex justify-between  text-3xl p-16">
     <div class="nav-titles flex items-center justify-between">
-      <div class="logo">
+      <button class="logo" (click)="goToHome()">
         <img src="assets/img/logo.png" alt="logo">
-      </div>
-      <button class="to-home-btn nav-font">Home</button>
+      </button>
+      <button class="to-home-btn nav-font" (click)="goToHome()">Home</button>
       <div class="title nav-font">Categories</div>
     </div>
-    <button class="settings">
+    <button class="settings" (click)=" goToSettings()">
       <img class="settings-img" src="assets/img/settings-64.png" alt="settings">
     </button>
   </div>
