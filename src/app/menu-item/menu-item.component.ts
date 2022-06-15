@@ -7,6 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuItemComponent {
 
+  playAgainButton = false
+
   constructor() { }
 
+  over() {
+    this.playAgainButton = true
+  }
+
+  out() {
+    this.playAgainButton = false
+  }
 }
