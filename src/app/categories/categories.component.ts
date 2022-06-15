@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { MenuItem } from '../models/models';
 
 @Component({
   selector: 'app-categories',
@@ -7,6 +8,9 @@ import { Router } from '@angular/router';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent {
+
+  @Input()
+  items?: MenuItem[] | null;
 
   constructor(private router: Router) { }
 

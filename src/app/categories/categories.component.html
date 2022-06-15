@@ -11,5 +11,7 @@
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
     </button>
   </div>
-  <app-menu-item></app-menu-item>
+  <div class="menu-items-container">
+    <app-menu-item *ngFor="let item of items" [item]="item"></app-menu-item>
+  </div>
 </div>

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { MenuItem } from '../models/models';
 
 @Component({
   selector: 'app-menu-item',
@@ -6,6 +7,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./menu-item.component.scss']
 })
 export class MenuItemComponent {
+
+  private _item?: MenuItem;
+  public get item() {
+    return this._item;
+  }
+
+  @Input()
+  public set item(value: MenuItem | undefined) {
+    this._item = value;
+    if (!value) {
+      return;
+    }
+  }
 
   playAgainButton = false
 
