@@ -7,6 +7,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { CategoriesComponent } from './categories/categories.component';
+import { MenuItemComponent } from './menu-item/menu-item.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +15,8 @@ import { CategoriesComponent } from './categories/categories.component';
     HomePageComponent,
     SettingsPageComponent,
     FooterComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    MenuItemComponent
   ],
   imports: [
     BrowserModule,
