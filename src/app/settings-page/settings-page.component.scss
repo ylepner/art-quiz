@@ -96,12 +96,17 @@ label {
 
 .volume {
   width: 30rem;
-  max-height: 20vh;
 }
 
-@media (max-width: 768px) and (min-width: 320px) {
+@media (max-width: 768px) and (min-width: 520px) {
   .volume {
     width: 70vh;
+  }
+}
+
+@media (max-width: 520px) {
+  .volume {
+    width: unset;
   }
 }
 
@@ -110,8 +115,8 @@ label {
 }
 
 .confirm-btn {
-  width: 17rem;
-  height: 4rem;
+  width: 280px;
+  height: 62px;
   border: 2px solid white;
   border-radius: 35px;
   display: flex;
@@ -139,8 +144,4 @@ label {
 .options {
   height: 100%;
   max-height: 65vh;
-}
-
-.time-game {
-  max-height: 20vh;
 }
