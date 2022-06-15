@@ -25,9 +25,9 @@
     <div class="time-to-answer flex flex-col sm:items-center">
       <div class="time-option-title pb-8">Time</div>
       <div class="time-buttons flex flex-row w-32 justify-between items-center">
-        <button class="time-button less-time">-</button>
-        <div class="time-amount text-2xl">20</div>
-        <button class="time-button more-time">+</button>
+        <button (click)="reduceTime()" class="time-button less-time">-</button>
+        <div class="time-amount text-2xl">{{time}}</div>
+        <button (click)="addTime()" class="time-button more-time">+</button>
       </div>
     </div>
   </div>

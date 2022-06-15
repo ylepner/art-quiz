@@ -8,9 +8,23 @@ import { Router } from '@angular/router';
 })
 export class SettingsPageComponent {
 
+  time = 5
+
   constructor(private router: Router) { }
 
   goToHome() {
     this.router.navigate(['home'])
+  }
+
+  addTime() {
+    if (this.time < 30) {
+      this.time += 5
+    }
+  }
+
+  reduceTime() {
+    if (this.time > 5) {
+      this.time -= 5
+    }
   }
 }
