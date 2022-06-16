@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output } from '@angular/core';
 import { MenuItem } from '../models/models';
 
 @Component({
@@ -8,28 +8,18 @@ import { MenuItem } from '../models/models';
 })
 export class MenuItemComponent {
 
-  private _item?: MenuItem;
-  public get item() {
-    return this._item;
-  }
-
   @Input()
-  public set item(value: MenuItem | undefined) {
-    this._item = value;
-    if (!value) {
-      return;
-    }
-  }
+  item?: MenuItem
 
-  playAgainButton = false
+  showPlayAgainButton = false
 
   constructor() { }
 
   over() {
-    this.playAgainButton = true
+    this.showPlayAgainButton = true
   }
 
   out() {
-    this.playAgainButton = false
+    this.showPlayAgainButton = false
   }
 }

@@ -1,13 +1,12 @@
-<div (mouseenter)='over()' (mouseout)='out()' class="menu-item-container w-48 relative">
+<div (mouseenter)='over()' (mouseout)='out()' class="menu-item-container w-48 relative m-8">
   <div class="item-header flex w-full justify-between pb-3 text-xl font-semibold">
-    <div class="categorie-title">1 category</div>
-    <div class="item-results">3/10</div>
+    <div class="categorie-title">{{item?.title}}</div>
+    <div class="item-results">{{item?.result}}</div>
   </div>
   <div class="item-img">
-    <img src="https://raw.githubusercontent.com/ylepner/image-data/master/img/66.jpg" alt="image"
-      class="item-image w-48 h-50">
+    <img src="{{item?.img}}" alt="image" class="item-image w-48 h-50">
   </div>
-  <div *ngIf="playAgainButton" class="play-again-div absolute w-full font-semibold">
+  <div *ngIf="showPlayAgainButton" class="play-again-div absolute w-full font-semibold">
     <button class="play-again-button text-black text-xl flex items-center justify-around w-full">
       <img src="assets/img/return-icon1.png" alt="play again" class="w-6">
       Play again</button>
