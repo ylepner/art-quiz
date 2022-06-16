@@ -17,3 +17,21 @@
 .nav-titles {
   width: 50%;
 }
+
+.menu-items-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+}
+
+@media (min-width: 520px) and (max-width: 768px) {
+  .menu-items-container {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .menu-items-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
