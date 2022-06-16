@@ -1,4 +1,4 @@
-<div class="categories-container text-white">
+<div class="categories-container text-white relative">
   <div class="nav-panel flex justify-between text-3xl p-16">
     <div class="nav-titles flex items-center justify-between">
       <button class="logo" (click)="goToHome()">
@@ -11,7 +11,7 @@
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
     </button>
   </div>
-  <div class="menu-items-container">
+  <div class="menu-items-container p-16">
     <app-menu-item *ngFor="let item of items" [item]="item"></app-menu-item>
   </div>
 </div>
