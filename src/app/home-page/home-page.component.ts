@@ -14,7 +14,12 @@ export class HomePageComponent {
     this.router.navigate(['settings'])
   }
 
-  goToCategories() {
-    this.router.navigate(['categories'])
+  goToArtistsQuiz() {
+    this.router.navigate(['categories/artists'])
+  }
+
+  goToPicturesQuiz() {
+    this.router.navigate(['categories/pictures'])
   }
 }
+
