@@ -11,21 +11,20 @@ const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master
 export class PicturesService {
 
   constructor(
-    private service: PicturesService,
   ) { }
 
-  getCategories(category: Category): CategoryItem[] | undefined {
+  getCategories(category: Category): CategoryItem[] {
     let data: PictureItem[] = []
     if (category === Category.Artists) {
       data = images.slice(0, images.length / 2)
     }
     if (category === Category.Pictures) {
-      data = images.slice(images.length / 2)
+      data = images.slice(images.length / 2, -1)
     }
     const filteredData = data.filter((el, i) => i % 10 === 0)
     const categoryData = filteredData.map((el, i) => {
       return {
-        title: String(i),
+        title: String(i + 1),
         result: 0,
         maxScore: 10,
         img: `${PICTURE_URL}${el.imageNum}.jpg`
