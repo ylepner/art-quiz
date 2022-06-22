@@ -14,7 +14,7 @@ const routes: Routes = [
     component: SettingsPageComponent
   },
   {
-    path: 'categories',
+    path: 'categories/:type',
     component: CategoriesComponent
   },
   {
