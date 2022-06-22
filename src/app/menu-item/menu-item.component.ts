@@ -1,5 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
-import { MenuItem } from '../models/models';
+import { CategoryItem } from '../models/categories-models';
 
 @Component({
   selector: 'app-menu-item',
@@ -9,7 +9,7 @@ import { MenuItem } from '../models/models';
 export class MenuItemComponent {
 
   @Input()
-  item?: MenuItem
+  item?: CategoryItem
 
   showPlayAgainButton = false
 
