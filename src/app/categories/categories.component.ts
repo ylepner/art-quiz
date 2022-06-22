@@ -1,7 +1,8 @@
 import { Component, Input } from '@angular/core';
-import { Router } from '@angular/router';
-import { MenuItem } from '../models/models';
-
+import { ActivatedRoute, Router } from '@angular/router';
+import { map } from 'rxjs';
+import { CategoryItem } from '../models/categories-models';
+import { PicturesService } from '../pictures.service';
 @Component({
   selector: 'app-categories',
   templateUrl: './categories.component.html',
@@ -9,70 +10,16 @@ import { MenuItem } from '../models/models';
 })
 export class CategoriesComponent {
 
-  @Input()
-  items?: MenuItem[] | null = [{
-    title: 'Category 5',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/90.jpg',
-    result: '2/10'
-  },
-  {
-    title: 'Category 10',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/105.jpg',
-    result: '0/10'
-  },
-  {
-    title: 'Category 5',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/94.jpg',
-    result: '2/10'
-  },
-  {
-    title: 'Category 10',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/10.jpg',
-    result: '0/10'
-  },
-  {
-    title: 'Category 5',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/9.jpg',
-    result: '2/10'
-  },
-  {
-    title: 'Category 10',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/10.jpg',
-    result: '0/10'
-  },
-  {
-    title: 'Category 5',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/50.jpg',
-    result: '2/10'
-  },
-  {
-    title: 'Category 10',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/150.jpg',
-    result: '0/10'
-  },
-  {
-    title: 'Category 5',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/90.jpg',
-    result: '2/10'
-  },
-  {
-    title: 'Category 10',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/115.jpg',
-    result: '0/10'
-  },
-  {
-    title: 'Category 5',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/11.jpg',
-    result: '2/10'
-  },
-  {
-    title: 'Category 10',
-    img: 'https://raw.githubusercontent.com/ylepner/image-data/master/img/4.jpg',
-    result: '0/10'
-  },
-  ];
+  items?: CategoryItem[] | null
 
-  constructor(private router: Router) { }
+
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private service: PicturesService
+  ) {
+
+  }
 
   goToHome() {
     this.router.navigate(['home'])
@@ -81,4 +28,9 @@ export class CategoriesComponent {
   goToSettings() {
     this.router.navigate(['settings'])
   }
+
+  items$ = this.route.params.pipe(
+    map((params) => params['type']),
+    map((category) => this.service.getCategories(category))
+  )
 }
