@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesComponent } from './categories/categories.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { QuestionPageComponent } from './question-page/question-page.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 
 const routes: Routes = [
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'categories/:type',
     component: CategoriesComponent
+  },
+  {
+    path: 'question',
+    component: QuestionPageComponent
   },
   {
     path: '',
