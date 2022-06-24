@@ -1,4 +1,5 @@
 import { Component, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { CategoryItem } from '../models/categories-models';
 
 @Component({
@@ -13,13 +14,6 @@ export class MenuItemComponent {
 
   showPlayAgainButton = false
 
-  constructor() { }
+  constructor(private router: Router) { }
 
-  over() {
-    this.showPlayAgainButton = true
-  }
-
-  out() {
-    this.showPlayAgainButton = false
-  }
 }
