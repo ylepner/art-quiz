@@ -33,4 +33,5 @@ export class CategoriesComponent {
     map((params) => params['type']),
     map((category) => this.service.getCategories(category))
   )
+
 }

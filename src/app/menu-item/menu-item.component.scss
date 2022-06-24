@@ -21,4 +21,7 @@
 
 .menu-item-container:hover {
   cursor: pointer;
+  .play-again-div {
+    display: flex!important;
+  }
 }
