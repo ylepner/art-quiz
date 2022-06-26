@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesComponent } from './categories/categories.component';
 import { HomePageComponent } from './home-page/home-page.component';
-import { QuestionPageComponent } from './question-page/question-page.component';
+import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 
 const routes: Routes = [
@@ -19,8 +19,8 @@ const routes: Routes = [
     component: CategoriesComponent
   },
   {
-    path: 'question',
-    component: QuestionPageComponent
+    path: 'quiz/:type/:id',
+    component: QuizPageComponent
   },
   {
     path: '',
