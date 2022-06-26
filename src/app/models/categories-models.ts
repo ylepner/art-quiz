@@ -3,9 +3,10 @@ export interface CategoryItem {
   result: number;
   maxScore: number;
   img: string;
+  id?: string;
 }
 
-export enum Category {
+export enum QuizType {
   Artists = 'artists',
   Pictures = 'pictures'
 }
