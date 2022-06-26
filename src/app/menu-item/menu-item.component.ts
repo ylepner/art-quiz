@@ -12,6 +12,8 @@ export class MenuItemComponent {
   @Input()
   item?: CategoryItem
 
+  @Input()
+  link = ''
   showPlayAgainButton = false
 
   constructor(private router: Router) { }
