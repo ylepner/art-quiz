@@ -38,7 +38,7 @@ export class PicturesService {
     return categoryData
   }
 
-  getArtistsGame(gameId: number) {
+  getArtistsGame(gameId: number): QuestionArtists[] {
     let quizQuestions: QuestionArtists[] = []
     let data = images.filter((picture, i) => {
       if (gameId === 0 && i <= 9) return true
