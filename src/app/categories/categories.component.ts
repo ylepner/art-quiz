@@ -9,6 +9,9 @@ import { PicturesService } from '../pictures.service';
   styleUrls: ['./categories.component.scss']
 })
 export class CategoriesComponent {
+  type$ = this.route.params.pipe(
+    map((params) => params['type']),
+  )
 
   constructor(
     private router: Router,
@@ -26,8 +29,7 @@ export class CategoriesComponent {
     this.router.navigate(['settings'])
   }
 
-  items$ = this.route.params.pipe(
-    map((params) => params['type']),
+  items$ = this.type$.pipe(
     map((category) => this.service.getCategories(category))
   )
 

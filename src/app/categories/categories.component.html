@@ -12,6 +12,7 @@
     </button>
   </div>
   <div class="menu-items-container p-16">
-    <app-menu-item *ngFor="let item of items$ | async" [item]="item"></app-menu-item>
+    <app-menu-item *ngFor="let item of items$ | async" [item]="item" [link]="'/quiz/'+(type$ | async)+'/'+ item.id">
+    </app-menu-item>
   </div>
 </div>
