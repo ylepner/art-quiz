@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import images from './data';
-import { Category, CategoryItem } from './models/categories-models';
+import { QuizType, CategoryItem } from './models/categories-models';
 import { PictureItem } from './models/pictures-models';
+import { QuestionArtists, QuestionPictures } from './models/question-models';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 
@@ -11,14 +13,16 @@ const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master
 export class PicturesService {
 
   constructor(
+    private route: ActivatedRoute
   ) { }
 
-  getCategories(category: Category): CategoryItem[] {
+  getCategories(category: QuizType): CategoryItem[] {
     let data: PictureItem[] = []
-    if (category === Category.Artists) {
+    if (category === QuizType.Artists) {
       data = images.slice(0, images.length / 2)
+      console.log(data[0])
     }
-    if (category === Category.Pictures) {
+    if (category === QuizType.Pictures) {
       data = images.slice(images.length / 2, -1)
     }
     const filteredData = data.filter((el, i) => i % 10 === 0)
@@ -27,9 +31,31 @@ export class PicturesService {
         title: String(i + 1),
         result: 0,
         maxScore: 10,
-        img: `${PICTURE_URL}${el.imageNum}.jpg`
+        img: `${PICTURE_URL}${el.imageNum}.jpg`,
+        id: i
       }
     })
     return categoryData
+  }
+
+  getArtistsGame(gameId: number) {
+    let quizQuestions: QuestionArtists[] = []
+    let data = images.filter((picture, i) => {
+      if (gameId === 0 && i <= 9) return true
+      else {
+        if (Math.floor(i / gameId) === 10) return true
+      }
+      return false
+    }).map((picture) => {
+      return {
+        img: `${PICTURE_URL}${picture.imageNum}.jpg`,
+        number: 0,
+        answers: [
+          'Peter Paul Rubens', 'Rembrandt van Rijn', 'Leonardo da Vinci', 'Hieronymus Bosch'
+        ],
+        correctAnswer: 2
+      }
+    })
+    return data
   }
 }

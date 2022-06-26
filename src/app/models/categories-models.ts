@@ -3,7 +3,7 @@ export interface CategoryItem {
   result: number;
   maxScore: number;
   img: string;
-  id?: string;
+  id: number;
 }
 
 export enum QuizType {

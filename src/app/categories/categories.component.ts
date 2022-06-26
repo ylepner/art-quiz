@@ -10,9 +10,6 @@ import { PicturesService } from '../pictures.service';
 })
 export class CategoriesComponent {
 
-  items?: CategoryItem[] | null
-
-
   constructor(
     private router: Router,
     private route: ActivatedRoute,
