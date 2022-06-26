@@ -1,6 +1,6 @@
 export interface QuestionArtists {
   timer?: number,
-  title: string,
+  title?: string,
   img: string,
   number: number,
   answers: string[],
