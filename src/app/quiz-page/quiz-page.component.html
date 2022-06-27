@@ -11,12 +11,11 @@
   <div class="question-container">
     <div class="title pb-11">Who is the author of this picture?</div>
     <div>
-      <img class="question-img" src="https://raw.githubusercontent.com/irinainina/image-data/master/full/114full.jpg"
-        alt="picture">
+      <img class="question-img" src="{{question?.img}}" alt="picture">
       <div class="question-number"></div>
     </div>
     <div class="answers-options">
-      {{id$ | async | json}}
+      <!-- {{questions$ | async | json}} -->
       <div class="answer answer-1">Peter Paul Rubens</div>
       <div class="answer answer-2">Rembrandt van Rijn</div>
       <div class="answer answer-3">Leonardo da Vinci</div>
