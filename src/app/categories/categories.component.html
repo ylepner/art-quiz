@@ -1,15 +1,15 @@
 <div class="categories-container text-white relative">
   <div class="nav-panel flex justify-between text-3xl p-16">
     <div class="nav-titles flex items-center justify-between">
-      <button class="logo" (click)="goToHome()">
+      <a routerLink="" class="logo">
         <img src="assets/img/logo.png" alt="logo">
-      </button>
-      <button class="to-home-btn nav-font" (click)="goToHome()">Home</button>
+      </a>
+      <a routerLink="" class="to-home-btn nav-font">Home</a>
       <div class="title nav-font">Categories</div>
     </div>
-    <button class="settings" (click)=" goToSettings()">
+    <a routerLink="/settings" class="settings">
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
-    </button>
+    </a>
   </div>
   <div class="menu-items-container p-16">
     <app-menu-item *ngFor="let item of items$ | async" [item]="item" [link]="'/quiz/'+(type$ | async)+'/'+ item.id">

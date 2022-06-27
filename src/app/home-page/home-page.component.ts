@@ -8,18 +8,6 @@ import { Router } from '@angular/router';
 })
 export class HomePageComponent {
   constructor(private router: Router) {
-
-  }
-  goToSettings() {
-    this.router.navigate(['settings'])
-  }
-
-  goToArtistsQuiz() {
-    this.router.navigate(['categories/artists'])
-  }
-
-  goToPicturesQuiz() {
-    this.router.navigate(['categories/pictures'])
   }
 }
 

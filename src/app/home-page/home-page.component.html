@@ -1,8 +1,8 @@
 <div class="main-container relative">
   <div class="settings flex justify-end">
-    <button (click)="goToSettings()" class="pr-16 pt-16">
+    <a routerLink="/settings" class="pr-16 pt-16">
       <img src="assets/img/carbon_settings.png" alt="settings icon">
-    </button>
+    </a>
   </div>
   <div class="title-buttons-container absolute left-2/4 top-2/4">
     <div class="title-container flex h-40 justify-center items-center relative">
@@ -11,8 +11,8 @@
       <div class="title text-white">Art Quiz</div>
     </div>
     <div class="game-options-buttons flex justify-around md:grid md:gap-10">
-      <button (click)="goToArtistsQuiz()" class="game-button go-to-artist-quiz-button">Artist quiz</button>
-      <button (click)="goToPicturesQuiz()" class="game-button go-to-pictures-quiz-button">Pictures quiz</button>
+      <a routerLink="/categories/artists" class="game-button go-to-artist-quiz-button">Artist quiz</a>
+      <a routerLink="/categories/pictures" class="game-button go-to-pictures-quiz-button">Pictures quiz</a>
     </div>
   </div>
 </div>

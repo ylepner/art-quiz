@@ -21,14 +21,6 @@ export class CategoriesComponent {
 
   }
 
-  goToHome() {
-    this.router.navigate(['home'])
-  }
-
-  goToSettings() {
-    this.router.navigate(['settings'])
-  }
-
   items$ = this.type$.pipe(
     map((category) => this.service.getCategories(category))
   )

@@ -12,9 +12,6 @@ export class SettingsPageComponent {
 
   constructor(private router: Router) { }
 
-  goToHome() {
-    this.router.navigate(['home'])
-  }
 
   addTime() {
     if (this.time < 30) {
