@@ -40,13 +40,7 @@ export class PicturesService {
 
   getArtistsGame(gameId: number): QuestionArtists[] {
     let quizQuestions: QuestionArtists[] = []
-    let data = images.filter((picture, i) => {
-      if (gameId === 0 && i <= 9) return true
-      else {
-        if (Math.floor(i / gameId) === 10) return true
-      }
-      return false
-    }).map((picture) => {
+    quizQuestions = images.slice(gameId * 10, (gameId * 10) + 10).map((picture) => {
       return {
         img: `${PICTURE_URL}${picture.imageNum}.jpg`,
         number: 0,
@@ -56,6 +50,6 @@ export class PicturesService {
         correctAnswer: 2
       }
     })
-    return data
+    return quizQuestions
   }
 }

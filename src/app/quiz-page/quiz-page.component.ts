@@ -11,7 +11,7 @@ import { PicturesService } from '../pictures.service';
 export class QuizPageComponent {
   id$ = this.route.params.pipe(
     map((params) => {
-      return this.service.getArtistsGame(params['id'])
+      return this.service.getArtistsGame(Number(params['id']))
     }),
   )
   constructor(
