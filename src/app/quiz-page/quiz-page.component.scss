@@ -39,3 +39,22 @@ input {
   font-family: "Gilroy-Bold";
   font-size: 1.5rem;
 }
+
+.test {
+  background-color: var(--accent)!important;
+  border-color: var(--accent)!important;
+}
+
+.number-buttons {
+  bottom: 5%;
+  width: 100%;
+}
+
+.question-number {
+  width: 15px;
+  height: 15px;
+  margin: 1%;
+  border-radius: 50%;
+  border: 1px solid var(--basic);
+  background-color: var(--basic);
+}

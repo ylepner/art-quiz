@@ -10,16 +10,24 @@
   </div>
   <div class="question-container">
     <div class="title pb-11">Who is the author of this picture?</div>
-    <div>
+    <div class="question-buttons relative">
       <img class="question-img" src="{{question?.img}}" alt="picture">
-      <div class="question-number"></div>
+      <div class="number-buttons absolute flex justify-center">
+        <button *ngFor="let question of questions; let i = index" (click)="setCurrentButton(i)" class="question-number"
+          [class.test]="i <= currentQuestionNumber"></button>
+      </div>
     </div>
     <div class="answers-options">
-      <!-- {{questions$ | async | json}} -->
       <div class="answer answer-1">Peter Paul Rubens</div>
       <div class="answer answer-2">Rembrandt van Rijn</div>
       <div class="answer answer-3">Leonardo da Vinci</div>
       <div class="answer answer-4">Hieronymus Bosch</div>
     </div>
   </div>
+  <button (click)="getAnswersOptions()">
+    Next
+  </button>
+  <button (click)="previousQuestion()">
+    Back
+  </button>
 </div>
