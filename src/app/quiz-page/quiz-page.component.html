@@ -11,13 +11,13 @@
     <div class="question-buttons relative">
       <img class="question-img" src="{{question?.img}}" alt="picture">
       <div class="number-buttons absolute flex justify-center">
-        <button *ngFor="let question of questions; let i = index" (click)="setCurrentButton(i)" class="question-number"
-          [class.accent]="i <= currentQuestionNumber"></button>
+        <div *ngFor="let question of questions; let i = index" (click)="setCurrentButton(i)" class="question-number"
+          [class.accent]="i <= currentQuestionNumber"></div>
       </div>
     </div>
     <div class="answers-options">
-      <div *ngFor="let answer of question.answers; let i = index" [class.accent]="i === question.correctAnswer"
-        class="answer">{{answer}}</div>
+      <button *ngFor="let answer of question.answers; let i = index" [class.accent]="i === question.correctAnswer"
+        class="answer">{{answer}}</button>
     </div>
   </div>
   <button (click)="nextQuestion()">
