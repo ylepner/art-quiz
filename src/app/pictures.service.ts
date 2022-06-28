@@ -43,13 +43,18 @@ export class PicturesService {
     quizQuestions = images.slice(gameId * 10, (gameId * 10) + 10).map((picture) => {
       return {
         img: `${PICTURE_URL}${picture.imageNum}.jpg`,
-        number: 0,
+        number: Number(picture.imageNum),
         answers: [
           'Peter Paul Rubens', 'Rembrandt van Rijn', 'Leonardo da Vinci', 'Hieronymus Bosch'
         ],
-        correctAnswer: 2
+        correctAnswer: picture.author
       }
     })
     return quizQuestions
+  }
+
+  getAllAuthors() {
+    const allAuthors = images.map((picture) => picture.author)
+    return [...new Set(allAuthors)]
   }
 }
