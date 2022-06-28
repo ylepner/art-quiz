@@ -4,7 +4,8 @@ export interface QuestionArtists {
   img: string,
   number: number,
   answers: string[],
-  correctAnswer: string
+  correctAnswer: number,
+  author: string
 }
 
 export interface QuestionPictures {
