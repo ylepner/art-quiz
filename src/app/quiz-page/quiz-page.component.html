@@ -3,9 +3,7 @@
     <div class="stop-icon flex items-center">
       <img src="assets/img/close-icon.png" alt="close">
     </div>
-    <div class="timer-bar text-center flex">
-      <input type="range">
-    </div>
+    <div class="timer-bar text-center flex"></div>
     <div class="timer-time">0:20</div>
   </div>
   <div class="question-container">
@@ -14,17 +12,15 @@
       <img class="question-img" src="{{question?.img}}" alt="picture">
       <div class="number-buttons absolute flex justify-center">
         <button *ngFor="let question of questions; let i = index" (click)="setCurrentButton(i)" class="question-number"
-          [class.test]="i <= currentQuestionNumber"></button>
+          [class.accent]="i <= currentQuestionNumber"></button>
       </div>
     </div>
     <div class="answers-options">
-      <div class="answer answer-1">Peter Paul Rubens</div>
-      <div class="answer answer-2">Rembrandt van Rijn</div>
-      <div class="answer answer-3">Leonardo da Vinci</div>
-      <div class="answer answer-4">Hieronymus Bosch</div>
+      <div *ngFor="let answer of question.answers; let i = index" [class.accent]="i === question.correctAnswer"
+        class="answer">{{answer}}</div>
     </div>
   </div>
-  <button (click)="getAnswersOptions()">
+  <button (click)="nextQuestion()">
     Next
   </button>
   <button (click)="previousQuestion()">

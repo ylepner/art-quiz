@@ -40,9 +40,10 @@ input {
   font-size: 1.5rem;
 }
 
-.test {
+.accent {
   background-color: var(--accent)!important;
   border-color: var(--accent)!important;
+  color: black;
 }
 
 .number-buttons {

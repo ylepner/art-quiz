@@ -41,13 +41,14 @@ export class PicturesService {
   getArtistsGame(gameId: number): QuestionArtists[] {
     let quizQuestions: QuestionArtists[] = []
     quizQuestions = images.slice(gameId * 10, (gameId * 10) + 10).map((picture) => {
+      const correctAnswer = Math.floor(Math.random() * 4)
+      const answers = this.getAnswersOptions(picture, correctAnswer)
       return {
         img: `${PICTURE_URL}${picture.imageNum}.jpg`,
         number: Number(picture.imageNum),
-        answers: [
-          'Peter Paul Rubens', 'Rembrandt van Rijn', 'Leonardo da Vinci', 'Hieronymus Bosch'
-        ],
-        correctAnswer: picture.author
+        answers: answers,
+        correctAnswer: correctAnswer,
+        author: picture.author
       }
     })
     return quizQuestions
@@ -56,5 +57,19 @@ export class PicturesService {
   getAllAuthors() {
     const allAuthors = images.map((picture) => picture.author)
     return [...new Set(allAuthors)]
+  }
+
+  getAnswersOptions(picture: PictureItem, correctAnswer: number) {
+    const allOptions = this.getAllAuthors()
+    const questionArrLength = allOptions.length
+    let answers = ['', '', '', '']
+    answers[correctAnswer] = picture.author
+    for (let i = 0; i < 4; i++) {
+      const randomNumber = Math.floor(Math.random() * questionArrLength)
+      const answer = allOptions[randomNumber]
+      if (answers[i] === '')
+        answers[i] = answer
+    }
+    return answers
   }
 }
