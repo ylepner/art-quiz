@@ -13,6 +13,7 @@ import { PicturesService } from '../pictures.service';
 export class QuizPageComponent {
   currentQuestionNumber = 0
   questions: QuestionArtists[] = []
+  selectedAnswerNumber?: number;
 
   questions$ = this.route.params.pipe(
     map((params) => {
@@ -35,16 +36,21 @@ export class QuizPageComponent {
   nextQuestion() {
     if (this.currentQuestionNumber === 9) return
     this.currentQuestionNumber += 1
+    this.selectedAnswerNumber = undefined
   }
 
   previousQuestion() {
     if (this.currentQuestionNumber === 0) return
     this.currentQuestionNumber -= 1
+    this.selectedAnswerNumber = undefined
   }
 
   setCurrentButton(index: number) {
-    return this.currentQuestionNumber = index
+    this.currentQuestionNumber = index
   }
 
+  selectAnswer(answerNumber: number) {
+    this.selectedAnswerNumber = answerNumber
+  }
 
 }

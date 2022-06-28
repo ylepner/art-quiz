@@ -16,8 +16,8 @@
       </div>
     </div>
     <div class="answers-options">
-      <button *ngFor="let answer of question.answers; let i = index" [class.accent]="i === question.correctAnswer"
-        class="answer">{{answer}}</button>
+      <button (click)="selectAnswer(i)" *ngFor="let answer of question.answers; let i = index"
+        [class.accent]="i === selectedAnswerNumber" class="answer">{{answer}}</button>
     </div>
   </div>
   <button (click)="nextQuestion()">
