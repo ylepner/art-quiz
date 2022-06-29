@@ -47,6 +47,7 @@ export class QuizPageComponent {
 
   setCurrentButton(index: number) {
     this.currentQuestionNumber = index
+    this.selectedAnswerNumber = undefined
   }
 
   selectAnswer(answerNumber: number) {
