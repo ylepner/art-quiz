@@ -8,9 +8,9 @@ import { FooterComponent } from './footer/footer.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PictureInfoDialogComponent } from './picture-info-dialog/picture-info-dialog.component';
-
+import { DialogModule } from '@angular/cdk/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +25,8 @@ import { PictureInfoDialogComponent } from './picture-info-dialog/picture-info-d
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NoopAnimationsModule
+    BrowserAnimationsModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

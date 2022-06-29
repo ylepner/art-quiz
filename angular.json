@@ -107,5 +107,8 @@
       }
     }
   },
-  "defaultProject": "art-quiz"
+  "defaultProject": "art-quiz",
+  "cli": {
+    "analytics": false
+  }
 }

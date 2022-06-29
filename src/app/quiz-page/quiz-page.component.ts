@@ -4,7 +4,8 @@ import { map } from 'rxjs';
 import images from '../data';
 import { QuestionArtists } from '../models/question-models';
 import { PicturesService } from '../pictures.service';
-
+import { Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
+import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 @Component({
   selector: 'app-quiz-page',
   templateUrl: './quiz-page.component.html',
@@ -22,7 +23,8 @@ export class QuizPageComponent {
   )
   constructor(
     private route: ActivatedRoute,
-    private service: PicturesService
+    private service: PicturesService,
+    private dialog: Dialog
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
@@ -52,6 +54,17 @@ export class QuizPageComponent {
 
   selectAnswer(answerNumber: number) {
     this.selectedAnswerNumber = answerNumber
+    setTimeout(() => {
+      this.openDialog()
+    }, 1000)
   }
 
+  openDialog() {
+    this.dialog.open(PictureInfoDialogComponent, {
+      minWidth: '300px',
+      data: {
+        animal: 'panda',
+      },
+    });
+  }
 }
