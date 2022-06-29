@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -10,6 +9,7 @@ import { CategoriesComponent } from './categories/categories.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
 import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { PictureInfoDialogComponent } from './picture-info-dialog/picture-info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +19,8 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     FooterComponent,
     CategoriesComponent,
     MenuItemComponent,
-    QuizPageComponent
+    QuizPageComponent,
+    PictureInfoDialogComponent
   ],
   imports: [
     BrowserModule,
