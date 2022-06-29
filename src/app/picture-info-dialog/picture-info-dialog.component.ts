@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-picture-info-dialog',
   templateUrl: './picture-info-dialog.component.html',
   styleUrls: ['./picture-info-dialog.component.scss']
 })
-export class PictureInfoDialogComponent implements OnInit {
+export class PictureInfoDialogComponent {
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }
