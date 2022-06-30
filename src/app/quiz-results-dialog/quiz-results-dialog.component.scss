@@ -1,0 +1,21 @@
+.quiz-results-container {
+  font-family: 'Gilroy';
+  padding: 50px 10px 20px 10px;
+}
+
+.link {
+  width: 200px;
+  color: black;
+  border-radius: 20px;
+  border: 1px solid black;
+  padding: 10px;
+}
+
+.next-quiz-link {
+  border-color: var(--accent);
+  background-color: var(--accent);
+}
+
+.results {
+  font-family: 'Gilroy-Bold';
+}
