@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map, queueScheduler } from 'rxjs';
 import { QuestionArtists } from '../models/question-models';
 import { PicturesService } from '../pictures.service';
@@ -12,6 +12,7 @@ import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-
   styleUrls: ['./quiz-page.component.scss']
 })
 export class QuizPageComponent {
+  quizNumber = 0
   currentQuestionNumber = 0
   questions: QuestionArtists[] = []
   selectedAnswerNumber?: number;
@@ -19,13 +20,16 @@ export class QuizPageComponent {
 
   questions$ = this.route.params.pipe(
     map((params) => {
+      this.quizNumber = Number(params['id'])
+      console.log(this.quizNumber)
       return this.service.getArtistsGame(Number(params['id']))
     }),
   )
   constructor(
     private route: ActivatedRoute,
     private service: PicturesService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private router: Router
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
@@ -85,9 +89,22 @@ export class QuizPageComponent {
   }
 
   openGameResultsDialog() {
+    const hasMoreQuizzes = () => {
+      return this.quizNumber !== 11
+    }
     const dialogRef = this.dialog.open(QuizResultsDialogComponent, {
       data: {
-        correctAnswersNumber: this.correctAnswers
+        correctAnswersNumber: this.correctAnswers,
+        hasMoreQuizzes: hasMoreQuizzes
+      }
+    })
+    dialogRef.afterClosed().subscribe(() => {
+      if (this.quizNumber <= 11) {
+        this.quizNumber += 1
+        this.currentQuestionNumber = 0
+        this.selectedAnswerNumber = undefined
+        this.correctAnswers = 0
+        this.router.navigate([`quiz/artists/${this.quizNumber}`])
       }
     })
   }
