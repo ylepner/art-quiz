@@ -20,7 +20,6 @@ export class PicturesService {
     let data: PictureItem[] = []
     if (category === QuizType.Artists) {
       data = images.slice(0, images.length / 2)
-      console.log(data[0])
     }
     if (category === QuizType.Pictures) {
       data = images.slice(images.length / 2, -1)
@@ -48,7 +47,9 @@ export class PicturesService {
         number: Number(picture.imageNum),
         answers: answers,
         correctAnswer: correctAnswer,
-        author: picture.author
+        name: picture.name,
+        author: picture.author,
+        year: picture.year
       }
     })
     return quizQuestions

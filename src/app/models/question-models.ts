@@ -5,9 +5,10 @@ export interface QuestionArtists {
   number: number,
   answers: string[],
   correctAnswer: number,
-  author: string
+  name: string
+  author: string,
+  year: string
 }
-
 export interface QuestionPictures {
   timer?: number,
   title: string,
