@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
+import { map, queueScheduler } from 'rxjs';
 import images from '../data';
 import { QuestionArtists } from '../models/question-models';
 import { PicturesService } from '../pictures.service';
@@ -55,15 +55,21 @@ export class QuizPageComponent {
   selectAnswer(answerNumber: number) {
     this.selectedAnswerNumber = answerNumber
     setTimeout(() => {
-      this.openDialog()
+      if (this.selectedAnswerNumber !== undefined) {
+        this.openDialog(this.selectedAnswerNumber)
+      }
     }, 1000)
   }
 
-  openDialog() {
+  openDialog(selectedAnswerNumber: number) {
+    const question = this.question
     this.dialog.open(PictureInfoDialogComponent, {
       minWidth: '300px',
       data: {
-        animal: 'panda',
+        image: question.img,
+        isCorrect: question.author === question.answers[selectedAnswerNumber],
+        name: question.name,
+        info: `${question.author}, ${question.year}`
       },
     });
   }

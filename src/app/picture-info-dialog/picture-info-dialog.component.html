@@ -1,14 +1,13 @@
 <div class="dialog-container text-black bg-white flex justify-center items-center flex-col">
   <div class="picture-info relative">
-    <img class="dialog-img w-full" src="https://raw.githubusercontent.com/irinainina/image-data/master/img/102.jpg"
-      alt="image">
+    <img class="dialog-img w-full" src="{{data.image}}" alt="image">
     <div class="wrong-icon absolute bottom-0 p-4">
-      <img class="hidden" src="assets/img/wrong.png" alt="wrong answer">
-      <img src="assets/img/correct.png" alt="correct answer">
+      <img [class.hidden]="data.isCorrect" src="assets/img/wrong.png" alt="wrong answer">
+      <img [class.hidden]="!data.isCorrect" src="assets/img/correct.png" alt="correct answer">
     </div>
   </div>
-  <div class="title text-xl font-semibold p-4">Girl with a Pearl Earring</div>
-  <div class="description italic text-base font-medium">Johannes Vermeer, 1665</div>
+  <div class="title text-xl font-semibold p-4">{{data.name}}</div>
+  <div class="description italic text-base font-medium">{{data.info}}</div>
   <div class="pt-8">
     <button class="next-btn">Next</button>
   </div>

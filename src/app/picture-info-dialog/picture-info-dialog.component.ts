@@ -1,5 +1,11 @@
-import { Component } from '@angular/core';
-
+import { DIALOG_DATA } from '@angular/cdk/dialog';
+import { Component, Inject } from '@angular/core';
+export interface DialogData {
+  image: string,
+  isCorrect: boolean,
+  name: string,
+  info: string
+}
 @Component({
   selector: 'app-picture-info-dialog',
   templateUrl: './picture-info-dialog.component.html',
@@ -7,6 +13,6 @@ import { Component } from '@angular/core';
 })
 export class PictureInfoDialogComponent {
 
-  constructor() { }
+  constructor(@Inject(DIALOG_DATA) public data: DialogData) { }
 
 }
