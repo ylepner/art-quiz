@@ -11,6 +11,7 @@ import { QuizPageComponent } from './quiz-page/quiz-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PictureInfoDialogComponent } from './picture-info-dialog/picture-info-dialog.component';
 import { DialogModule } from '@angular/cdk/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +27,8 @@ import { DialogModule } from '@angular/cdk/dialog';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    DialogModule
+    DialogModule,
+    MatDialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]

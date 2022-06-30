@@ -6,6 +6,7 @@ import { QuestionArtists } from '../models/question-models';
 import { PicturesService } from '../pictures.service';
 import { Dialog, DIALOG_DATA } from '@angular/cdk/dialog';
 import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 @Component({
   selector: 'app-quiz-page',
   templateUrl: './quiz-page.component.html',
@@ -24,7 +25,7 @@ export class QuizPageComponent {
   constructor(
     private route: ActivatedRoute,
     private service: PicturesService,
-    private dialog: Dialog
+    private dialog: MatDialog
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
@@ -63,7 +64,7 @@ export class QuizPageComponent {
 
   openDialog(selectedAnswerNumber: number) {
     const question = this.question
-    this.dialog.open(PictureInfoDialogComponent, {
+    const dialogRef = this.dialog.open(PictureInfoDialogComponent, {
       minWidth: '300px',
       data: {
         image: question.img,
@@ -71,6 +72,9 @@ export class QuizPageComponent {
         name: question.name,
         info: `${question.author}, ${question.year}`
       },
+    });
+    dialogRef.afterClosed().subscribe(() => {
+      this.nextQuestion()
     });
   }
 }

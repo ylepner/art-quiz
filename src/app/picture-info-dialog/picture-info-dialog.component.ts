@@ -1,5 +1,6 @@
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export interface DialogData {
   image: string,
   isCorrect: boolean,
@@ -14,7 +15,7 @@ export interface DialogData {
 export class PictureInfoDialogComponent {
 
   constructor(
-    @Inject(DIALOG_DATA) public data: DialogData,
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public dialogRef: DialogRef) { }
 
 }
