@@ -9,6 +9,6 @@
   <div class="title text-xl font-semibold p-4">{{data.name}}</div>
   <div class="description italic text-base font-medium">{{data.info}}</div>
   <div class="pt-8">
-    <button class="next-btn">Next</button>
+    <button (click)="dialogRef.close()" class="next-btn">Next</button>
   </div>
 </div>
