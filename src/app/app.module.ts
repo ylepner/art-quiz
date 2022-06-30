@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PictureInfoDialogComponent } from './picture-info-dialog/picture-info-dialog.component';
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
+import { QuizResultsDialogComponent } from './quiz-results-dialog/quiz-results-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CategoriesComponent,
     MenuItemComponent,
     QuizPageComponent,
-    PictureInfoDialogComponent
+    PictureInfoDialogComponent,
+    QuizResultsDialogComponent
   ],
   imports: [
     BrowserModule,

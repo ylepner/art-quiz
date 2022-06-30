@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { DialogRef } from '@angular/cdk/dialog';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface DialogData {
+  correctAnswersNumber: number
+}
 
 @Component({
   selector: 'app-quiz-results-dialog',
@@ -8,6 +13,9 @@ import { Router } from '@angular/router';
 })
 export class QuizResultsDialogComponent {
 
-  constructor() { }
+  constructor(
+    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    public dialogRef: DialogRef
+  ) { }
 
 }
