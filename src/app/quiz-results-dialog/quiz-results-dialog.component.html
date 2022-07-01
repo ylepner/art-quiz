@@ -6,9 +6,9 @@
   <div class="results font-extrabold text-5xl">{{data.correctAnswersNumber}}/10</div>
   <div class="links w-full flex justify-around pt-16">
     <!-- <a class="link home-link border-black border-1 border-solid m-2" routerLink="/home">Home</a> -->
-    <button class="link results-link border-black border-1 border-solid m-2" mat-dialog-close
-      (click)="getResults()">Show
-      results</button>
+    <a class="link results-link border-black border-1 border-solid m-2" mat-dialog-close
+      routerLink="/quiz/artists/2/results">Show
+      results</a>
     <a *ngIf="!data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>Next
       quiz</a>
     <a *ngIf="data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>Next</a>

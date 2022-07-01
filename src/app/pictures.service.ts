@@ -68,7 +68,7 @@ export class PicturesService {
     for (let i = 0; i < 4; i++) {
       const randomNumber = Math.floor(Math.random() * questionArrLength)
       const answer = allOptions[randomNumber]
-      if (answers[i] === '' && answers[i] !== answer)
+      if (answers[i] === '' && !answers.includes(answer))
         answers[i] = answer
     }
     return answers

@@ -21,8 +21,4 @@ export class QuizResultsDialogComponent {
     private service: ResultsService
   ) { }
 
-  getResults() {
-    console.log(this.service.getQuizResults())
-  }
-
 }

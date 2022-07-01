@@ -24,7 +24,6 @@ export class QuizPageComponent {
   questions$ = this.route.params.pipe(
     map((params) => {
       this.quizNumber = Number(params['id'])
-      console.log(this.quizNumber)
       return this.pictureService.getArtistsGame(Number(params['id']))
     }),
   )
@@ -87,13 +86,12 @@ export class QuizPageComponent {
     });
     dialogRef.afterClosed().subscribe(() => {
       if (this.currentQuestionNumber === 9) {
+        debugger
+        this.resultsService.setQuizResults({ quizNumber: this.quizNumber, results: this.questionsResults })
         this.openGameResultsDialog()
       }
       this.nextQuestion()
     });
-    if (this.currentQuestionNumber === 9) {
-      this.resultsService.setQuizResults({ quizNumber: this.quizNumber, results: this.questionsResults })
-    }
   }
 
   openGameResultsDialog() {
@@ -112,7 +110,7 @@ export class QuizPageComponent {
         this.currentQuestionNumber = 0
         this.selectedAnswerNumber = undefined
         this.correctAnswers = 0
-        this.router.navigate([`quiz/artists/${this.quizNumber}`])
+        // this.router.navigate([`quiz/artists/${this.quizNumber}`])
       }
     })
   }
