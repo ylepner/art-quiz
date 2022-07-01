@@ -13,6 +13,7 @@ import { PictureInfoDialogComponent } from './picture-info-dialog/picture-info-d
 import { DialogModule } from '@angular/cdk/dialog';
 import { MatDialogModule } from '@angular/material/dialog';
 import { QuizResultsDialogComponent } from './quiz-results-dialog/quiz-results-dialog.component';
+import { RoundResultsPageComponent } from './round-results-page/round-results-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +24,8 @@ import { QuizResultsDialogComponent } from './quiz-results-dialog/quiz-results-d
     MenuItemComponent,
     QuizPageComponent,
     PictureInfoDialogComponent,
-    QuizResultsDialogComponent
+    QuizResultsDialogComponent,
+    RoundResultsPageComponent
   ],
   imports: [
     BrowserModule,
