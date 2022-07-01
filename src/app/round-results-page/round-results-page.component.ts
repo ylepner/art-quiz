@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PicturesService } from '../pictures.service';
+import { ResultsService } from '../results.service';
 
 @Component({
   selector: 'app-round-results-page',
@@ -9,7 +10,9 @@ import { PicturesService } from '../pictures.service';
 export class RoundResultsPageComponent {
 
   constructor(
-    private service: PicturesService
-  ) { }
+    private service: ResultsService
+  ) {
+
+  }
 
 }

@@ -6,6 +6,8 @@ import { PicturesService } from '../pictures.service';
 import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-dialog.component';
+import { AnswerResult } from '../models/quiz-results';
+import { ResultsService } from '../results.service';
 @Component({
   selector: 'app-quiz-page',
   templateUrl: './quiz-page.component.html',
@@ -17,17 +19,19 @@ export class QuizPageComponent {
   questions: QuestionArtists[] = []
   selectedAnswerNumber?: number;
   correctAnswers = 0
+  questionsResults: AnswerResult[] = []
 
   questions$ = this.route.params.pipe(
     map((params) => {
       this.quizNumber = Number(params['id'])
       console.log(this.quizNumber)
-      return this.service.getArtistsGame(Number(params['id']))
+      return this.pictureService.getArtistsGame(Number(params['id']))
     }),
   )
   constructor(
     private route: ActivatedRoute,
-    private service: PicturesService,
+    private pictureService: PicturesService,
+    private resultsService: ResultsService,
     private dialog: MatDialog,
     private router: Router
   ) {
@@ -69,6 +73,7 @@ export class QuizPageComponent {
   openPictureInfoDialog(selectedAnswerNumber: number) {
     const question = this.question
     const isCorrect = question.author === question.answers[selectedAnswerNumber]
+    this.updateQuestionResults(question.number, isCorrect)
     if (isCorrect) {
       this.correctAnswers += 1
     }
@@ -86,6 +91,9 @@ export class QuizPageComponent {
       }
       this.nextQuestion()
     });
+    if (this.currentQuestionNumber === 9) {
+      this.resultsService.setQuizResults({ quizNumber: this.quizNumber, results: this.questionsResults })
+    }
   }
 
   openGameResultsDialog() {
@@ -107,5 +115,9 @@ export class QuizPageComponent {
         this.router.navigate([`quiz/artists/${this.quizNumber}`])
       }
     })
+  }
+
+  updateQuestionResults(questionNumber: number, isCorrect: boolean) {
+    this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
   }
 }
