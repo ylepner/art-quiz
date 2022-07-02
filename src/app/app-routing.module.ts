@@ -24,7 +24,7 @@ const routes: Routes = [
     component: QuizPageComponent
   },
   {
-    path: 'quiz/artists/2/results',
+    path: 'quiz/artists/:quizId/results',
     component: RoundResultsPageComponent
   },
   {
