@@ -5,7 +5,8 @@ import { ResultsService } from '../results.service';
 
 export interface DialogData {
   correctAnswersNumber: number,
-  hasMoreQuizzes: boolean
+  hasMoreQuizzes: boolean,
+  quizNumber: number
 }
 
 @Component({

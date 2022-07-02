@@ -1,4 +1,5 @@
 <div class="round-results-container text-white">
   <p>round-results-page works!</p>
-  {{results | json}}
+  {{quizResults$ | async | json}}
+  <div *ngFor="let picture of (quizResults$ | async)?.results" class="picture">{{picture | json}}</div>
 </div>

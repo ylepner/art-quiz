@@ -101,7 +101,8 @@ export class QuizPageComponent {
     const dialogRef = this.dialog.open(QuizResultsDialogComponent, {
       data: {
         correctAnswersNumber: this.correctAnswers,
-        hasMoreQuizzes: hasMoreQuizzes
+        hasMoreQuizzes: hasMoreQuizzes,
+        quizNumber: this.quizNumber
       }
     })
     dialogRef.afterClosed().subscribe(() => {
