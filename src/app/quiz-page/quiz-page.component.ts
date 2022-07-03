@@ -86,7 +86,6 @@ export class QuizPageComponent {
     });
     dialogRef.afterClosed().subscribe(() => {
       if (this.currentQuestionNumber === 9) {
-        debugger
         this.resultsService.setQuizResults({ quizNumber: this.quizNumber, results: this.questionsResults })
         this.openGameResultsDialog()
       }
@@ -111,7 +110,6 @@ export class QuizPageComponent {
         this.currentQuestionNumber = 0
         this.selectedAnswerNumber = undefined
         this.correctAnswers = 0
-        // this.router.navigate([`quiz/artists/${this.quizNumber}`])
       }
     })
   }
