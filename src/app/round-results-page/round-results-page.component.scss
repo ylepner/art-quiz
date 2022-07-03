@@ -16,3 +16,7 @@
 a:hover {
   color: var(--accent);
 }
+
+.no-color {
+  filter: grayscale(1);
+}

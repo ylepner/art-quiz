@@ -13,6 +13,6 @@
 </div>
 <div class="round-results-container text-white p-16">
   <div *ngFor="let picture of ( quizResults$ | async)" class="picture cursor-pointer  w-48 relative m-12 block">
-    <img class="item-image w-48 h-50" src="{{picture?.img}}" alt="image">
+    <img [class.no-color]="!picture?.isCorrectAnswer" class="item-image w-48 h-50" src="{{picture?.img}}" alt="image">
   </div>
 </div>
