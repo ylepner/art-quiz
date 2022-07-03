@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import images from './data';
-import { AnswerResult, QuizResults } from './models/quiz-results';
+import { QuestionArtists } from './models/question-models';
+import { AnswerResult, ArtistResult, QuizResults } from './models/quiz-results';
 import { PicturesService } from './pictures.service';
 
+const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 @Injectable({
   providedIn: 'root'
 })
 export class ResultsService {
 
   quizResults: Record<number, QuizResults> = {}
+  currentQuizResult: QuestionArtists[] = []
 
   constructor(
     private picturesService: PicturesService
@@ -29,18 +32,22 @@ export class ResultsService {
   }
 
   getQuizResult(quizId: number) {
-    const pictures = this.picturesService.getArtistsGame(quizId)
+    const quizResult = this.quizResults[quizId]
+    const artistsResults = quizResult.results.map((picture) => {
+      return this.convertResultItemToArtistResult(picture)
+    })
+    return artistsResults
+  }
+
+  convertResultItemToArtistResult(item: AnswerResult): ArtistResult {
+    const picture = images[item.questionNumber]
+    return {
+      img: `${PICTURE_URL}${picture.imageNum}.jpg`,
+      number: item.questionNumber,
+      isCorrectAnswer: item.isCorrectAnswer,
+      name: picture.name,
+      author: picture.author,
+      year: picture.year
+    }
   }
 }
-
-// export interface QuestionArtists {
-//   timer?: number,
-//   title?: string,
-//   img: string,
-//   number: number,
-//   answers: string[],
-//   correctAnswer: number,
-//   name: string
-//   author: string,
-//   year: string
-// }
