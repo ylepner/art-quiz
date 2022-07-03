@@ -28,12 +28,14 @@ export class PicturesService {
     const filteredData = data.filter((el, i) => i % 10 === 0)
     const categoryData = filteredData.map((el, i) => {
       const quizResult = this.resultService.getQuizScore(i)
+      const isPlayed = this.resultService.isPlayed(i)
       return {
         title: String(i + 1),
         result: quizResult,
         maxScore: 10,
         img: `${PICTURE_URL}${el.imageNum}.jpg`,
-        id: i
+        id: i,
+        isPlayed: isPlayed
       }
     })
     return categoryData

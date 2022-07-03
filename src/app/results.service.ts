@@ -56,4 +56,7 @@ export class ResultsService {
     return correctAnswers.length
   }
 
+  isPlayed(quizNumber: number) {
+    return !!this.quizResults[quizNumber]
+  }
 }
