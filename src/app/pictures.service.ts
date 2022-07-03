@@ -71,7 +71,7 @@ export class PicturesService {
       if (answers[i] === '' && !answers.includes(answer))
         answers[i] = answer
     }
-    if (!answers.includes('')) {
+    if (answers.includes('')) {
       answers[answers.indexOf('')] = allOptions[Math.floor(Math.random() * questionArrLength)]
     }
     return answers
