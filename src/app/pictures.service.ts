@@ -4,6 +4,7 @@ import images from './data';
 import { QuizType, CategoryItem } from './models/categories-models';
 import { PictureItem } from './models/pictures-models';
 import { QuestionArtists, QuestionPictures } from './models/question-models';
+import { ResultsService } from './results.service';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 
@@ -13,7 +14,7 @@ const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master
 export class PicturesService {
 
   constructor(
-    private route: ActivatedRoute
+    private resultService: ResultsService
   ) { }
 
   getCategories(category: QuizType): CategoryItem[] {
@@ -26,9 +27,10 @@ export class PicturesService {
     }
     const filteredData = data.filter((el, i) => i % 10 === 0)
     const categoryData = filteredData.map((el, i) => {
+      const quizResult = this.resultService.getQuizScore(i)
       return {
         title: String(i + 1),
-        result: 0,
+        result: quizResult,
         maxScore: 10,
         img: `${PICTURE_URL}${el.imageNum}.jpg`,
         id: i

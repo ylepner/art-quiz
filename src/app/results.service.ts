@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import images from './data';
-import { QuestionArtists } from './models/question-models';
 import { AnswerResult, ArtistResult, QuizResults } from './models/quiz-results';
-import { PicturesService } from './pictures.service';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 @Injectable({
@@ -11,10 +9,8 @@ const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master
 export class ResultsService {
 
   quizResults: Record<number, QuizResults> = {}
-  currentQuizResult: QuestionArtists[] = []
 
   constructor(
-    private picturesService: PicturesService
   ) {
     const data = localStorage.getItem('results')
     if (data) {
@@ -50,4 +46,14 @@ export class ResultsService {
       year: picture.year
     }
   }
+
+  getQuizScore(quizNumber: number) {
+    const answersArr = this.quizResults[quizNumber]
+    if (!answersArr) {
+      return 0
+    }
+    const correctAnswers = answersArr.results.filter((picture) => picture.isCorrectAnswer === true)
+    return correctAnswers.length
+  }
+
 }
