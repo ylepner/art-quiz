@@ -4,6 +4,7 @@ export interface CategoryItem {
   maxScore: number;
   img: string;
   id: number;
+  isPlayed: boolean;
 }
 
 export enum QuizType {

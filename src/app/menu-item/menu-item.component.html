@@ -1,16 +1,19 @@
-<a [routerLink]="link" class="menu-item-container w-48 relative m-12 block">
+<div class="menu-item-container w-48 relative m-12 block">
   <div class="item-header flex w-full justify-between pb-3 text-xl font-semibold">
     <div class="category-title">Category {{item?.title}}</div>
-    <div class="item-results">{{item?.result}} / {{item?.maxScore}}
-    </div>
+    <a class="item-results" routerLink="/quiz/artists/{{item?.id}}/results">{{item?.result}} / {{item?.maxScore}}
+    </a>
   </div>
-  <div class="item-img">
+  <a [routerLink]="link" class="item-img">
     <img src="{{item?.img}}" alt="image" class="item-image w-48 h-50">
-  </div>
-  <div class="play-again-div absolute w-full font-semibold hidden">
-    <div class="play-again-button text-black text-xl flex items-center justify-around w-full">
-      <img src="assets/img/return-icon1.png" alt="play again" class="w-6">
-      Play again
+    <div class="play-again-div absolute w-full font-semibold hidden">
+      <div *ngIf="item?.isPlayed" class="play-again-button text-black text-xl flex items-center justify-around w-full">
+        <img src="assets/img/return-icon1.png" alt="play again" class="w-6">
+        Play again
+      </div>
+      <div *ngIf="!item?.isPlayed" class="play-again-button text-black text-xl flex items-center justify-around w-full">
+        Play
+      </div>
     </div>
-  </div>
-</a>
+  </a>
+</div>

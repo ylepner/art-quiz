@@ -20,8 +20,11 @@
 }
 
 .menu-item-container:hover {
-  cursor: pointer;
   .play-again-div {
     display: flex!important;
   }
+}
+
+.item-results:hover {
+  color: white;
 }
