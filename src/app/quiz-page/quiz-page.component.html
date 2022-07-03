@@ -12,7 +12,7 @@
       <img class="question-img" src="{{question?.img}}" alt="picture">
       <div class="number-buttons absolute flex justify-center">
         <div *ngFor="let question of questions; let i = index" (click)="setCurrentButton(i)" class="question-number"
-          [class.accent]="i <= currentQuestionNumber"></div>
+          [class.accent]="i < currentQuestionNumber"></div>
       </div>
     </div>
     <div class="answers-options">
