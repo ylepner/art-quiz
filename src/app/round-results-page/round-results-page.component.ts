@@ -24,8 +24,6 @@ export class RoundResultsPageComponent {
     })
   )
 
-
-
   constructor(
     private service: ResultsService,
     private route: ActivatedRoute
