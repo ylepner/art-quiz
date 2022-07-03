@@ -1,0 +1,18 @@
+.round-results-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-image {
+  border-radius: 20px;
+}
+
+.results-title {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent);
+}

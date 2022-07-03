@@ -1,5 +1,18 @@
-<div class="round-results-container text-white">
-  <p>round-results-page works!</p>
-  {{quizResults$ | async | json}}
-  <div *ngFor="let picture of (quizResults$ | async)?.results" class="picture">{{picture | json}}</div>
+<div class="nav-panel flex justify-between text-3xl p-16 text-white items-center">
+  <a routerLink="" class="logo">
+    <img src="assets/img/logo.png" alt="logo">
+  </a>
+  <div class="nav-panel-links flex w-1/2 justify-between">
+    <a routerLink="" class="to-home-btn nav-font">Home</a>
+    <a routerLink="/categories/artists" class="title nav-font cursor-pointer">Artists categories</a>
+    <div class="results-title">Results</div>
+    <a routerLink="/settings" class="settings">
+      <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
+    </a>
+  </div>
+</div>
+<div class="round-results-container text-white p-16">
+  <div *ngFor="let picture of ( quizResults$ | async)" class="picture cursor-pointer  w-48 relative m-12 block">
+    <img class="item-image w-48 h-50" src="{{picture?.img}}" alt="image">
+  </div>
 </div>
