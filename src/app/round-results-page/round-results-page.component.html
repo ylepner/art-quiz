@@ -15,7 +15,7 @@
   <div *ngFor="let picture of ( quizResults$ | async)" class="picture cursor-pointer w-48 h-48 relative m-12">
     <img [class.no-color]="!picture?.isCorrectAnswer" class="item-image w-48 h-48" src="{{picture?.img}}" alt="image">
   </div>
-  <div *ngFor="let picture of ( quizResults$ | async)" class="picture-info cursor-pointer w-48 relative m-12 hidden">
+  <div *ngFor="let picture of ( quizResults$ | async)" class="picture-info cursor-pointer w-48 relative m-12 block">
     <div class="item-info w-48 h-48 flex flex-col justify-end p-4">
       <div class="picture-title font-extrabold text-lg">{{picture?.name}}</div>
       <div class="picture-author italic text-base">{{picture?.author}}, {{picture?.year}}</div>
