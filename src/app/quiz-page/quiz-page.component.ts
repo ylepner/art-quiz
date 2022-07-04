@@ -94,13 +94,10 @@ export class QuizPageComponent {
   }
 
   openGameResultsDialog() {
-    const hasMoreQuizzes = () => {
-      return this.quizNumber !== 11
-    }
     const dialogRef = this.dialog.open(QuizResultsDialogComponent, {
       data: {
         correctAnswersNumber: this.correctAnswers,
-        hasMoreQuizzes: hasMoreQuizzes,
+        hasMoreQuizzes: this.quizNumber !== 11,
         quizNumber: this.quizNumber
       }
     })
