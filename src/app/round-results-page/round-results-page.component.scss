@@ -20,3 +20,17 @@ a:hover {
 .no-color {
   filter: grayscale(1);
 }
+
+.item-info {
+  background-color: var(--accent);
+  border-radius: 20px;
+  font-family: 'Gilroy';
+  color: black;
+}
+
+.picture:hover {
+  .picture-info {
+    display: block!important;
+  }
+  display: none;
+}
