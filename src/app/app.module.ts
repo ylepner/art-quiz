@@ -7,7 +7,7 @@ import { SettingsPageComponent } from './settings-page/settings-page.component';
 import { FooterComponent } from './footer/footer.component';
 import { CategoriesComponent } from './categories/categories.component';
 import { MenuItemComponent } from './menu-item/menu-item.component';
-import { QuizPageComponent } from './quiz-page/quiz-page.component';
+import { QuizArtistsPageComponent } from './quiz-artists-page/quiz-artists-page.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PictureInfoDialogComponent } from './picture-info-dialog/picture-info-dialog.component';
 import { DialogModule } from '@angular/cdk/dialog';
@@ -22,7 +22,7 @@ import { RoundResultsPageComponent } from './round-results-page/round-results-pa
     FooterComponent,
     CategoriesComponent,
     MenuItemComponent,
-    QuizPageComponent,
+    QuizArtistsPageComponent,
     PictureInfoDialogComponent,
     QuizResultsDialogComponent,
     RoundResultsPageComponent

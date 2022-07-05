@@ -9,11 +9,11 @@ import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-
 import { AnswerResult } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
 @Component({
-  selector: 'app-quiz-page',
-  templateUrl: './quiz-page.component.html',
-  styleUrls: ['./quiz-page.component.scss']
+  selector: 'app-quiz-artists-page',
+  templateUrl: './quiz-artists-page.component.html',
+  styleUrls: ['./quiz-artists-page.component.scss']
 })
-export class QuizPageComponent {
+export class QuizArtistsPageComponent {
   quizNumber = 0
   currentQuestionNumber = 0
   questions: QuestionArtists[] = []
@@ -32,7 +32,6 @@ export class QuizPageComponent {
     private pictureService: PicturesService,
     private resultsService: ResultsService,
     private dialog: MatDialog,
-    private router: Router
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
