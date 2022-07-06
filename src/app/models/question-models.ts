@@ -10,8 +10,10 @@ export interface QuestionArtists {
   year: string
 }
 export interface QuestionPictures {
-  timer?: number,
-  title: string,
+  number: number,
   answers: string[],
-  correctAnswer: number
+  correctAnswer: number,
+  name: string
+  author: string,
+  year: string
 }
