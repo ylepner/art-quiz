@@ -7,13 +7,11 @@
     <div class="timer-time">0:20</div>
   </div>
   <div class="question-container">
-    <div class="title pb-12">Which is Edvard Munch picture?</div>
+    <div class="title pb-12">Which is {{question.author}} picture?</div>
     <div class="answers grid grid-cols-2 gap-6">
-      <img class="answer-image w-96 h-72"
-        src="https://raw.githubusercontent.com/irinainina/image-data/master/img/110.jpg" alt="">
-      <img class="answer-image" src="https://raw.githubusercontent.com/irinainina/image-data/master/img/110.jpg" alt="">
-      <img class="answer-image" src="https://raw.githubusercontent.com/irinainina/image-data/master/img/110.jpg" alt="">
-      <img class="answer-image" src="https://raw.githubusercontent.com/irinainina/image-data/master/img/110.jpg" alt="">
+      <button *ngFor="let answer of question.answers">
+        <img class="answer-image w-96 h-72" src="{{answer}}" alt="picture">
+      </button>
     </div>
   </div>
 </div>
