@@ -59,6 +59,24 @@ export class PicturesService {
     return quizQuestions
   }
 
+  getPicturesGame(gameId: number) {
+    let quizQuestions: QuestionPictures[] = []
+    let picturesArr = images.slice(images.length / 2, -1)
+    quizQuestions = picturesArr.slice(gameId * 10, (gameId * 10) + 10).map((picture) => {
+      const correctAnswer = Math.floor(Math.random() * 4)
+      const answers = this.getImagesAnswers(picture, correctAnswer)
+      return {
+        number: Number(picture.imageNum),
+        answers: answers,
+        correctAnswer: correctAnswer,
+        name: picture.name,
+        author: picture.author,
+        year: picture.year
+      }
+    })
+    return quizQuestions
+  }
+
   getAllAuthors() {
     const allAuthors = images.map((picture) => picture.author)
     return [...new Set(allAuthors)]
@@ -78,6 +96,22 @@ export class PicturesService {
     if (answers.includes('')) {
       answers[answers.indexOf('')] = allOptions[Math.floor(Math.random() * questionArrLength)]
     }
+    return answers
+  }
+
+  getImagesAnswers(picture: PictureItem, correctAnswer: number) {
+    let answers = ['', '', '', '']
+    answers[correctAnswer] = `${PICTURE_URL}${picture.imageNum}.jpg`;
+    for (let i = 0; i < 4; i++) {
+      const randomNumber = Math.floor(Math.random() * (images.length - 1))
+      const answer = `${PICTURE_URL}${randomNumber}.jpg`;
+      if (answers[i] === '' && !answers.includes(answer))
+        answers[i] = answer
+    }
+    if (answers.includes('')) {
+      answers[answers.indexOf('')] = `${PICTURE_URL}${Math.floor(Math.random() * (images.length - 1))}.jpg`;
+    }
+    console.log(answers)
     return answers
   }
 }
