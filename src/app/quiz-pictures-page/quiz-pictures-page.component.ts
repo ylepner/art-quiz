@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { QuestionPictures } from '../models/question-models';
+import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 import { PicturesService } from '../pictures.service';
 import { ResultsService } from '../results.service';
 
@@ -17,6 +18,7 @@ export class QuizPicturesPageComponent {
   questions: QuestionPictures[] = []
   currentQuestionNumber = 0
   selectedAnswerNumber?: number;
+  correctAnswers = 0
 
   questions$ = this.route.params.pipe(
     map((params) => {
@@ -42,6 +44,26 @@ export class QuizPicturesPageComponent {
 
   selectAnswer(answerNumber: number) {
     this.selectedAnswerNumber = answerNumber
+    setTimeout(() => {
+      if (this.selectedAnswerNumber !== undefined) {
+        this.openPictureInfoDialog(this.selectedAnswerNumber)
+      }
+    }, 1000)
   }
 
+  openPictureInfoDialog(selectedAnswerNumber: number) {
+    const question = this.question
+    const isCorrect = question.author === question.answers[selectedAnswerNumber]
+    if (isCorrect) {
+      this.correctAnswers += 1
+    }
+    const dialogRef = this.dialog.open(PictureInfoDialogComponent, {
+      data: {
+        image: question.answers[question.correctAnswer],
+        isCorrect: isCorrect,
+        name: question.name,
+        info: `${question.author}, ${question.year}`
+      },
+    });
+  }
 }
