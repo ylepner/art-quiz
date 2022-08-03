@@ -65,5 +65,14 @@ export class QuizPicturesPageComponent {
         info: `${question.author}, ${question.year}`
       },
     });
+    dialogRef.afterClosed().subscribe(() => {
+      this.nextQuestion()
+    });
+  }
+
+  nextQuestion() {
+    if (this.currentQuestionNumber === 9) return
+    this.currentQuestionNumber += 1
+    this.selectedAnswerNumber = undefined
   }
 }
