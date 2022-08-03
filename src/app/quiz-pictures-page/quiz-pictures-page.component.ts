@@ -16,6 +16,7 @@ export class QuizPicturesPageComponent {
   quizNumber = 0
   questions: QuestionPictures[] = []
   currentQuestionNumber = 0
+  selectedAnswerNumber?: number;
 
   questions$ = this.route.params.pipe(
     map((params) => {
@@ -37,6 +38,10 @@ export class QuizPicturesPageComponent {
 
   get question() {
     return this.questions[this.currentQuestionNumber]
+  }
+
+  selectAnswer(answerNumber: number) {
+    this.selectedAnswerNumber = answerNumber
   }
 
 }

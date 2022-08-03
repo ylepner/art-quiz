@@ -9,7 +9,8 @@
   <div class="question-container">
     <div class="title pb-12">Which is {{question.author}} picture?</div>
     <div class="answers grid grid-cols-2 gap-6">
-      <button *ngFor="let answer of question.answers">
+      <button (click)="selectAnswer(i)" *ngFor="let answer of question.answers; let i = index"
+        [class.select]="i === selectedAnswerNumber">
         <img class="answer-image w-96 h-72" src="{{answer}}" alt="picture">
       </button>
     </div>
