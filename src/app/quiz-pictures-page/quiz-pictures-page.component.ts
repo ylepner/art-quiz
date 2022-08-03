@@ -53,7 +53,6 @@ export class QuizPicturesPageComponent {
 
   openPictureInfoDialog(selectedAnswerNumber: number) {
     const question = this.question
-    console.log(question)
     const isCorrect = selectedAnswerNumber === question.correctAnswer
     if (isCorrect) {
       this.correctAnswers += 1

@@ -111,7 +111,6 @@ export class PicturesService {
     if (answers.includes('')) {
       answers[answers.indexOf('')] = `${PICTURE_URL}${Math.floor(Math.random() * (images.length - 1))}.jpg`;
     }
-    console.log(answers)
     return answers
   }
 }
