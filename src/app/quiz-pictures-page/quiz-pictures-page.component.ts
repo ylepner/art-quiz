@@ -89,7 +89,8 @@ export class QuizPicturesPageComponent {
       data: {
         correctAnswersNumber: this.correctAnswers,
         hasMoreQuizzes: this.quizNumber !== 11,
-        quizNumber: this.quizNumber
+        quizNumber: this.quizNumber,
+        quizName: 'pictures'
       }
     })
     dialogRef.afterClosed().subscribe(() => {

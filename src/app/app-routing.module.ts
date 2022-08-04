@@ -33,6 +33,10 @@ const routes: Routes = [
     component: RoundResultsPageComponent
   },
   {
+    path: 'quiz/pictures/:quizId/results',
+    component: RoundResultsPageComponent
+  },
+  {
     path: '',
     component: HomePageComponent
   }

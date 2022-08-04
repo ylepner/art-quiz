@@ -1,5 +1,6 @@
 <div *ngIf="data.correctAnswersNumber < 10"
   class="quiz-results-container bg-white text-black rounded-3xl text-center w-fit">
+  {{data | json}}
   <div class="logo flex justify-center">
     <img src="assets/img/si-glyph_champion-cup.png" alt="results image">
   </div>
@@ -7,7 +8,7 @@
   <div class="results font-extrabold text-5xl">{{data.correctAnswersNumber}}/10</div>
   <div class="links w-full flex justify-around pt-16">
     <a class="link results-link border-black border-1 border-solid m-2" mat-dialog-close
-      routerLink="/quiz/artists/{{data.quizNumber}}/results">
+      routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}/results">
       Show results
     </a>
     <a *ngIf="data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>Next

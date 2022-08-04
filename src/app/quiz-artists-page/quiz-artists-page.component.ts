@@ -97,7 +97,8 @@ export class QuizArtistsPageComponent {
       data: {
         correctAnswersNumber: this.correctAnswers,
         hasMoreQuizzes: this.quizNumber !== 11,
-        quizNumber: this.quizNumber
+        quizNumber: this.quizNumber,
+        quizName: 'artists'
       }
     })
     dialogRef.afterClosed().subscribe(() => {
