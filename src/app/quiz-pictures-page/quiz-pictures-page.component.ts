@@ -57,6 +57,7 @@ export class QuizPicturesPageComponent {
   openPictureInfoDialog(selectedAnswerNumber: number) {
     const question = this.question
     const isCorrect = selectedAnswerNumber === question.correctAnswer
+    this.updateQuestionResults(question.number, isCorrect)
     if (isCorrect) {
       this.correctAnswers += 1
     }
@@ -99,5 +100,10 @@ export class QuizPicturesPageComponent {
         this.correctAnswers = 0
       }
     })
+  }
+
+  updateQuestionResults(questionNumber: number, isCorrect: boolean) {
+    this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
+    console.log(this.questionsResults)
   }
 }
