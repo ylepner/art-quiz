@@ -105,6 +105,5 @@ export class QuizPicturesPageComponent {
 
   updateQuestionResults(questionNumber: number, isCorrect: boolean) {
     this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
-    console.log(this.questionsResults)
   }
 }
