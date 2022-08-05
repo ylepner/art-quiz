@@ -1,4 +1,4 @@
-<div *ngIf="data.correctAnswersNumber < 10"
+<div *ngIf="data.correctAnswersNumber < 1"
   class="quiz-results-container bg-white text-black rounded-3xl text-center w-fit">
   <div class="logo flex justify-center">
     <img src="assets/img/si-glyph_champion-cup.png" alt="results image">
@@ -18,7 +18,7 @@
   </div>
 </div>
 
-<div *ngIf="data.correctAnswersNumber === 10"
+<div *ngIf="data.correctAnswersNumber === 1"
   class="quiz-grand-result bg-white text-black rounded-3xl text-center w-fit">
   <div class="logo-grand flex justify-center">
     <img src="assets/img/grand-result.png" alt="grand result">
@@ -26,6 +26,9 @@
   <div class="title font-extrabold text-5xl p-5">Grand result!</div>
   <div class="title-info font-extrabold text-3xl p-5">Congratulations!</div>
   <div class="next-link flex justify-center mt-12 mb-12">
-    <a class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>Next</a>
+    <a *ngIf="data.hasMoreQuizzes" routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}"
+      class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>Next</a>
+    <a *ngIf="!data.hasMoreQuizzes" routerLink="" class="link next-quiz-link m-2 cursor-pointer"
+      mat-dialog-close>Home</a>
   </div>
 </div>
