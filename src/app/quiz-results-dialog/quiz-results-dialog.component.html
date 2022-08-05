@@ -10,9 +10,11 @@
       routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}/results">
       Show results
     </a>
-    <a *ngIf="data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>Next
+    <a *ngIf="data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer"
+      routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}" mat-dialog-close>Next
       quiz</a>
-    <a *ngIf="!data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>Next</a>
+    <a *ngIf="!data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer" routerLink=""
+      mat-dialog-close>Home</a>
   </div>
 </div>
 
