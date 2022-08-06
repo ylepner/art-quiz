@@ -9,8 +9,10 @@ import { Router } from '@angular/router';
 export class SettingsPageComponent {
 
   time = 5
+  timeGame = false
 
   constructor(private router: Router) { }
+
 
 
   addTime() {
