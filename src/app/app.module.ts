@@ -15,6 +15,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { QuizResultsDialogComponent } from './quiz-results-dialog/quiz-results-dialog.component';
 import { RoundResultsPageComponent } from './round-results-page/round-results-page.component';
 import { QuizPicturesPageComponent } from './quiz-pictures-page/quiz-pictures-page.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,9 @@ import { QuizPicturesPageComponent } from './quiz-pictures-page/quiz-pictures-pa
     AppRoutingModule,
     BrowserAnimationsModule,
     DialogModule,
-    MatDialogModule
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
