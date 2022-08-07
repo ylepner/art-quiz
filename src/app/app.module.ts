@@ -16,6 +16,7 @@ import { QuizResultsDialogComponent } from './quiz-results-dialog/quiz-results-d
 import { RoundResultsPageComponent } from './round-results-page/round-results-page.component';
 import { QuizPicturesPageComponent } from './quiz-pictures-page/quiz-pictures-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TimePipe } from './pipes/time.pipe';
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +29,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PictureInfoDialogComponent,
     QuizResultsDialogComponent,
     RoundResultsPageComponent,
-    QuizPicturesPageComponent
+    QuizPicturesPageComponent,
+    TimePipe
   ],
   imports: [
     BrowserModule,
