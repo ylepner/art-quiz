@@ -36,5 +36,8 @@ export class SettingsPageComponent {
     this.service.setDefaultSettings()
   }
 
+  setCustomerSettings() {
+    this.service.setCustomerSettings(this.volume, this.time)
+  }
 
 }
