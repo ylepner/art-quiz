@@ -18,8 +18,6 @@ export class SettingsPageComponent {
     private service: SettingsService
   ) { }
 
-
-
   addTime() {
     if (this.time < 30) {
       this.time += 5
@@ -34,10 +32,17 @@ export class SettingsPageComponent {
 
   setDefaultSettings() {
     this.service.setDefaultSettings()
+    this.volume = this.service.getVolume()
+    this.timeGame = false
+    setTimeout(() => {
+      this.router.navigate([''])
+    }, 2000)
   }
 
   setCustomerSettings() {
     this.service.setCustomerSettings(this.volume, this.time)
+    setTimeout(() => {
+      this.router.navigate([''])
+    }, 2000)
   }
-
 }
