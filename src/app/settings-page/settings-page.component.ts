@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-settings-page',
@@ -11,7 +12,10 @@ export class SettingsPageComponent {
   time = 5
   timeGame = false
 
-  constructor(private router: Router) { }
+  constructor(
+    private router: Router,
+    private service: SettingsService
+  ) { }
 
 
 
@@ -25,5 +29,9 @@ export class SettingsPageComponent {
     if (this.time > 5) {
       this.time -= 5
     }
+  }
+
+  setDefaultSettings() {
+    this.service.setDefaultSettings()
   }
 }
