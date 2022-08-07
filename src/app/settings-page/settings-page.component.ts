@@ -9,6 +9,7 @@ import { SettingsService } from '../settings.service';
 })
 export class SettingsPageComponent {
 
+  volume = 0
   time = 5
   timeGame = false
 

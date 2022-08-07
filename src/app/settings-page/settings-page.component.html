@@ -10,7 +10,7 @@
   <div class="options pl-20 sm:pl-18 sm:text-center sm:pl-10 sm:pr-10">
     <div class="volume flex flex-col">
       <label for="volume-input">Volume</label>
-      <input id="volume-input" class="volume-input sm:max-w-full" type="range">
+      <input id="volume-input" class="volume-input sm:max-w-full" type="range" [(ngModel)]="volume">
       <label for="volume-input" class="flex pb-0 justify-between">
         <img src="assets/img/bi_volume-mute.png" alt="mute">
         <img src="assets/img//bi_volume-down.png" alt="unmute">
