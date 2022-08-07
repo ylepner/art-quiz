@@ -12,12 +12,20 @@ export class SettingsService {
   }
 
   constructor() {
-
+    const settingsData = localStorage.getItem('settings')
+    if (settingsData) {
+      this.settings = JSON.parse(settingsData)
+    }
   }
 
   setDefaultSettings() {
-    this.settings.volume = 0;
-    this.settings.time = undefined
+    this.setVolume(0);
+    this.setTime(undefined)
+  }
+
+  setCustomerSettings(volume: number, time: number) {
+    this.setVolume(volume);
+    this.setTime(time)
   }
 
   getVolume() {
@@ -26,7 +34,7 @@ export class SettingsService {
 
   setVolume(value: number) {
     this.settings.volume = value
-    this.saveToLocalStor()
+    this.saveToLocalStorage()
   }
 
   getTime() {
@@ -35,10 +43,10 @@ export class SettingsService {
 
   setTime(value: number | undefined) {
     this.settings.time = value
-    this.saveToLocalStor()
+    this.saveToLocalStorage()
   }
 
-  private saveToLocalStor() {
-    //localStorage.setItem('settings', this.settings)
+  private saveToLocalStorage() {
+    localStorage.setItem('settings', JSON.stringify(this.settings))
   }
 }
