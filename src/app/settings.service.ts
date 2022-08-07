@@ -8,10 +8,11 @@ export class SettingsService {
 
   private settings: Settings = {
     volume: 0,
-    time: undefined
+    time: 10
   }
 
   constructor() {
+
   }
 
   setDefaultSettings() {
@@ -25,6 +26,7 @@ export class SettingsService {
 
   setVolume(value: number) {
     this.settings.volume = value
+    this.saveToLocalStor()
   }
 
   getTime() {
@@ -33,5 +35,10 @@ export class SettingsService {
 
   setTime(value: number | undefined) {
     this.settings.time = value
+    this.saveToLocalStor()
+  }
+
+  private saveToLocalStor() {
+    //localStorage.setItem('settings', this.settings)
   }
 }

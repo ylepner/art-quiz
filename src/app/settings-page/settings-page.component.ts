@@ -35,4 +35,6 @@ export class SettingsPageComponent {
   setDefaultSettings() {
     this.service.setDefaultSettings()
   }
+
+
 }

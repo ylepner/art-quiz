@@ -8,6 +8,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-dialog.component';
 import { AnswerResult } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
+import { SettingsService } from '../settings.service';
 
 const NUMBER_OF_QUIZZES = 11
 @Component({
@@ -30,15 +31,26 @@ export class QuizArtistsPageComponent {
       return this.pictureService.getArtistsGame(Number(params['id']))
     }),
   )
+
+  time?: number;
+
   constructor(
     private route: ActivatedRoute,
     private pictureService: PicturesService,
     private resultsService: ResultsService,
     private dialog: MatDialog,
+    private settingsService: SettingsService
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
     })
+    this.time = this.settingsService.getTime()
+    setInterval(() => {
+      if (this.time) {
+        this.time--
+      }
+
+    }, 1000)
   }
 
   get question() {
