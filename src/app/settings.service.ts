@@ -8,7 +8,7 @@ export class SettingsService {
 
   private settings: Settings = {
     volume: 0,
-    time: 10
+    time: 0,
   }
 
   constructor() {
@@ -23,7 +23,7 @@ export class SettingsService {
     this.setTime(undefined)
   }
 
-  setCustomerSettings(volume: number, time: number) {
+  setCustomerSettings(volume: number, time?: number) {
     this.setVolume(volume);
     this.setTime(time)
   }
@@ -41,7 +41,7 @@ export class SettingsService {
     return this.settings.time
   }
 
-  setTime(value: number | undefined) {
+  setTime(value?: number) {
     this.settings.time = value
     this.saveToLocalStorage()
   }

@@ -19,8 +19,7 @@
     <div class="time-game flex flex-col pb-8 sm:items-center">
       <label for="time-toggle">Time game</label>
       <div class="input-div flex items-center w-28 justify-between">
-        {{timeGame ? 'On' : 'Off'}} <input id="time-toggle" class="toggle-button" type="checkbox"
-          [(ngModel)]="timeGame">
+        {{time ? 'On' : 'Off'}} <input id="time-toggle" class="toggle-button" type="checkbox" [(ngModel)]="timeGame">
       </div>
     </div>
     <div *ngIf="timeGame" class="time-to-answer flex flex-col sm:items-center">
