@@ -1,6 +1,6 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map, queueScheduler } from 'rxjs';
+import { Component } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
 import { QuestionArtists } from '../models/question-models';
 import { PicturesService } from '../pictures.service';
 import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
@@ -33,6 +33,7 @@ export class QuizArtistsPageComponent {
   )
 
   time?: number;
+  volume: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -51,6 +52,9 @@ export class QuizArtistsPageComponent {
       }
 
     }, 1000)
+
+    this.volume = this.settingsService.getVolume()
+
   }
 
   get question() {
