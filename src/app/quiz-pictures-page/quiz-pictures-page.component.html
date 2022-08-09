@@ -3,8 +3,8 @@
     <div class="stop-icon flex items-center">
       <img src="assets/img/close-icon.png" alt="close">
     </div>
-    <div class="timer-bar text-center flex"></div>
-    <div class="timer-time">0:20</div>
+    <div *ngIf="time" class="timer-bar text-center flex"></div>
+    <div *ngIf="time" class="timer-time">{{time | time}}</div>
   </div>
   <div class="question-container">
     <div class="title pb-12">Which is {{question.author}} picture?</div>

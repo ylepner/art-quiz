@@ -8,6 +8,7 @@ import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-
 import { PicturesService } from '../pictures.service';
 import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-dialog.component';
 import { ResultsService } from '../results.service';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-quiz-pictures-page',
@@ -30,15 +31,29 @@ export class QuizPicturesPageComponent {
     }),
   )
 
+  time?: number;
+  volume: number;
+
   constructor(
     private route: ActivatedRoute,
     private pictureService: PicturesService,
     private resultsService: ResultsService,
     private dialog: MatDialog,
+    private settingsService: SettingsService
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
     })
+
+    this.time = this.settingsService.getTime()
+    setInterval(() => {
+      if (this.time) {
+        this.time--
+      }
+
+    }, 1000)
+
+    this.volume = this.settingsService.getVolume()
   }
 
   get question() {
