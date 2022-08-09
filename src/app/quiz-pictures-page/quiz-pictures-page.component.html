@@ -1,8 +1,8 @@
 <div class="main-container text-white grid items-center justify-center">
   <div class="timer-container flex w-full justify-between">
-    <div class="stop-icon flex items-center">
+    <a routerLink="/categories/pictures" class="stop-icon flex items-center">
       <img src="assets/img/close-icon.png" alt="close">
-    </div>
+    </a>
     <div *ngIf="time" class="timer-bar text-center flex"></div>
     <div *ngIf="time" class="timer-time">{{time | time}}</div>
   </div>
