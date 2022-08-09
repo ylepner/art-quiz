@@ -29,11 +29,7 @@ const routes: Routes = [
     component: QuizPicturesPageComponent,
   },
   {
-    path: 'quiz/artists/:quizId/results',
-    component: RoundResultsPageComponent
-  },
-  {
-    path: 'quiz/pictures/:quizId/results',
+    path: 'quiz/:quizType/:quizId/results',
     component: RoundResultsPageComponent
   },
   {
