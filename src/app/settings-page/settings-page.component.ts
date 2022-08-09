@@ -40,9 +40,7 @@ export class SettingsPageComponent {
     this.service.setDefaultSettings()
     this.volume = this.service.getVolume()
     this.timeGame = false
-    setTimeout(() => {
-      this.router.navigate([''])
-    }, 1000)
+    this.goBack()
   }
 
   get timeGame() {
@@ -59,9 +57,7 @@ export class SettingsPageComponent {
 
   setCustomerSettings() {
     this.service.setCustomerSettings(this.volume, this.time)
-    setTimeout(() => {
-      this.router.navigate([''])
-    }, 1000)
+    this.goBack()
   }
 
   goBack() {
