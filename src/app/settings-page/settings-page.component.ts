@@ -63,4 +63,8 @@ export class SettingsPageComponent {
       this.router.navigate([''])
     }, 1000)
   }
+
+  goBack() {
+    history.back()
+  }
 }
