@@ -1,0 +1,12 @@
+<div class="quit-game-container bg-white text-black rounded-3xl text-center w-fit">
+  <div class="flex justify-end">
+    <button mat-dialog-close class="stop-icon">
+      <img src="assets/img/close-icon-black.png" alt="close">
+    </button>
+  </div>
+  <div class="title font-extrabold text-xl p-5">Do you really want to <br> quit the game?</div>
+  <mat-dialog-actions class="w-full flex justify-around pt-16">
+    <button class="link m-2" mat-dialog-close> Cancel </button>
+    <button (click)="goBack()" class="link confirm-btn m-2 cursor-pointer" mat-dialog-close>Yes</button>
+  </mat-dialog-actions>
+</div>

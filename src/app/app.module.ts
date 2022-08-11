@@ -17,6 +17,7 @@ import { RoundResultsPageComponent } from './round-results-page/round-results-pa
 import { QuizPicturesPageComponent } from './quiz-pictures-page/quiz-pictures-page.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimePipe } from './pipes/time.pipe';
+import { QuitGameDialogComponent } from './quit-game-dialog/quit-game-dialog.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +31,8 @@ import { TimePipe } from './pipes/time.pipe';
     QuizResultsDialogComponent,
     RoundResultsPageComponent,
     QuizPicturesPageComponent,
-    TimePipe
+    TimePipe,
+    QuitGameDialogComponent
   ],
   imports: [
     BrowserModule,
