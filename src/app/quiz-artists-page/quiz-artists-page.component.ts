@@ -9,6 +9,7 @@ import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-
 import { AnswerResult } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
+import { QuitGameDialogComponent } from '../quit-game-dialog/quit-game-dialog.component';
 
 const NUMBER_OF_QUIZZES = 11
 @Component({
@@ -136,5 +137,9 @@ export class QuizArtistsPageComponent {
 
   updateQuestionResults(questionNumber: number, isCorrect: boolean) {
     this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
+  }
+
+  openQuitTheGameDialog() {
+    const dialogRef = this.dialog.open(QuitGameDialogComponent, {})
   }
 }
