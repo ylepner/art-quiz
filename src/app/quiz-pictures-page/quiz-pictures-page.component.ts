@@ -37,7 +37,6 @@ export class QuizPicturesPageComponent {
 
   constructor(
     private route: ActivatedRoute,
-    private router: Router,
     private pictureService: PicturesService,
     private resultsService: ResultsService,
     private dialog: MatDialog,
@@ -48,15 +47,8 @@ export class QuizPicturesPageComponent {
     })
 
     this.time = this.settingsService.getTime()
-    setInterval(() => {
-      if (this.time) {
-        this.time--
-        if (this.time === 0) {
-          this.stopGame()
-        }
-      }
 
-    }, 1000)
+    this.startTimer()
 
     this.volume = this.settingsService.getVolume()
   }
@@ -102,6 +94,8 @@ export class QuizPicturesPageComponent {
     if (this.currentQuestionNumber === 9) return
     this.currentQuestionNumber += 1
     this.selectedAnswerNumber = undefined
+    this.time = this.settingsService.getTime()
+    this.startTimer()
   }
 
   openGameResultsDialog() {
@@ -137,5 +131,19 @@ export class QuizPicturesPageComponent {
     dialogRef.afterClosed().subscribe(() => {
       this.currentQuestionNumber = 0
     })
+  }
+
+  startTimer() {
+    const timerInterval = setInterval(() => {
+      if (this.time) {
+        this.time--
+        if (this.selectedAnswerNumber) {
+          clearInterval(timerInterval)
+        }
+        if (this.time === 0 && this.selectedAnswerNumber === undefined) {
+          this.stopGame()
+        }
+      }
+    }, 1000)
   }
 }
