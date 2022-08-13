@@ -9,8 +9,4 @@ import { Component } from '@angular/core';
 export class GameOverDialogComponent {
 
   constructor(public dialogRef: DialogRef) { }
-
-  goBack() {
-    history.back()
-  }
 }

@@ -37,6 +37,7 @@ export class QuizPicturesPageComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private pictureService: PicturesService,
     private resultsService: ResultsService,
     private dialog: MatDialog,
@@ -128,8 +129,14 @@ export class QuizPicturesPageComponent {
         quizName: 'pictures'
       }
     })
-    dialogRef.afterClosed().subscribe(() => {
-      this.currentQuestionNumber = 0
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.currentQuestionNumber = 0
+        this.time = this.settingsService.getTime()
+        this.startTimer()
+      } else {
+        this.router.navigate(['categories/pictures'])
+      }
     })
   }
 
@@ -137,10 +144,11 @@ export class QuizPicturesPageComponent {
     const timerInterval = setInterval(() => {
       if (this.time) {
         this.time--
-        if (this.selectedAnswerNumber) {
+        if (this.selectedAnswerNumber !== undefined) {
           clearInterval(timerInterval)
         }
         if (this.time === 0 && this.selectedAnswerNumber === undefined) {
+          clearInterval(timerInterval)
           this.stopGame()
         }
       }
