@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
+import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { QuestionPictures } from '../models/question-models';
 import { AnswerResult } from '../models/quiz-results';
 import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
@@ -49,6 +50,9 @@ export class QuizPicturesPageComponent {
     setInterval(() => {
       if (this.time) {
         this.time--
+        if (this.time === 0) {
+          this.stopGame()
+        }
       }
 
     }, 1000)
@@ -120,5 +124,9 @@ export class QuizPicturesPageComponent {
 
   updateQuestionResults(questionNumber: number, isCorrect: boolean) {
     this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
+  }
+
+  stopGame() {
+    this.dialog.open(GameOverDialogComponent)
   }
 }
