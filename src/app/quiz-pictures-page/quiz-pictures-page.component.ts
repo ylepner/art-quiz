@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { QuestionPictures } from '../models/question-models';
@@ -37,6 +37,7 @@ export class QuizPicturesPageComponent {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private pictureService: PicturesService,
     private resultsService: ResultsService,
     private dialog: MatDialog,
@@ -127,6 +128,14 @@ export class QuizPicturesPageComponent {
   }
 
   stopGame() {
-    this.dialog.open(GameOverDialogComponent)
+    const dialogRef = this.dialog.open(GameOverDialogComponent, {
+      data: {
+        quizNumber: this.quizNumber,
+        quizName: 'pictures'
+      }
+    })
+    dialogRef.afterClosed().subscribe(() => {
+      this.currentQuestionNumber = 0
+    })
   }
 }
