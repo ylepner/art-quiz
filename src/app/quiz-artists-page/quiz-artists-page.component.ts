@@ -4,7 +4,7 @@ import { map } from 'rxjs';
 import { QuestionArtists } from '../models/question-models';
 import { PicturesService } from '../pictures.service';
 import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-dialog.component';
 import { AnswerResult } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
@@ -37,6 +37,7 @@ export class QuizArtistsPageComponent implements OnDestroy {
   time?: number;
   volume: number;
   timerInterval?: any;
+  dialogRef?: MatDialogRef<QuitGameDialogComponent, any>
 
   constructor(
     private route: ActivatedRoute,
@@ -142,7 +143,7 @@ export class QuizArtistsPageComponent implements OnDestroy {
   }
 
   openQuitTheGameDialog() {
-    const dialogRef = this.dialog.open(QuitGameDialogComponent, {})
+    this.dialogRef = this.dialog.open(QuitGameDialogComponent, {})
   }
 
   stopGame() {
@@ -153,6 +154,9 @@ export class QuizArtistsPageComponent implements OnDestroy {
       }
     })
     dialogRef.afterClosed().subscribe((data) => {
+      if (this.dialogRef) {
+        this.dialogRef.close()
+      }
       if (data) {
         this.currentQuestionNumber = 0
         this.time = this.settingsService.getTime()

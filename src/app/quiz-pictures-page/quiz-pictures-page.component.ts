@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
@@ -36,6 +36,7 @@ export class QuizPicturesPageComponent {
   time?: number;
   volume: number;
   timerInterval?: any;
+  dialogRef?: MatDialogRef<QuitGameDialogComponent, any>
 
   constructor(
     private route: ActivatedRoute,
@@ -136,6 +137,9 @@ export class QuizPicturesPageComponent {
       }
     })
     dialogRef.afterClosed().subscribe((data) => {
+      if (this.dialogRef) {
+        this.dialogRef.close()
+      }
       if (data) {
         this.currentQuestionNumber = 0
         this.time = this.settingsService.getTime()
@@ -162,6 +166,6 @@ export class QuizPicturesPageComponent {
   }
 
   openQuitTheGameDialog() {
-    const dialogRef = this.dialog.open(QuitGameDialogComponent, {})
+    this.dialogRef = this.dialog.open(QuitGameDialogComponent, {})
   }
 }
