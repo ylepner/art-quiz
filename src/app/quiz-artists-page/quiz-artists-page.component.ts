@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { QuestionArtists } from '../models/question-models';
 import { PicturesService } from '../pictures.service';
@@ -10,6 +10,7 @@ import { AnswerResult } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
 import { QuitGameDialogComponent } from '../quit-game-dialog/quit-game-dialog.component';
+import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 
 const NUMBER_OF_QUIZZES = 11
 @Component({
@@ -41,21 +42,16 @@ export class QuizArtistsPageComponent {
     private pictureService: PicturesService,
     private resultsService: ResultsService,
     private dialog: MatDialog,
-    private settingsService: SettingsService
+    private settingsService: SettingsService,
+    private router: Router
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
     })
+
     this.time = this.settingsService.getTime()
-    setInterval(() => {
-      if (this.time) {
-        this.time--
-      }
-
-    }, 1000)
-
+    this.startTimer()
     this.volume = this.settingsService.getVolume()
-
   }
 
   get question() {
@@ -66,6 +62,8 @@ export class QuizArtistsPageComponent {
     if (this.currentQuestionNumber === 9) return
     this.currentQuestionNumber += 1
     this.selectedAnswerNumber = undefined
+    this.time = this.settingsService.getTime()
+    this.startTimer()
   }
 
   previousQuestion() {
@@ -141,5 +139,38 @@ export class QuizArtistsPageComponent {
 
   openQuitTheGameDialog() {
     const dialogRef = this.dialog.open(QuitGameDialogComponent, {})
+  }
+
+  stopGame() {
+    const dialogRef = this.dialog.open(GameOverDialogComponent, {
+      data: {
+        quizNumber: this.quizNumber,
+        quizName: 'artists'
+      }
+    })
+    dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.currentQuestionNumber = 0
+        this.time = this.settingsService.getTime()
+        this.startTimer()
+      } else {
+        this.router.navigate(['categories/artists'])
+      }
+    })
+  }
+
+  startTimer() {
+    const timerInterval = setInterval(() => {
+      if (this.time) {
+        this.time--
+        if (this.selectedAnswerNumber !== undefined) {
+          clearInterval(timerInterval)
+        }
+        if (this.time === 0 && this.selectedAnswerNumber === undefined) {
+          clearInterval(timerInterval)
+          this.stopGame()
+        }
+      }
+    }, 1000)
   }
 }
