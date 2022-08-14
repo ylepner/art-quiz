@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { QuestionArtists } from '../models/question-models';
@@ -19,7 +19,7 @@ const NUMBER_OF_QUIZZES = 11
   styleUrls: ['./quiz-artists-page.component.scss']
 })
 
-export class QuizArtistsPageComponent {
+export class QuizArtistsPageComponent implements OnDestroy {
   quizNumber = 0
   currentQuestionNumber = 0
   questions: QuestionArtists[] = []
@@ -36,6 +36,7 @@ export class QuizArtistsPageComponent {
 
   time?: number;
   volume: number;
+  timerInterval?: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,6 +53,9 @@ export class QuizArtistsPageComponent {
     this.time = this.settingsService.getTime()
     this.startTimer()
     this.volume = this.settingsService.getVolume()
+  }
+  ngOnDestroy(): void {
+    clearInterval(this.timerInterval)
   }
 
   get question() {
@@ -160,14 +164,14 @@ export class QuizArtistsPageComponent {
   }
 
   startTimer() {
-    const timerInterval = setInterval(() => {
+    this.timerInterval = setInterval(() => {
       if (this.time) {
         this.time--
         if (this.selectedAnswerNumber !== undefined) {
-          clearInterval(timerInterval)
+          clearInterval(this.timerInterval)
         }
         if (this.time === 0 && this.selectedAnswerNumber === undefined) {
-          clearInterval(timerInterval)
+          clearInterval(this.timerInterval)
           this.stopGame()
         }
       }

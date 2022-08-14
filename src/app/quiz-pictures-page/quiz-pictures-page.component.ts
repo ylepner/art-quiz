@@ -7,6 +7,7 @@ import { QuestionPictures } from '../models/question-models';
 import { AnswerResult } from '../models/quiz-results';
 import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 import { PicturesService } from '../pictures.service';
+import { QuitGameDialogComponent } from '../quit-game-dialog/quit-game-dialog.component';
 import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-dialog.component';
 import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
@@ -34,6 +35,7 @@ export class QuizPicturesPageComponent {
 
   time?: number;
   volume: number;
+  timerInterval?: any;
 
   constructor(
     private route: ActivatedRoute,
@@ -52,6 +54,10 @@ export class QuizPicturesPageComponent {
     this.startTimer()
 
     this.volume = this.settingsService.getVolume()
+  }
+
+  ngOnDestroy(): void {
+    clearInterval(this.timerInterval)
   }
 
   get question() {
@@ -141,17 +147,21 @@ export class QuizPicturesPageComponent {
   }
 
   startTimer() {
-    const timerInterval = setInterval(() => {
+    this.timerInterval = setInterval(() => {
       if (this.time) {
         this.time--
         if (this.selectedAnswerNumber !== undefined) {
-          clearInterval(timerInterval)
+          clearInterval(this.timerInterval)
         }
         if (this.time === 0 && this.selectedAnswerNumber === undefined) {
-          clearInterval(timerInterval)
+          clearInterval(this.timerInterval)
           this.stopGame()
         }
       }
     }, 1000)
+  }
+
+  openQuitTheGameDialog() {
+    const dialogRef = this.dialog.open(QuitGameDialogComponent, {})
   }
 }
