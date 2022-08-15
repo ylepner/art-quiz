@@ -20,4 +20,18 @@ export class SoundsService {
     audio.load();
     audio.play();
   }
+
+  playRoundEnd() {
+    const audio = new Audio();
+    audio.src = 'assets/mp3/success-fanfare.mp3';
+    audio.load();
+    audio.play();
+  }
+
+  playGrandResult() {
+    const audio = new Audio();
+    audio.src = 'assets/mp3/grand-result.mp3';
+    audio.load();
+    audio.play();
+  }
 }
