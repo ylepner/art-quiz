@@ -68,3 +68,11 @@ input {
   background-size: 100%;
   background-repeat: no-repeat;
 }
+
+.settings-icon:hover {
+  filter: drop-shadow(0px 0px 4px var(--accent));
+}
+
+.stop-img:hover {
+  filter: drop-shadow(0px 0px 4px var(--accent));
+}
