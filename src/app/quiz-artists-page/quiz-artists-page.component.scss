@@ -59,3 +59,12 @@ input {
   border: 1px solid var(--basic);
   background-color: var(--basic);
 }
+
+.timer-bar {
+  width: 80%;
+  height: 3px;
+  background: #A4A4A4;
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-size: 100%;
+  background-repeat: no-repeat;
+}

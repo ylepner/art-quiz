@@ -1,13 +1,13 @@
 <div class="main-container text-white grid items-center justify-center">
-  <div class="timer-container flex w-full justify-between">
+  <div class="timer-container flex w-full justify-around items-center p-3">
     <button (click)="openQuitTheGameDialog()" class="stop-icon flex items-center">
       <img src="assets/img/close-icon.png" alt="close">
     </button>
-    <div *ngIf="time" class="timer-bar text-center flex"></div>
+    <div *ngIf="time" class="timer-bar text-center" [style.background-size]="time + '%'"></div>
     <div *ngIf="time" class="timer-time">{{time | time}}</div>
   </div>
   <div class="question-container">
-    <div class="title pb-11">Who is the author of this picture?</div>
+    <div class="title p-11">Who is the author of this picture?</div>
     <div class="question-buttons relative">
       <img class="question-img" [src]="question.img" alt="picture">
       <div class="number-buttons absolute flex justify-center">
