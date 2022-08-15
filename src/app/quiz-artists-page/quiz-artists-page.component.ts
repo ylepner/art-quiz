@@ -11,6 +11,7 @@ import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
 import { QuitGameDialogComponent } from '../quit-game-dialog/quit-game-dialog.component';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
+import { SoundsService } from '../sounds.service';
 
 const NUMBER_OF_QUIZZES = 11
 @Component({
@@ -45,7 +46,8 @@ export class QuizArtistsPageComponent implements OnDestroy {
     private resultsService: ResultsService,
     private dialog: MatDialog,
     private settingsService: SettingsService,
-    private router: Router
+    private router: Router,
+    private soundsService: SoundsService
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
