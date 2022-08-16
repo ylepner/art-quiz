@@ -27,6 +27,15 @@ export class ResultsService {
     return this.quizResults
   }
 
+  getArrayOfAllQuizResultsAnswers() {
+    const arrays = Object.entries(this.getAllQuizResults())
+    debugger
+    const resultsArr = arrays.forEach((entry) => {
+      return entry[1].results
+    })
+    return resultsArr
+  }
+
   getQuizResult(quizId: number) {
     const quizResult = this.quizResults[quizId]
     const artistsResults = quizResult.results.map((picture) => {
