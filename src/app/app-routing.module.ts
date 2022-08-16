@@ -5,6 +5,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { QuizArtistsPageComponent } from './quiz-artists-page/quiz-artists-page.component';
 import { QuizPicturesPageComponent } from './quiz-pictures-page/quiz-pictures-page.component';
 import { RoundResultsPageComponent } from './round-results-page/round-results-page.component';
+import { ScorePageComponent } from './score-page/score-page.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
   {
     path: 'quiz/:quizType/:quizId/results',
     component: RoundResultsPageComponent
+  },
+  {
+    path: 'score',
+    component: ScorePageComponent
   },
   {
     path: '',

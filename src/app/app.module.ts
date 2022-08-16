@@ -19,6 +19,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TimePipe } from './pipes/time.pipe';
 import { QuitGameDialogComponent } from './quit-game-dialog/quit-game-dialog.component';
 import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.component';
+import { ScorePageComponent } from './score-page/score-page.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +35,8 @@ import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.com
     QuizPicturesPageComponent,
     TimePipe,
     QuitGameDialogComponent,
-    GameOverDialogComponent
+    GameOverDialogComponent,
+    ScorePageComponent
   ],
   imports: [
     BrowserModule,
