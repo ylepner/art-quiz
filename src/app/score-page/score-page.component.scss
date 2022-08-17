@@ -1,0 +1,43 @@
+.score-container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-image {
+  border-radius: 20px;
+}
+
+.results-title {
+  color: var(--accent);
+}
+
+a:hover {
+  color: var(--accent);
+}
+
+.no-color {
+  filter: grayscale(1);
+}
+
+.item-info {
+  background-color: var(--accent);
+  border-radius: 20px;
+  font-family: 'Gilroy';
+  color: black;
+}
+
+.picture:hover {
+  .item-info {
+    opacity: 1;
+  }
+}
+
+.title {
+  text-transform: capitalize;
+}
+
+.settings-img:hover {
+  filter: drop-shadow(0px 0px 4px var(--accent));
+}

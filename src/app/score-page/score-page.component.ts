@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { QuizResults } from '../models/quiz-results';
+import { AnswerResult, ArtistResult, QuizResults } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
 
 @Component({
@@ -10,14 +10,14 @@ import { ResultsService } from '../results.service';
 })
 export class ScorePageComponent {
 
-  results: Record<number, QuizResults> = {}
-  allResults: Record<number, QuizResults> = []
+  results: AnswerResult[] = []
+  pictures: ArtistResult[] = []
 
   constructor(
     private resultsService: ResultsService
   ) {
-    const res = this.resultsService.getArrayOfAllQuizResultsAnswers()
-    console.log(res)
+    this.results = this.resultsService.getArrayOfAllQuizResultsAnswers()
+    this.pictures = this.results.map((result) => this.resultsService.convertResultItemToArtistResult(result))
   }
 
 }
