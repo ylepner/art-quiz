@@ -14,8 +14,7 @@ export class ScorePageComponent {
   allResults: Record<number, QuizResults> = []
 
   constructor(
-    private resultsService: ResultsService,
-    private route: ActivatedRoute
+    private resultsService: ResultsService
   ) {
     const res = this.resultsService.getArrayOfAllQuizResultsAnswers()
     console.log(res)

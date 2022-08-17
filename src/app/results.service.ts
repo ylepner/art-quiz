@@ -29,11 +29,13 @@ export class ResultsService {
 
   getArrayOfAllQuizResultsAnswers() {
     const arrays = Object.entries(this.getAllQuizResults())
-    debugger
-    const resultsArr = arrays.forEach((entry) => {
-      return entry[1].results
+    let resultsArr: any[] = []
+    let questionsArr: AnswerResult[] = []
+    arrays.forEach((entry) => {
+      resultsArr.push(entry[1].results)
     })
-    return resultsArr
+    resultsArr.forEach((el) => el.forEach((question: any) => questionsArr.push(question)))
+    return questionsArr
   }
 
   getQuizResult(quizId: number) {
