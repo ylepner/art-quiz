@@ -12,8 +12,6 @@ export class QuitGameDialogComponent {
 
   quizType$ = this.route.params.pipe(
     map((params) => {
-      console.log(params)
-      console.log(params['quizType'])
       return params['quizType'] as string;
     })
   )

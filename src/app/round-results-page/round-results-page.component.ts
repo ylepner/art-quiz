@@ -26,7 +26,6 @@ export class RoundResultsPageComponent {
 
   quizType$ = this.route.params.pipe(
     map((params) => {
-      console.log(params['quizType'])
       return params['quizType'] as string;
     })
   )
@@ -36,9 +35,6 @@ export class RoundResultsPageComponent {
     private route: ActivatedRoute
   ) {
     this.getResults()
-    this.quizType$.subscribe(t => {
-      console.log('quizType$', t)
-    })
   }
 
   getResults() {
