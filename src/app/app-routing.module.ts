@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CategoriesComponent } from './categories/categories.component';
 import { HomePageComponent } from './home-page/home-page.component';
+import { QuitGameDialogComponent } from './quit-game-dialog/quit-game-dialog.component';
 import { QuizArtistsPageComponent } from './quiz-artists-page/quiz-artists-page.component';
 import { QuizPicturesPageComponent } from './quiz-pictures-page/quiz-pictures-page.component';
 import { RoundResultsPageComponent } from './round-results-page/round-results-page.component';
@@ -36,6 +37,10 @@ const routes: Routes = [
   {
     path: 'score',
     component: ScorePageComponent
+  },
+  {
+    path: 'categories/:quizType',
+    component: QuitGameDialogComponent
   },
   {
     path: '',
