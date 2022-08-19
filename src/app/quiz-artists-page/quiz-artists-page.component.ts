@@ -46,8 +46,7 @@ export class QuizArtistsPageComponent implements OnDestroy {
     private resultsService: ResultsService,
     private dialog: MatDialog,
     private settingsService: SettingsService,
-    private router: Router,
-    private soundsService: SoundsService
+    private router: Router
   ) {
     this.questions$.subscribe((questions) => {
       this.questions = questions
@@ -141,6 +140,7 @@ export class QuizArtistsPageComponent implements OnDestroy {
   }
 
   updateQuestionResults(questionNumber: number, isCorrect: boolean) {
+
     this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
   }
 

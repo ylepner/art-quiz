@@ -93,13 +93,13 @@ export class QuizPicturesPageComponent {
       if (this.currentQuestionNumber === 9) {
         this.resultsService.setQuizResults({ quizNumber: this.quizNumber, results: this.questionsResults })
         this.openGameResultsDialog()
+        return
       }
       this.nextQuestion()
     });
   }
 
   nextQuestion() {
-    if (this.currentQuestionNumber === 9) return
     this.currentQuestionNumber += 1
     this.selectedAnswerNumber = undefined
     this.time = this.settingsService.getTime()
