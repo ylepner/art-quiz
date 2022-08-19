@@ -39,10 +39,6 @@ const routes: Routes = [
     component: ScorePageComponent
   },
   {
-    path: 'categories/:quizType',
-    component: QuitGameDialogComponent
-  },
-  {
     path: '',
     component: HomePageComponent
   }
