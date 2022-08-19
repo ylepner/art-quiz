@@ -20,6 +20,7 @@ import { TimePipe } from './pipes/time.pipe';
 import { QuitGameDialogComponent } from './quit-game-dialog/quit-game-dialog.component';
 import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.component';
 import { ScorePageComponent } from './score-page/score-page.component';
+import { GameFieldComponent } from './game-field/game-field.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +37,8 @@ import { ScorePageComponent } from './score-page/score-page.component';
     TimePipe,
     QuitGameDialogComponent,
     GameOverDialogComponent,
-    ScorePageComponent
+    ScorePageComponent,
+    GameFieldComponent
   ],
   imports: [
     BrowserModule,
