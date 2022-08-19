@@ -167,5 +167,10 @@ export class QuizPicturesPageComponent {
 
   openQuitTheGameDialog() {
     this.dialogRef = this.dialog.open(QuitGameDialogComponent, {})
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.router.navigate(['categories/pictures'])
+      }
+    })
   }
 }

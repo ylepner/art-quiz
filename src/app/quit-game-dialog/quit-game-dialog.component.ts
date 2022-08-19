@@ -10,19 +10,7 @@ import { map } from 'rxjs';
 })
 export class QuitGameDialogComponent {
 
-  quizType$ = this.route.params.pipe(
-    map((params) => {
-      return params['quizType'] as string;
-    })
-  )
 
-  constructor(
-    public dialogRef: DialogRef,
-    private route: ActivatedRoute
-  ) {
-  }
+  constructor() { }
 
-  goBack() {
-    history.back()
-  }
 }

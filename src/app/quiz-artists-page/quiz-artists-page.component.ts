@@ -146,6 +146,11 @@ export class QuizArtistsPageComponent implements OnDestroy {
 
   openQuitTheGameDialog() {
     this.dialogRef = this.dialog.open(QuitGameDialogComponent, {})
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.router.navigate(['categories/artists'])
+      }
+    })
   }
 
   stopGame() {

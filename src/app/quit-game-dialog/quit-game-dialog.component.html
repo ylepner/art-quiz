@@ -6,8 +6,8 @@
   </div>
   <div class="title font-extrabold text-xl p-5">Do you really want to <br> quit the game?</div>
   <mat-dialog-actions class="w-full flex justify-around pt-16">
-    <button class="link m-2" mat-dialog-close> Cancel </button>
-    <a routerLink="/categories/{{quizType$ | async}} " class="link confirm-btn m-2 cursor-pointer"
-      mat-dialog-close>Yes</a>
+    <button class="link m-2" [matDialogClose]="false"> Cancel </button>
+    <button class="link confirm-btn m-2 cursor-pointer" [matDialogClose]="true">Yes
+    </button>
   </mat-dialog-actions>
 </div>
