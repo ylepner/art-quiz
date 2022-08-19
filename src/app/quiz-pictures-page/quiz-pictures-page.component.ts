@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
+import { QuizQuestion } from '../game-field/game-field.component';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { QuestionPictures } from '../models/question-models';
 import { AnswerResult } from '../models/quiz-results';
@@ -12,6 +13,13 @@ import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-
 import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
 
+function toQuizPicQuestion(questionPicture: QuestionPictures): QuizQuestion<QuestionPictures> {
+  return {
+    title: `Which is ${questionPicture.author} picture?`,
+    data: questionPicture
+  }
+}
+
 @Component({
   selector: 'app-quiz-pictures-page',
   templateUrl: './quiz-pictures-page.component.html',
@@ -19,24 +27,23 @@ import { SettingsService } from '../settings.service';
 })
 export class QuizPicturesPageComponent {
 
-  quizNumber = 0
-  questions: QuestionPictures[] = []
-  currentQuestionNumber = 0
-  selectedAnswerNumber?: number;
-  correctAnswers = 0
-  questionsResults: AnswerResult[] = []
+  // quizNumber = 0
+  // questions: QuestionPictures[] = []
+  // currentQuestionNumber = 0
+  // selectedAnswerNumber?: number;
+  // correctAnswers = 0
+  // questionsResults: AnswerResult[] = []
 
   questions$ = this.route.params.pipe(
     map((params) => {
-      this.quizNumber = Number(params['id'])
-      return this.pictureService.getPicturesGame(Number(params['id']))
+      return this.pictureService.getPicturesGame(Number(params['id'])).map(x => toQuizPicQuestion(x))
     }),
   )
 
-  time?: number;
-  volume: number;
-  timerInterval?: any;
-  dialogRef?: MatDialogRef<QuitGameDialogComponent, any>
+  // time?: number;
+  // volume: number;
+  // timerInterval?: any;
+  // dialogRef?: MatDialogRef<QuitGameDialogComponent, any>
 
   constructor(
     private route: ActivatedRoute,
@@ -46,131 +53,132 @@ export class QuizPicturesPageComponent {
     private dialog: MatDialog,
     private settingsService: SettingsService
   ) {
-    this.questions$.subscribe((questions) => {
-      this.questions = questions
-    })
-
-    this.time = this.settingsService.getTime()
-
-    this.startTimer()
-
-    this.volume = this.settingsService.getVolume()
   }
+  // this.questions$.subscribe((questions) => {
+  //   this.questions = questions
+  // })
 
-  ngOnDestroy(): void {
-    clearInterval(this.timerInterval)
-  }
+  //   this.time = this.settingsService.getTime()
 
-  get question() {
-    return this.questions[this.currentQuestionNumber]
-  }
+  //   this.startTimer()
 
-  selectAnswer(answerNumber: number) {
-    this.selectedAnswerNumber = answerNumber
-    setTimeout(() => {
-      if (this.selectedAnswerNumber !== undefined) {
-        this.openPictureInfoDialog(this.selectedAnswerNumber)
-      }
-    }, 1000)
-  }
+  //   this.volume = this.settingsService.getVolume()
+  // }
 
-  openPictureInfoDialog(selectedAnswerNumber: number) {
-    const question = this.question
-    const isCorrect = selectedAnswerNumber === question.correctAnswer
-    this.updateQuestionResults(question.number, isCorrect)
-    if (isCorrect) {
-      this.correctAnswers += 1
-    }
-    const dialogRef = this.dialog.open(PictureInfoDialogComponent, {
-      data: {
-        image: question.answers[question.correctAnswer],
-        isCorrect: isCorrect,
-        name: question.name,
-        info: `${question.author}, ${question.year}`
-      },
-    });
-    dialogRef.afterClosed().subscribe(() => {
-      if (this.currentQuestionNumber === 9) {
-        this.resultsService.setQuizResults({ quizNumber: this.quizNumber, results: this.questionsResults })
-        this.openGameResultsDialog()
-        return
-      }
-      this.nextQuestion()
-    });
-  }
+  // ngOnDestroy(): void {
+  //   clearInterval(this.timerInterval)
+  // }
 
-  nextQuestion() {
-    this.currentQuestionNumber += 1
-    this.selectedAnswerNumber = undefined
-    this.time = this.settingsService.getTime()
-    this.startTimer()
-  }
+  // get question() {
+  //   return this.questions[this.currentQuestionNumber]
+  // }
 
-  openGameResultsDialog() {
-    const dialogRef = this.dialog.open(QuizResultsDialogComponent, {
-      data: {
-        correctAnswersNumber: this.correctAnswers,
-        hasMoreQuizzes: this.quizNumber !== 11,
-        quizNumber: this.quizNumber,
-        quizName: 'pictures'
-      }
-    })
-    dialogRef.afterClosed().subscribe(() => {
-      if (this.quizNumber <= 11) {
-        this.quizNumber += 1
-        this.currentQuestionNumber = 0
-        this.selectedAnswerNumber = undefined
-        this.correctAnswers = 0
-      }
-    })
-  }
+  // selectAnswer(answerNumber: number) {
+  //   this.selectedAnswerNumber = answerNumber
+  //   setTimeout(() => {
+  //     if (this.selectedAnswerNumber !== undefined) {
+  //       this.openPictureInfoDialog(this.selectedAnswerNumber)
+  //     }
+  //   }, 1000)
+  // }
 
-  updateQuestionResults(questionNumber: number, isCorrect: boolean) {
-    this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
-  }
+  // openPictureInfoDialog(selectedAnswerNumber: number) {
+  //   const question = this.question
+  //   const isCorrect = selectedAnswerNumber === question.correctAnswer
+  //   this.updateQuestionResults(question.number, isCorrect)
+  //   if (isCorrect) {
+  //     this.correctAnswers += 1
+  //   }
+  //   const dialogRef = this.dialog.open(PictureInfoDialogComponent, {
+  //     data: {
+  //       image: question.answers[question.correctAnswer],
+  //       isCorrect: isCorrect,
+  //       name: question.name,
+  //       info: `${question.author}, ${question.year}`
+  //     },
+  //   });
+  //   dialogRef.afterClosed().subscribe(() => {
+  //     if (this.currentQuestionNumber === 9) {
+  //       this.resultsService.setQuizResults({ quizNumber: this.quizNumber, results: this.questionsResults })
+  //       this.openGameResultsDialog()
+  //       return
+  //     }
+  //     this.nextQuestion()
+  //   });
+  // }
 
-  stopGame() {
-    const dialogRef = this.dialog.open(GameOverDialogComponent, {
-      data: {
-        quizNumber: this.quizNumber,
-        quizName: 'pictures'
-      }
-    })
-    dialogRef.afterClosed().subscribe((data) => {
-      if (this.dialogRef) {
-        this.dialogRef.close()
-      }
-      if (data) {
-        this.currentQuestionNumber = 0
-        this.time = this.settingsService.getTime()
-        this.startTimer()
-      } else {
-        this.router.navigate(['categories/pictures'])
-      }
-    })
-  }
+  // nextQuestion() {
+  //   this.currentQuestionNumber += 1
+  //   this.selectedAnswerNumber = undefined
+  //   this.time = this.settingsService.getTime()
+  //   this.startTimer()
+  // }
 
-  startTimer() {
-    this.timerInterval = setInterval(() => {
-      if (this.time) {
-        this.time--
-        if (this.selectedAnswerNumber !== undefined) {
-          clearInterval(this.timerInterval)
-        }
-        if (this.time === 0 && this.selectedAnswerNumber === undefined) {
-          clearInterval(this.timerInterval)
-          this.stopGame()
-        }
-      }
-    }, 1000)
-  }
+  // openGameResultsDialog() {
+  //   const dialogRef = this.dialog.open(QuizResultsDialogComponent, {
+  //     data: {
+  //       correctAnswersNumber: this.correctAnswers,
+  //       hasMoreQuizzes: this.quizNumber !== 11,
+  //       quizNumber: this.quizNumber,
+  //       quizName: 'pictures'
+  //     }
+  //   })
+  //   dialogRef.afterClosed().subscribe(() => {
+  //     if (this.quizNumber <= 11) {
+  //       this.quizNumber += 1
+  //       this.currentQuestionNumber = 0
+  //       this.selectedAnswerNumber = undefined
+  //       this.correctAnswers = 0
+  //     }
+  //   })
+  // }
 
-  openQuitTheGameDialog() {
-    this.dialogRef = this.dialog.open(QuitGameDialogComponent, {})
-    this.dialogRef.afterClosed().subscribe((data) => {
-      if (data) {
-        this.router.navigate(['categories/pictures'])
-      }
-    })
-  }
+  // updateQuestionResults(questionNumber: number, isCorrect: boolean) {
+  //   this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
+  // }
+
+  // stopGame() {
+  //   const dialogRef = this.dialog.open(GameOverDialogComponent, {
+  //     data: {
+  //       quizNumber: this.quizNumber,
+  //       quizName: 'pictures'
+  //     }
+  //   })
+  //   dialogRef.afterClosed().subscribe((data) => {
+  //     if (this.dialogRef) {
+  //       this.dialogRef.close()
+  //     }
+  //     if (data) {
+  //       this.currentQuestionNumber = 0
+  //       this.time = this.settingsService.getTime()
+  //       this.startTimer()
+  //     } else {
+  //       this.router.navigate(['categories/pictures'])
+  //     }
+  //   })
+  // }
+
+  // startTimer() {
+  //   this.timerInterval = setInterval(() => {
+  //     if (this.time) {
+  //       this.time--
+  //       if (this.selectedAnswerNumber !== undefined) {
+  //         clearInterval(this.timerInterval)
+  //       }
+  //       if (this.time === 0 && this.selectedAnswerNumber === undefined) {
+  //         clearInterval(this.timerInterval)
+  //         this.stopGame()
+  //       }
+  //     }
+  //   }, 1000)
+  // }
+
+  // openQuitTheGameDialog() {
+  //   this.dialogRef = this.dialog.open(QuitGameDialogComponent, {})
+  //   this.dialogRef.afterClosed().subscribe((data) => {
+  //     if (data) {
+  //       this.router.navigate(['categories/pictures'])
+  //     }
+  //   })
+  // }
 }

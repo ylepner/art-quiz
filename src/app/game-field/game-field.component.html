@@ -6,8 +6,12 @@
     <div class="timer-bar text-center"></div>
     <div class="timer-time">0:20</div>
   </div>
-  <div class="title pt-12 pb-12 mr-auto">Which is Edvard Munch picture?</div>
-  <div class="answers bg-white w-full flex-grow">
-
+  <div class="title pt-12 pb-12 mr-auto">{{currentQuestion?.title}}</div>
+  <div class="answers  w-full flex-grow">
+    <!-- {{ currentQuestion | json}}
+     -->
+    <ng-container [ngTemplateOutlet]="gameTemplate" [ngTemplateOutletContext]="{$implicit: currentQuestion?.data}">
+    </ng-container>
   </div>
+  <button (click)="nextQuestion()">next</button>
 </div>

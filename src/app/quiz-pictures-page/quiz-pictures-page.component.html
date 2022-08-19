@@ -1,18 +1,5 @@
-<div class="main-container text-white grid items-center justify-center">
-  <div class="timer-container flex w-full justify-around items-center p-3">
-    <button (click)="openQuitTheGameDialog()" class="stop-icon flex items-center">
-      <img class="stop-img" src="assets/img/close-icon.png" alt="close">
-    </button>
-    <div *ngIf="time" class="timer-bar text-center" [style.background-size]="time + '%'"></div>
-    <div *ngIf="time" class="timer-time">{{time | time}}</div>
-  </div>
-  <div class="question-container">
-    <div class="title pb-12">Which is {{question.author}} picture?</div>
-    <div class="answers grid grid-cols-2 gap-6">
-      <button (click)="selectAnswer(i)" *ngFor="let answer of question.answers; let i = index"
-        [class.select]="i === selectedAnswerNumber">
-        <img class="answer-image w-96 h-72" src="{{answer}}" alt="picture">
-      </button>
-    </div>
-  </div>
-</div>
+<app-game-field [questions]="questions$ | async">
+  <ng-template #question let-question>
+    {{question | json}}
+  </ng-template>
+</app-game-field>
