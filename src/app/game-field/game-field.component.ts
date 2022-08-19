@@ -11,7 +11,7 @@ export interface QuizQuestion<T> {
   templateUrl: './game-field.component.html',
   styleUrls: ['./game-field.component.scss']
 })
-export class GameFieldComponent<TData> implements AfterContentInit {
+export class GameFieldComponent<TData> {
 
   @Input()
   questions?: QuizQuestion<TData>[] | null;
@@ -23,13 +23,6 @@ export class GameFieldComponent<TData> implements AfterContentInit {
   gameTemplate!: TemplateRef<TData>;
 
   constructor() {
-  }
-  ngAfterContentInit(): void {
-    console.log(this.gameTemplate)
-
-  }
-  ngAfterViewInit(): void {
-    console.log(this.gameTemplate)
   }
 
   nextQuestion() {
