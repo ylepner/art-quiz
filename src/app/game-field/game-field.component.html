@@ -8,10 +8,13 @@
   </div>
   <div class="title pt-12 pb-12 mr-auto">{{currentQuestion?.title}}</div>
   <div class="answers  w-full flex-grow">
-    <!-- {{ currentQuestion | json}}
-     -->
-    <ng-container [ngTemplateOutlet]="gameTemplate" [ngTemplateOutletContext]="{$implicit: currentQuestion?.data}">
+    <ng-container [ngTemplateOutlet]="gameTemplate"
+      [ngTemplateOutletContext]="{$implicit: currentQuestion?.data, answerSelected: answerSelected}">
     </ng-container>
   </div>
   <button (click)="nextQuestion()">next</button>
 </div>
+
+<ng-template #answerDialog>
+  Hello world
+</ng-template>
