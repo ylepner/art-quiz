@@ -1,6 +1,5 @@
 <app-game-field [questions]="questions$ | async">
   <ng-template #question let-question let-answerSelectedFn="answerSelected">
-    {{question | json}}
     <div class="question-container">
       <div class="answers grid grid-cols-2 gap-6">
         <button (click)="answerSelectedFn(i)" *ngFor="let answer of question.answers; let i = index">
@@ -8,5 +7,7 @@
         </button>
       </div>
     </div>
+  </ng-template>
+  <ng-template #dialog>
   </ng-template>
 </app-game-field>

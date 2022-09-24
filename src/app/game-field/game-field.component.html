@@ -14,7 +14,9 @@
   </div>
   <button (click)="nextQuestion()">next</button>
 </div>
-
 <ng-template #answerDialog>
-  Hello world
+  <div style="background-color: white">
+    <ng-container [ngTemplateOutlet]="answerTemplate">
+    </ng-container>
+  </div>
 </ng-template>

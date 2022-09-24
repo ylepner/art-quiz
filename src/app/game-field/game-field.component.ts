@@ -1,6 +1,7 @@
 import { AfterContentInit, AfterViewInit, Component, ContentChild, Input, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { AnyCatcher } from 'rxjs/internal/AnyCatcher';
+import { DialogData, PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 
 export interface QuizQuestion<T> {
   title: string;
@@ -20,11 +21,15 @@ export class GameFieldComponent<TData> {
   currentIndex = 0;
   selectedAnswerNumber?: number;
 
-
+  @Input()
+  answerInfoFn!: (quizQuestion: QuizQuestion<TData>, selectedAnswer: number) => DialogData;
   @ContentChild('question')
   gameTemplate!: TemplateRef<TData>;
 
   @ViewChild('answerDialog')
+  dialogTemplate!: TemplateRef<any>
+
+  @ContentChild('dialog')
   answerTemplate!: TemplateRef<TData>;
 
   constructor(private dialog: MatDialog) {
@@ -48,7 +53,8 @@ export class GameFieldComponent<TData> {
   }
 
   openPictureInfoDialog(selectedAnswerNumber: number) {
-    debugger
-    this.dialog.open(this.answerTemplate)
+    this.dialog.open(PictureInfoDialogComponent, {
+      data: this.answerInfoFn(this.currentQuestion!, selectedAnswerNumber)
+    })
   }
 }
