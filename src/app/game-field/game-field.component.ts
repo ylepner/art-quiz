@@ -17,12 +17,12 @@ export class GameFieldComponent<TData> {
 
   @Input()
   questions?: QuizQuestion<TData>[] | null;
-
   currentIndex = 0;
   selectedAnswerNumber?: number;
 
   @Input()
   answerInfoFn!: (quizQuestion: QuizQuestion<TData>, selectedAnswer: number) => DialogData;
+
   @ContentChild('question')
   gameTemplate!: TemplateRef<TData>;
 

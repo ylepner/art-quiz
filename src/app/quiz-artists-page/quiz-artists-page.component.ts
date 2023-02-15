@@ -36,9 +36,11 @@ export class QuizArtistsPageComponent implements OnDestroy {
   )
 
   time?: number;
+  timeConst?: number;
   volume: number;
   timerInterval?: any;
   dialogRef?: MatDialogRef<QuitGameDialogComponent, any>
+  timerValue = 100;
 
   constructor(
     private route: ActivatedRoute,
@@ -53,6 +55,7 @@ export class QuizArtistsPageComponent implements OnDestroy {
     })
 
     this.time = this.settingsService.getTime()
+    this.timeConst = this.time;
     this.startTimer()
     this.volume = this.settingsService.getVolume()
   }
@@ -68,6 +71,7 @@ export class QuizArtistsPageComponent implements OnDestroy {
     if (this.currentQuestionNumber === 9) return
     this.currentQuestionNumber += 1
     this.selectedAnswerNumber = undefined
+    debugger
     this.time = this.settingsService.getTime()
     this.startTimer()
   }
@@ -178,6 +182,8 @@ export class QuizArtistsPageComponent implements OnDestroy {
     this.timerInterval = setInterval(() => {
       if (this.time) {
         this.time--
+        this.timerValue = this.timerValue - this.getTimerSegment()
+        console.log(this.timerValue)
         if (this.selectedAnswerNumber !== undefined) {
           clearInterval(this.timerInterval)
         }
@@ -187,5 +193,12 @@ export class QuizArtistsPageComponent implements OnDestroy {
         }
       }
     }, 1000)
+  }
+
+  getTimerSegment() {
+    if (this.timeConst) {
+      return 100 / this.timeConst;
+    }
+    return 0
   }
 }
