@@ -71,8 +71,8 @@ export class QuizArtistsPageComponent implements OnDestroy {
     if (this.currentQuestionNumber === 9) return
     this.currentQuestionNumber += 1
     this.selectedAnswerNumber = undefined
-    debugger
     this.time = this.settingsService.getTime()
+    this.timerValue = 100
     this.startTimer()
   }
 
