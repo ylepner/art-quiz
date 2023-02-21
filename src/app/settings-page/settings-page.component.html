@@ -1,9 +1,10 @@
 <div class="settings-container bg-black w-screen h-screen text-white">
   <div class="nav-settings flex justify-between text-3xl p-16">
-    <button (click)="goBack()" class="back-icon text-4xl flex items-center"> &lt;
-      <div class="back-title text-2xl pl-4">Settings </div>
-    </button>
-    <button (click)="goBack()" class="sm:hidden">
+    <div class="flex items-center"><button (click)="goBack()" class="back-icon hover text-4xl flex items-center">
+        &lt;</button>
+      <div class="back-title text-2xl pl-4 cursor-default">Settings </div>
+    </div>
+    <button (click)="goBack()" class="sm:hidden hover">
       <img src="assets/img/close-icon.png" alt="close">
     </button>
   </div>

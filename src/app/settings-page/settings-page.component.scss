@@ -136,3 +136,7 @@ label {
   height: 100%;
   max-height: 65vh;
 }
+
+.hover:hover {
+    filter: drop-shadow(0px 0px 4px var(--accent));
+}
