@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import images from './data';
+import images from './data-eng';
 import { AnswerResult, ArtistResult, QuizResults } from './models/quiz-results';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import images from './data';
+import images from './data-eng';
 import { QuizType, CategoryItem } from './models/categories-models';
 import { PictureItem } from './models/pictures-models';
 import { QuestionArtists, QuestionPictures } from './models/question-models';
