@@ -1,6 +1,7 @@
 import { DialogRef, DIALOG_DATA } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { SettingsService } from '../settings.service';
 import { SoundsService } from '../sounds.service';
 export interface DialogData {
   image: string,
@@ -18,12 +19,16 @@ export class PictureInfoDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public dialogRef: DialogRef,
-    private soundService: SoundsService) {
+    private soundService: SoundsService,
+    private settingsService: SettingsService) {
     if (data.isCorrect) {
-      this.soundService.playCorrectAnswer()
+      if (settingsService.getVolume() !== 0) {
+        this.soundService.playCorrectAnswer()
+      }
     } else {
-      this.soundService.playWrongAnswer()
+      if (settingsService.getVolume() !== 0) {
+        this.soundService.playWrongAnswer()
+      }
     }
   }
-
 }
