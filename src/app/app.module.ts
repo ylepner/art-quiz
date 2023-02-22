@@ -21,7 +21,13 @@ import { QuitGameDialogComponent } from './quit-game-dialog/quit-game-dialog.com
 import { GameOverDialogComponent } from './game-over-dialog/game-over-dialog.component';
 import { ScorePageComponent } from './score-page/score-page.component';
 import { GameFieldComponent } from './game-field/game-field.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,6 +49,8 @@ import { TranslateModule } from '@ngx-translate/core';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
+    TranslateModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     DialogModule,
@@ -50,8 +58,12 @@ import { TranslateModule } from '@ngx-translate/core';
     FormsModule,
     ReactiveFormsModule,
     TranslateModule.forRoot({
-      defaultLanguage: 'en'
-    })
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]

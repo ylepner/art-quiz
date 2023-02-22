@@ -14,10 +14,11 @@ export class SettingsPageComponent {
 
   constructor(
     private router: Router,
-    private service: SettingsService
+    private service: SettingsService,
   ) {
     this.time = this.service.getTime();
     this.volume = this.service.getVolume();
+
   }
 
   addTime() {
