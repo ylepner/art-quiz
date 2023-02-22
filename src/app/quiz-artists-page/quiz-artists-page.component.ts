@@ -183,7 +183,6 @@ export class QuizArtistsPageComponent implements OnDestroy {
       if (this.time) {
         this.time--
         this.timerValue = this.timerValue - this.getTimerSegment()
-        console.log(this.timerValue)
         if (this.selectedAnswerNumber !== undefined) {
           clearInterval(this.timerInterval)
         }

@@ -43,6 +43,7 @@ export class GameFieldComponent<TData> {
   }
 
   answerSelected = (answerNumber: number) => {
+    debugger
     this.selectedAnswerNumber = answerNumber
     setTimeout(() => {
       if (this.selectedAnswerNumber !== undefined) {
