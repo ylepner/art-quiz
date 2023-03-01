@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs';
+import { firstValueFrom, map, tap } from 'rxjs';
 import { QuizQuestion } from '../game-field/game-field.component';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { QuestionPictures } from '../models/question-models';
@@ -34,9 +34,14 @@ export class QuizPicturesPageComponent {
   // correctAnswers = 0
   // questionsResults: AnswerResult[] = []
 
-  questions$ = this.route.params.pipe(
-    map((params) => {
-      return this.pictureService.getPicturesGame(Number(params['id'])).map(x => toQuizPicQuestion(x))
+  gameId$ = this.route.params.pipe(
+    tap((params) => console.log({ params })),
+    map(params => Number(params['id']))
+  )
+
+  questions$ = this.gameId$.pipe(
+    map((gameId) => {
+      return this.pictureService.getPicturesGame(gameId).map(x => toQuizPicQuestion(x))
     }),
   )
 
@@ -50,6 +55,10 @@ export class QuizPicturesPageComponent {
     }
   }
 
+  async startNewRound() {
+    const gameId = await firstValueFrom(this.gameId$);
+    this.router.navigate(['quiz', 'pictures', gameId + 1])
+  }
   // time?: number;
   // volume: number;
   // timerInterval?: any;
