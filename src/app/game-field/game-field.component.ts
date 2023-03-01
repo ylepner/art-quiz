@@ -43,7 +43,6 @@ export class GameFieldComponent<TData> {
   }
 
   answerSelected = (answerNumber: number) => {
-    debugger
     this.selectedAnswerNumber = answerNumber
     setTimeout(() => {
       if (this.selectedAnswerNumber !== undefined) {
@@ -55,6 +54,8 @@ export class GameFieldComponent<TData> {
   openPictureInfoDialog(selectedAnswerNumber: number) {
     this.dialog.open(PictureInfoDialogComponent, {
       data: this.answerInfoFn(this.currentQuestion!, selectedAnswerNumber)
-    })
+    }).afterClosed().subscribe(() => {
+      this.nextQuestion()
+    });
   }
 }

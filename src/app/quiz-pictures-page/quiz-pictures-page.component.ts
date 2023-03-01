@@ -6,7 +6,7 @@ import { QuizQuestion } from '../game-field/game-field.component';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { QuestionPictures } from '../models/question-models';
 import { AnswerResult } from '../models/quiz-results';
-import { PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
+import { DialogData, PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 import { PicturesService } from '../pictures.service';
 import { QuitGameDialogComponent } from '../quit-game-dialog/quit-game-dialog.component';
 import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-dialog.component';
@@ -39,6 +39,16 @@ export class QuizPicturesPageComponent {
       return this.pictureService.getPicturesGame(Number(params['id'])).map(x => toQuizPicQuestion(x))
     }),
   )
+
+  answerInfoFn(quizQuestion: QuizQuestion<QuestionPictures>, selectedAnswer: number): DialogData {
+    const pictureData = quizQuestion.data
+    return {
+      isCorrect: pictureData.correctAnswer === selectedAnswer,
+      image: pictureData.answers[pictureData.correctAnswer],
+      info: `${pictureData.author}, ${pictureData.year}`,
+      name: pictureData.name
+    }
+  }
 
   // time?: number;
   // volume: number;

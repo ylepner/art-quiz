@@ -1,4 +1,4 @@
-<app-game-field [questions]="questions$ | async">
+<app-game-field [questions]="questions$ | async" [answerInfoFn]="answerInfoFn">
   <ng-template #question let-question let-answerSelectedFn="answerSelected">
     <div class="question-container">
       <div class="answers grid grid-cols-2 gap-6">
