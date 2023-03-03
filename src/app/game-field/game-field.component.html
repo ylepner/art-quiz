@@ -4,7 +4,7 @@
       <img class="stop-img" src="assets/img/close-icon.png" alt="close">
     </button>
     <div *ngIf="showTimer" class="timer-bar text-center"></div>
-    <div *ngIf="showTimer" class="timer-time">0:20</div>
+    <div *ngIf="showTimer" class="timer-time">{{time | time}}</div>
   </div>
   <div class="title pt-12 pb-12 mr-auto">{{currentQuestion?.title}}</div>
   <div class="answers w-full flex-grow">

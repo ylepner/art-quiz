@@ -31,6 +31,7 @@ function toQuizArtQuestion(questionArtist: QuestionArtists): QuizQuestion<Questi
 export class QuizArtistsPageComponent {
 
   showTimer = false;
+  time: number | undefined;
 
   gameId$ = this.route.params.pipe(
     tap((params) => console.log({ params })),
@@ -75,6 +76,8 @@ export class QuizArtistsPageComponent {
     private router: Router
   ) {
     this.showTimer = this.ifTimer()
+    this.time = this.settingsService.getTime();
+    console.log(this.time)
   }
 
   answerInfoFn(quizQuestion: QuizQuestion<QuestionArtists>, selectedAnswer: number): DialogData {

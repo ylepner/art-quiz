@@ -1,4 +1,4 @@
-<app-game-field [showTimer]="showTimer" [questions]="questions$ | async" [answerInfoFn]="answerInfoFn"
+<app-game-field [showTimer]="showTimer" [time]="time" [questions]="questions$ | async" [answerInfoFn]="answerInfoFn"
   (gameEnd)="startNewRound()" (quitQuiz)="goToCategories()">
   <ng-template #question let-question let-answerSelectedFn="answerSelected" let-selectedAnswers="selectedAnswers"
     let-currentIndex="currentIndex">

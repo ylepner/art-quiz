@@ -1,7 +1,8 @@
-import { Component, ContentChild, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
+import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { DialogData, PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 
 export interface QuizQuestion<T> {
@@ -14,7 +15,8 @@ export interface QuizQuestion<T> {
   templateUrl: './game-field.component.html',
   styleUrls: ['./game-field.component.scss']
 })
-export class GameFieldComponent<TData> {
+export class GameFieldComponent<TData> implements AfterViewInit {
+
 
   @Input()
   questions?: QuizQuestion<TData>[] | null;
@@ -22,12 +24,18 @@ export class GameFieldComponent<TData> {
   currentIndex = 0;
   selectedAnswerNumber?: number;
   selectedAnswers: number[] = [];
+  timerInterval?: any;
+  timerValue = 100;
+  timeConst?: number;
 
   @Input()
   answerInfoFn!: (quizQuestion: QuizQuestion<TData>, selectedAnswer: number) => DialogData;
 
   @Input()
   showTimer?: boolean;
+
+  @Input()
+  time?: number;
 
   @ContentChild('question')
   gameTemplate!: TemplateRef<TData>;
@@ -46,6 +54,14 @@ export class GameFieldComponent<TData> {
 
   constructor(private dialog: MatDialog,
     private route: ActivatedRoute) {
+
+    this.timeConst = this.time;
+  }
+
+  ngAfterViewInit() {
+    if (this.time && this.time > 0) {
+      this.startTimer()
+    }
   }
 
   nextQuestion() {
@@ -85,4 +101,30 @@ export class GameFieldComponent<TData> {
   closeQuiz() {
     this.quitQuiz.emit()
   }
+
+  startTimer() {
+    this.timerInterval = setInterval(() => {
+      if (this.time) {
+        this.time--
+        this.timerValue = this.timerValue - this.getTimerSegment()
+        if (this.selectedAnswerNumber !== undefined) {
+          clearInterval(this.timerInterval)
+        }
+        if (this.time === 0 && this.selectedAnswerNumber === undefined) {
+          clearInterval(this.timerInterval)
+          //this.stopGame()
+          console.log('the end')
+        }
+      }
+    }, 1000)
+  }
+
+  getTimerSegment() {
+    if (this.timeConst) {
+      return 100 / this.timeConst;
+    }
+    return 0
+  }
+
+
 }
