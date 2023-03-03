@@ -34,6 +34,8 @@ export class QuizPicturesPageComponent {
   // correctAnswers = 0
   // questionsResults: AnswerResult[] = []
 
+  showTimer = false;
+
   gameId$ = this.route.params.pipe(
     tap((params) => console.log({ params })),
     map(params => Number(params['id']))
@@ -72,7 +74,20 @@ export class QuizPicturesPageComponent {
     private dialog: MatDialog,
     private settingsService: SettingsService
   ) {
+    this.showTimer = this.ifTimer()
   }
+
+  ifTimer() {
+    if (this.settingsService.getTime()) {
+      return true
+    }
+    return false
+  }
+
+  goToCategories() {
+    this.router.navigate(['categories/pictures'])
+  }
+
   // this.questions$.subscribe((questions) => {
   //   this.questions = questions
   // })

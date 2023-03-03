@@ -1,23 +1,19 @@
-<div class="main-container text-white grid items-center justify-center">
-  <div class="timer-container flex w-full justify-around items-center p-3">
-    <button (click)="openQuitTheGameDialog()" class="stop-icon flex items-center">
-      <img class="stop-img" src="assets/img/close-icon.png" alt="close">
-    </button>
-    <div *ngIf="time" class="timer-bar text-center" [style.background-size]="timerValue + '%'"></div>
-    <div *ngIf="time" class="timer-time">{{time | time}}</div>
-  </div>
-  <div class="question-container">
-    <div class="title p-11">Who is the author of this picture?</div>
-    <div class="question-buttons relative">
-      <img class="question-img" [src]="question.img" alt="picture">
-      <div class="number-buttons absolute flex justify-center">
-        <div *ngFor="let question of questions; let i = index" (click)="setCurrentButton(i)" class="question-number"
-          [class.accent]="i < currentQuestionNumber"></div>
+<app-game-field [showTimer]="showTimer" [questions]="questions$ | async" [answerInfoFn]="answerInfoFn"
+  (gameEnd)="startNewRound()" (quitQuiz)="goToCategories()">
+  <ng-template #question let-question let-answerSelectedFn="answerSelected" let-selectedAnswers="selectedAnswers"
+    let-currentIndex="currentIndex">
+    <div class="question-container">
+      <div class="question-buttons relative">
+        <img class="question-img" [src]="question.img" alt="picture">
+        <div class="number-buttons absolute flex justify-center">
+        </div>
+      </div>
+      <div class="answers-options">
+        <button (click)="answerSelectedFn(i)" *ngFor="let answer of question.answers; let i = index"
+          [class.accent]="selectedAnswers[currentIndex] === i" class="answer">{{answer}}</button>
       </div>
     </div>
-    <div class="answers-options">
-      <button (click)="selectAnswer(i)" *ngFor="let answer of question.answers; let i = index"
-        [class.accent]="i === selectedAnswerNumber" class="answer">{{answer}}</button>
-    </div>
-  </div>
-</div>
+  </ng-template>
+  <ng-template #dialog>
+  </ng-template>
+</app-game-field>
