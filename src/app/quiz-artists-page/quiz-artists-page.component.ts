@@ -46,9 +46,9 @@ export class QuizArtistsPageComponent {
 
 
   // quizNumber = 0
-  // currentQuestionNumber = 0
+  currentQuestionNumber = 0
   // questions: QuestionArtists[] = [] 
-  // selectedAnswerNumber?: number;
+  selectedAnswerNumber?: number;
   // correctAnswers = 0
   // questionsResults: AnswerResult[] = []
 
@@ -135,10 +135,10 @@ export class QuizArtistsPageComponent {
   //   this.selectedAnswerNumber = undefined
   // }
 
-  // setCurrentButton(index: number) {
-  //   this.currentQuestionNumber = index
-  //   this.selectedAnswerNumber = undefined
-  // }
+  setCurrentButton(index: number) {
+    this.currentQuestionNumber = index
+    this.selectedAnswerNumber = undefined
+  }
 
   // selectAnswer(answerNumber: number) {
   //   this.selectedAnswerNumber = answerNumber

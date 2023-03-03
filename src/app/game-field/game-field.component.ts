@@ -18,6 +18,7 @@ export class GameFieldComponent<TData> {
 
   @Input()
   questions?: QuizQuestion<TData>[] | null;
+
   currentIndex = 0;
   selectedAnswerNumber?: number;
   selectedAnswers: number[] = [];
