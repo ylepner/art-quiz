@@ -1,13 +1,19 @@
 import { AfterViewInit, Component, ContentChild, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { DialogData, PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
+import { QuitGameDialogComponent } from '../quit-game-dialog/quit-game-dialog.component';
+import { SettingsService } from '../settings.service';
 
 export interface QuizQuestion<T> {
   title: string;
   data: T;
+}
+
+export interface GameResult {
+  correctAnswers: number
 }
 
 @Component({
@@ -21,12 +27,17 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   @Input()
   questions?: QuizQuestion<TData>[] | null;
 
+  @Input()
+  quizId?: number;
+
   currentIndex = 0;
   selectedAnswerNumber?: number;
   selectedAnswers: number[] = [];
   timerInterval?: any;
   timerValue = 100;
   timeConst?: number;
+  dialogRef?: MatDialogRef<QuitGameDialogComponent, any>
+
 
   @Input()
   answerInfoFn!: (quizQuestion: QuizQuestion<TData>, selectedAnswer: number) => DialogData;
@@ -47,13 +58,16 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   answerTemplate!: TemplateRef<TData>;
 
   @Output()
-  gameEnd = new EventEmitter()
+  gameEnd = new EventEmitter<GameResult>()
 
   @Output()
   quitQuiz = new EventEmitter()
 
-  constructor(private dialog: MatDialog,
-    private route: ActivatedRoute) {
+  constructor(
+    private dialog: MatDialog,
+    private route: ActivatedRoute,
+    private settingsService: SettingsService,
+    private router: Router) {
 
     this.timeConst = this.time;
   }
@@ -112,8 +126,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
         }
         if (this.time === 0 && this.selectedAnswerNumber === undefined) {
           clearInterval(this.timerInterval)
-          //this.stopGame()
-          console.log('the end')
+          this.stopGame()
         }
       }
     }, 1000)
@@ -126,5 +139,24 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     return 0
   }
 
+  stopGame() {
+    const dialogRef = this.dialog.open(GameOverDialogComponent, {
+      data: {
+        quizName: 'artists'
+      }
+    })
+    dialogRef.afterClosed().subscribe((data) => {
+      if (this.dialogRef) {
+        this.dialogRef.close()
+      }
+      if (data) {
+        this.currentIndex = 0
+        this.time = this.settingsService.getTime()
+        this.startTimer()
+      } else {
+        this.router.navigate(['categories/artists'])
+      }
+    })
+  }
 
 }
