@@ -16,6 +16,7 @@ import { SettingsService } from '../settings.service';
 function toQuizPicQuestion(questionPicture: QuestionPictures): QuizQuestion<QuestionPictures> {
   return {
     title: `Which is ${questionPicture.author} picture?`,
+    pictureNumber: questionPicture.number,
     data: questionPicture
   }
 }

@@ -19,6 +19,7 @@ const NUMBER_OF_QUIZZES = 11
 function toQuizArtQuestion(questionArtist: QuestionArtists): QuizQuestion<QuestionArtists> {
   return {
     title: `Who is the author of this picture?`,
+    pictureNumber: questionArtist.number,
     data: questionArtist
   }
 }

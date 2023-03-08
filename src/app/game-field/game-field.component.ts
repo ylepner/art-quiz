@@ -3,18 +3,24 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
+import { AnswerResult } from '../models/quiz-results';
 import { DialogData, PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 import { QuitGameDialogComponent } from '../quit-game-dialog/quit-game-dialog.component';
+import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-dialog.component';
+import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
 
 export interface QuizQuestion<T> {
   title: string;
+  pictureNumber: number;
   data: T;
 }
 
 export interface GameResult {
   correctAnswers: number
 }
+
+const NUMBER_OF_QUIZZES = 11;
 
 @Component({
   selector: 'app-game-field',
@@ -28,7 +34,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   questions?: QuizQuestion<TData>[] | null;
 
   @Input()
-  quizId?: number;
+  quizId!: number;
 
   currentIndex = 0;
   selectedAnswerNumber?: number;
@@ -37,6 +43,8 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   timerValue = 100;
   timeConst?: number;
   dialogRef?: MatDialogRef<QuitGameDialogComponent, any>
+  questionsResults: AnswerResult[] = []
+  correctAnswers = 0
 
 
   @Input()
@@ -67,7 +75,8 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private settingsService: SettingsService,
-    private router: Router) {
+    private router: Router,
+    private resultsService: ResultsService) {
 
     this.timeConst = this.time;
   }
@@ -97,19 +106,51 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   }
 
   openPictureInfoDialog(selectedAnswerNumber: number) {
+    const data = this.answerInfoFn(this.currentQuestion!, selectedAnswerNumber)
+    const isCorrect = data.isCorrect;
+    const questionNumber = this.currentQuestion?.pictureNumber
+    console.log(questionNumber)
+    if (this.currentQuestion) {
+      this.updateQuestionResults(questionNumber!, data.isCorrect)
+      if (isCorrect) {
+        this.correctAnswers += 1
+      }
+    }
+    console.log(this.correctAnswers)
     if (!this.dialogTemplate) {
       console.warn('No dialog template')
     }
     this.dialog.open(PictureInfoDialogComponent, {
-      data: this.answerInfoFn(this.currentQuestion!, selectedAnswerNumber)
+      data: data
     }).afterClosed().subscribe(() => {
       if (this.currentIndex === this.questions!.length - 1) {
-        console.log('the end')
         this.gameEnd.emit()
-        return
+        this.resultsService.setQuizResults({ quizNumber: this.quizId, results: this.questionsResults })
+        this.openGameResultsDialog()
       }
       this.nextQuestion()
-    });
+    })
+  }
+
+  updateQuestionResults(questionNumber: number, isCorrect: boolean) {
+    this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
+    console.log(this.questionsResults)
+  }
+
+  openGameResultsDialog() {
+    const dialogRef = this.dialog.open(QuizResultsDialogComponent, {
+      data: {
+        correctAnswersNumber: this.correctAnswers,
+        hasMoreQuizzes: this.quizId !== NUMBER_OF_QUIZZES,
+        quizNumber: this.quizId,
+        quizName: 'artists'
+      }
+    })
+    dialogRef.afterClosed().subscribe(() => {
+      this.currentIndex = 0
+      this.selectedAnswerNumber = undefined
+      this.correctAnswers = 0
+    })
   }
 
   closeQuiz() {
@@ -142,6 +183,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   stopGame() {
     const dialogRef = this.dialog.open(GameOverDialogComponent, {
       data: {
+        quizNumber: this.quizId,
         quizName: 'artists'
       }
     })

@@ -43,7 +43,8 @@ export class PicturesService {
 
   getArtistsGame(gameId: number): QuestionArtists[] {
     let quizQuestions: QuestionArtists[] = []
-    quizQuestions = images.slice(gameId * 10, (gameId * 10) + 10).map((picture) => {
+    const questionsPerGame = 3
+    quizQuestions = images.slice(gameId * questionsPerGame, (gameId + 1) * questionsPerGame).map((picture) => {
       const correctAnswer = Math.floor(Math.random() * 4)
       const answers = this.getAnswersOptions(picture, correctAnswer)
       return {
