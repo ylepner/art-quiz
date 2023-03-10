@@ -66,7 +66,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   answerTemplate!: TemplateRef<TData>;
 
   @Output()
-  gameEnd = new EventEmitter<GameResult>()
+  gameEnd = new EventEmitter<AnswerResult[]>()
 
   @Output()
   quitQuiz = new EventEmitter()
@@ -88,6 +88,12 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   }
 
   nextQuestion() {
+    //   if (this.currentQuestionNumber === 9) return
+    //   this.currentQuestionNumber += 1
+    //   this.selectedAnswerNumber = undefined
+    //   this.time = this.settingsService.getTime()
+    //   this.timerValue = 100
+    //   this.startTimer()
     this.currentIndex += 1
   }
 
@@ -124,9 +130,9 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       data: data
     }).afterClosed().subscribe(() => {
       if (this.currentIndex === this.questions!.length - 1) {
-        this.gameEnd.emit()
-        this.resultsService.setQuizResults({ quizNumber: this.quizId, results: this.questionsResults })
         this.openGameResultsDialog()
+        this.gameEnd.emit(this.questionsResults)
+        return
       }
       this.nextQuestion()
     })
