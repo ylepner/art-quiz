@@ -78,7 +78,6 @@ export class QuizArtistsPageComponent {
   ) {
     this.showTimer = this.ifTimer()
     this.time = this.settingsService.getTime();
-    console.log(this.time)
   }
 
   answerInfoFn(quizQuestion: QuizQuestion<QuestionArtists>, selectedAnswer: number): DialogData {

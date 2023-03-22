@@ -5,6 +5,7 @@ import { map } from 'rxjs';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { AnswerResult } from '../models/quiz-results';
 import { DialogData, PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
+import { PicturesService } from '../pictures.service';
 import { QuitGameDialogComponent } from '../quit-game-dialog/quit-game-dialog.component';
 import { QuizResultsDialogComponent } from '../quiz-results-dialog/quiz-results-dialog.component';
 import { ResultsService } from '../results.service';
@@ -45,6 +46,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   dialogRef?: MatDialogRef<QuitGameDialogComponent, any>
   questionsResults: AnswerResult[] = []
   correctAnswers = 0
+  questionsPerGame: number
 
 
   @Input()
@@ -75,10 +77,11 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     private dialog: MatDialog,
     private route: ActivatedRoute,
     private settingsService: SettingsService,
+    private picturesService: PicturesService,
     private router: Router,
     private resultsService: ResultsService) {
-
     this.timeConst = this.time;
+    this.questionsPerGame = this.picturesService.questionsNumber
   }
 
   ngAfterViewInit() {
@@ -87,13 +90,17 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     }
   }
 
+  ngOnDestroy(): void {
+    clearInterval(this.timerInterval)
+  }
+
   nextQuestion() {
-    //   if (this.currentQuestionNumber === 9) return
-    //   this.currentQuestionNumber += 1
-    //   this.selectedAnswerNumber = undefined
-    //   this.time = this.settingsService.getTime()
-    //   this.timerValue = 100
-    //   this.startTimer()
+    if (this.currentIndex === 9) return
+    this.currentIndex += 1
+    this.selectedAnswerNumber = undefined
+    this.time = this.settingsService.getTime()
+    this.timerValue = 100
+    this.startTimer()
     this.currentIndex += 1
   }
 
@@ -115,14 +122,12 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     const data = this.answerInfoFn(this.currentQuestion!, selectedAnswerNumber)
     const isCorrect = data.isCorrect;
     const questionNumber = this.currentQuestion?.pictureNumber
-    console.log(questionNumber)
     if (this.currentQuestion) {
       this.updateQuestionResults(questionNumber!, data.isCorrect)
       if (isCorrect) {
         this.correctAnswers += 1
       }
     }
-    console.log(this.correctAnswers)
     if (!this.dialogTemplate) {
       console.warn('No dialog template')
     }

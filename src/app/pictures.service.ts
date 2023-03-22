@@ -17,6 +17,8 @@ export class PicturesService {
     private resultService: ResultsService
   ) { }
 
+  questionsPerGame: number = 3;
+
   getCategories(category: QuizType): CategoryItem[] {
     let data: PictureItem[] = []
     if (category === QuizType.Artists) {
@@ -63,8 +65,7 @@ export class PicturesService {
   getPicturesGame(gameId: number) {
     let quizQuestions: QuestionPictures[] = []
     let picturesArr = images.slice(images.length / 2, -1)
-    const questionsPerGame = 3;
-    quizQuestions = picturesArr.slice(gameId * questionsPerGame, (gameId + 1) * questionsPerGame).map((picture) => {
+    quizQuestions = picturesArr.slice(gameId * this.questionsPerGame, (gameId + 1) * this.questionsPerGame).map((picture) => {
       const correctAnswer = Math.floor(Math.random() * 4)
       const answers = this.getImagesAnswers(picture, correctAnswer)
       return {
@@ -114,5 +115,9 @@ export class PicturesService {
       answers[answers.indexOf('')] = `${PICTURE_URL}${Math.floor(Math.random() * (images.length - 1))}.jpg`;
     }
     return answers
+  }
+
+  get questionsNumber() {
+    return this.questionsPerGame
   }
 }
