@@ -10,6 +10,11 @@
 .answer-image {
   border-radius: 20px;
   width: 370px;
+  cursor: pointer;
+}
+
+.answer-button {
+  cursor: unset
 }
 
 .title {
