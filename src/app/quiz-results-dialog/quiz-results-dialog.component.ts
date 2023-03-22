@@ -1,6 +1,7 @@
 import { DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { PicturesService } from '../pictures.service';
 import { SoundsService } from '../sounds.service';
 export interface DialogData {
   correctAnswersNumber: number,
@@ -20,13 +21,15 @@ export class QuizResultsDialogComponent {
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public dialogRef: DialogRef,
-    private soundService: SoundsService
+    private soundService: SoundsService,
+    private picturesService: PicturesService
   ) {
-    if (data.correctAnswersNumber < 10) {
+    if (data.correctAnswersNumber < this.picturesService.questionsNumber) {
       this.soundService.playRoundEnd()
     } else {
       this.soundService.playGrandResult()
     }
+    console.log(data)
   }
 
 }

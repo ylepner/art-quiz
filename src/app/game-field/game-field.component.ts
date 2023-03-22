@@ -21,8 +21,6 @@ export interface GameResult {
   correctAnswers: number
 }
 
-const NUMBER_OF_QUIZZES = 11;
-
 @Component({
   selector: 'app-game-field',
   templateUrl: './game-field.component.html',
@@ -35,7 +33,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   questions?: QuizQuestion<TData>[] | null;
 
   @Input()
-  quizId!: number;
+  quizId: number | null = null;
 
   currentIndex = 0;
   selectedAnswerNumber?: number;
@@ -47,6 +45,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   questionsResults: AnswerResult[] = []
   correctAnswers = 0
   questionsPerGame: number
+  quizzesNumber: number
 
   @Input()
   answerInfoFn!: (quizQuestion: QuizQuestion<TData>, selectedAnswer: number) => DialogData;
@@ -56,6 +55,9 @@ export class GameFieldComponent<TData> implements AfterViewInit {
 
   @Input()
   time?: number;
+
+  @Input()
+  quizType?: string
 
   @ContentChild('question')
   gameTemplate!: TemplateRef<TData>;
@@ -82,12 +84,16 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     this.questionsPerGame = this.picturesService.questionsNumber
     this.time = this.settingsService.getTime()
     this.timeConst = this.time;
+    this.quizzesNumber = this.picturesService.quizzesNumber
   }
 
   ngAfterViewInit() {
     if (this.time && this.time > 0) {
       this.startTimer()
     }
+    console.log(this.quizId)
+    console.log(this.quizzesNumber)
+
   }
 
   ngOnDestroy(): void {
@@ -144,16 +150,15 @@ export class GameFieldComponent<TData> implements AfterViewInit {
 
   updateQuestionResults(questionNumber: number, isCorrect: boolean) {
     this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })
-    console.log(this.questionsResults)
   }
 
   openGameResultsDialog() {
     const dialogRef = this.dialog.open(QuizResultsDialogComponent, {
       data: {
         correctAnswersNumber: this.correctAnswers,
-        hasMoreQuizzes: this.quizId !== NUMBER_OF_QUIZZES,
+        hasMoreQuizzes: this.quizId !== this.quizzesNumber - 1,
         quizNumber: this.quizId,
-        quizName: 'artists',
+        quizName: this.quizType,
         questionsNumber: this.questionsPerGame
       }
     })
@@ -196,7 +201,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     const dialogRef = this.dialog.open(GameOverDialogComponent, {
       data: {
         quizNumber: this.quizId,
-        quizName: 'artists'
+        quizName: this.quizType
       }
     })
     dialogRef.afterClosed().subscribe((data) => {

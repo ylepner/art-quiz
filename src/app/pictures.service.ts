@@ -12,12 +12,14 @@ const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master
   providedIn: 'root'
 })
 export class PicturesService {
+  questionsPerGame: number = 3;
+  quizzesInCategory: number
 
   constructor(
     private resultService: ResultsService
-  ) { }
-
-  questionsPerGame: number = 3;
+  ) {
+    this.quizzesInCategory = (Math.floor(images.length / 2)) / this.questionsPerGame
+  }
 
   getCategories(category: QuizType): CategoryItem[] {
     let data: PictureItem[] = []
@@ -119,5 +121,9 @@ export class PicturesService {
 
   get questionsNumber() {
     return this.questionsPerGame
+  }
+
+  get quizzesNumber() {
+    return this.quizzesInCategory
   }
 }

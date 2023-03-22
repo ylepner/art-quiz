@@ -35,7 +35,6 @@ export class QuizArtistsPageComponent {
   time: number | undefined;
 
   gameId$ = this.route.params.pipe(
-    tap((params) => console.log({ params })),
     map(params => Number(params['id']))
   )
 
