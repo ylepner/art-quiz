@@ -1,6 +1,6 @@
 <div class="main-container text-white flex flex-col justify-between items-center ml-auto mr-auto max-w-4xl h-full">
   <div class="timer-container flex w-full justify-around items-center pt-5">
-    <button (click)="closeQuiz()" class="stop-icon flex items-center">
+    <button (click)="openQuitTheGameDialog()" class="stop-icon flex items-center">
       <img class="stop-img" src="assets/img/close-icon.png" alt="close">
     </button>
     <div *ngIf="showTimer" class="timer-bar text-center" [style.background-size]="timerValue + '%'"></div>

@@ -212,5 +212,13 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     })
   }
 
+  openQuitTheGameDialog() {
+    this.dialogRef = this.dialog.open(QuitGameDialogComponent, {})
+    this.dialogRef.afterClosed().subscribe((data) => {
+      if (data) {
+        this.closeQuiz()
+      }
+    })
+  }
 
 }
