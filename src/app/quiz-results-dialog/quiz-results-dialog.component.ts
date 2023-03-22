@@ -6,7 +6,8 @@ export interface DialogData {
   correctAnswersNumber: number,
   hasMoreQuizzes: boolean,
   quizNumber: number,
-  quizName: string
+  quizName: string,
+  questionsNumber: number
 }
 
 @Component({

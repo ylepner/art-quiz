@@ -153,7 +153,8 @@ export class GameFieldComponent<TData> implements AfterViewInit {
         correctAnswersNumber: this.correctAnswers,
         hasMoreQuizzes: this.quizId !== NUMBER_OF_QUIZZES,
         quizNumber: this.quizId,
-        quizName: 'artists'
+        quizName: 'artists',
+        questionsNumber: this.questionsPerGame
       }
     })
     dialogRef.afterClosed().subscribe(() => {
