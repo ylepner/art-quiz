@@ -48,7 +48,6 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   correctAnswers = 0
   questionsPerGame: number
 
-
   @Input()
   answerInfoFn!: (quizQuestion: QuizQuestion<TData>, selectedAnswer: number) => DialogData;
 
@@ -80,8 +79,9 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     private picturesService: PicturesService,
     private router: Router,
     private resultsService: ResultsService) {
-    this.timeConst = this.time;
     this.questionsPerGame = this.picturesService.questionsNumber
+    this.time = this.settingsService.getTime()
+    this.timeConst = this.time;
   }
 
   ngAfterViewInit() {
@@ -101,7 +101,6 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     this.time = this.settingsService.getTime()
     this.timerValue = 100
     this.startTimer()
-    this.currentIndex += 1
   }
 
   get currentQuestion() {
@@ -169,6 +168,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   }
 
   startTimer() {
+    this.timerValue = 100
     this.timerInterval = setInterval(() => {
       if (this.time) {
         this.time--
@@ -211,5 +211,6 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       }
     })
   }
+
 
 }
