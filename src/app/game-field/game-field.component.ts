@@ -166,6 +166,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       this.currentIndex = 0
       this.selectedAnswerNumber = undefined
       this.correctAnswers = 0
+      this.selectedAnswers = []
     })
   }
 
@@ -211,6 +212,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       if (data) {
         this.currentIndex = 0
         this.time = this.settingsService.getTime()
+        this.selectedAnswers = []
         this.startTimer()
       } else {
         this.router.navigate(['categories/artists'])
