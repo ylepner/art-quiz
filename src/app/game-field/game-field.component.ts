@@ -101,7 +101,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   }
 
   nextQuestion() {
-    if (this.currentIndex === 9) return
+    if (this.currentIndex === this.questions!.length - 1) return
     this.currentIndex += 1
     this.selectedAnswerNumber = undefined
     this.time = this.settingsService.getTime()
@@ -141,7 +141,6 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     }).afterClosed().subscribe(() => {
       if (this.currentIndex === this.questions!.length - 1) {
         this.openGameResultsDialog()
-        this.gameEnd.emit(this.questionsResults)
         return
       }
       this.nextQuestion()
@@ -163,6 +162,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       }
     })
     dialogRef.afterClosed().subscribe(() => {
+      this.gameEnd.emit(this.questionsResults)
       this.currentIndex = 0
       this.selectedAnswerNumber = undefined
       this.correctAnswers = 0
