@@ -35,6 +35,7 @@ export class QuizPicturesPageComponent {
   // correctAnswers = 0
   // questionsResults: AnswerResult[] = []
 
+  time: number | undefined;
   showTimer = false;
 
   gameId$ = this.route.params.pipe(

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import images from './data-eng';
+import { QuizType } from './models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults } from './models/quiz-results';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
@@ -40,6 +41,7 @@ export class ResultsService {
 
   getQuizResult(quizId: number) {
     const quizResult = this.quizResults[quizId]
+    console.log(quizResult)
     const artistsResults = quizResult.results.map((picture) => {
       return this.convertResultItemToArtistResult(picture)
     })
@@ -58,7 +60,7 @@ export class ResultsService {
     }
   }
 
-  getQuizScore(quizNumber: number) {
+  getQuizScore(quizNumber: number, category: QuizType) {
     const answersArr = this.quizResults[quizNumber]
     if (!answersArr) {
       return 0

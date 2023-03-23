@@ -31,7 +31,7 @@ export class PicturesService {
     }
     const filteredData = data.filter((el, i) => i % this.questionsNumber === 0)
     const categoryData = filteredData.map((el, i) => {
-      const quizResult = this.resultService.getQuizScore(i)
+      const quizResult = this.resultService.getQuizScore(i, category)
       const isPlayed = this.resultService.isPlayed(i)
       return {
         title: String(i + 1),
