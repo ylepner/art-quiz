@@ -12,6 +12,12 @@
     </a>
   </div>
 </div>
+<div class="score-title flex w-full justify-center text-xl text-white">
+  Your score: &nbsp;
+  <span class="score">
+    {{correctAnswers}} / {{pictures.length}}
+  </span>
+</div>
 <div class="score-container text-white p-16">
   <div *ngFor="let picture of pictures" class="picture cursor-pointer w-48 h-48 m-12 relative">
     <img [class.no-color]="!picture?.isCorrectAnswer" class="item-image w-48 h-48" src="{{picture?.img}}" alt="image">

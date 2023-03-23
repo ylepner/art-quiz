@@ -13,11 +13,17 @@ export class ScorePageComponent {
   results: AnswerResult[] = []
   pictures: ArtistResult[] = []
 
+  correctAnswers: number = 0
+
   constructor(
     private resultsService: ResultsService
   ) {
     this.results = this.resultsService.getArrayOfAllQuizResultsAnswers()
     this.pictures = this.results.map((result) => this.resultsService.convertResultItemToArtistResult(result))
+    this.correctAnswers = this.getCorrectAnswers()
   }
 
+  getCorrectAnswers() {
+    return this.pictures.filter((el) => el.isCorrectAnswer).length
+  }
 }
