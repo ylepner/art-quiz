@@ -140,6 +140,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       data: data
     }).afterClosed().subscribe(() => {
       if (this.currentIndex === this.questions!.length - 1) {
+        this.resultsService.setQuizResults({ quizNumber: this.quizId!, results: this.questionsResults })
         this.openGameResultsDialog()
         return
       }

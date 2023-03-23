@@ -42,6 +42,7 @@ export class PicturesService {
         isPlayed: isPlayed
       }
     })
+    console.log(categoryData)
     return categoryData
   }
 

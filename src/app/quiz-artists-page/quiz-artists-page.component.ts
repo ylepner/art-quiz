@@ -89,8 +89,7 @@ export class QuizArtistsPageComponent {
     }
   }
 
-  async startNewRound(data: any) {
-    this.resultsService.setQuizResults(data)
+  async startNewRound() {
     const gameId = await firstValueFrom(this.gameId$);
     this.router.navigate(['quiz', 'artists', gameId + 1])
   }
