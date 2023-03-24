@@ -1,3 +1,4 @@
+
 export interface CategoryItem {
   title: string;
   result: number;
@@ -7,7 +8,5 @@ export interface CategoryItem {
   isPlayed: boolean;
 }
 
-export enum QuizType {
-  Artists = 'artists',
-  Pictures = 'pictures'
-}
+export const quizTypes = ['artists', 'pictures'] as const;
+export type QuizType = (typeof quizTypes)[number]

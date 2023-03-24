@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
-import { ArtistResult, QuizResults } from '../models/quiz-results';
+import { ArtistResult, QuizResults, QuizResultsCategory } from '../models/quiz-results';
 import { PicturesService } from '../pictures.service';
 import { ResultsService } from '../results.service';
 
@@ -11,7 +11,7 @@ import { ResultsService } from '../results.service';
   styleUrls: ['./round-results-page.component.scss']
 })
 export class RoundResultsPageComponent {
-  results: Record<number, QuizResults> = {}
+  results?: QuizResultsCategory
   currentQuizResult: ArtistResult[] = []
   quizNumber = 0
 

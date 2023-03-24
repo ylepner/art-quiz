@@ -23,26 +23,25 @@ export class PicturesService {
 
   getCategories(category: QuizType): CategoryItem[] {
     let data: PictureItem[] = []
-    if (category === QuizType.Artists) {
+    if (category === 'artists') {
       data = images.slice(0, images.length / 2)
     }
-    if (category === QuizType.Pictures) {
+    if (category === 'pictures') {
       data = images.slice(images.length / 2, -1)
     }
     const filteredData = data.filter((el, i) => i % this.questionsNumber === 0)
     const categoryData = filteredData.map((el, i) => {
       const quizResult = this.resultService.getQuizScore(i, category)
-      const isPlayed = this.resultService.isPlayed(i)
+      const isPlayed = this.resultService.isPlayed(i, category)
       return {
         title: String(i + 1),
-        result: quizResult,
+        result: quizResult || 0,
         maxScore: this.questionsNumber,
         img: `${PICTURE_URL}${el.imageNum}.jpg`,
         id: i,
         isPlayed: isPlayed
       }
     })
-    console.log(categoryData)
     return categoryData
   }
 

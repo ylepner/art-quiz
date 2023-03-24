@@ -3,6 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
+import { QuizType } from '../models/categories-models';
 import { AnswerResult } from '../models/quiz-results';
 import { DialogData, PictureInfoDialogComponent } from '../picture-info-dialog/picture-info-dialog.component';
 import { PicturesService } from '../pictures.service';
@@ -57,7 +58,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   time?: number;
 
   @Input()
-  quizType?: string
+  quizType!: QuizType
 
   @ContentChild('question')
   gameTemplate!: TemplateRef<TData>;
@@ -140,13 +141,22 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       data: data
     }).afterClosed().subscribe(() => {
       if (this.currentIndex === this.questions!.length - 1) {
-        this.resultsService.setQuizResults({ quizNumber: this.quizId!, results: this.questionsResults })
+        if (this.quizId) {
+          this.resultsService.setQuizResults(
+            this.quizType,
+            {
+              quizNumber: this.quizId,
+              results: this.questionsResults
+            }
+          )
+        }
         this.openGameResultsDialog()
         return
       }
       this.nextQuestion()
     })
   }
+
 
   updateQuestionResults(questionNumber: number, isCorrect: boolean) {
     this.questionsResults.push({ questionNumber: questionNumber, isCorrectAnswer: isCorrect })

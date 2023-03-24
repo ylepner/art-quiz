@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import images from './data-eng';
 import { QuizType } from './models/categories-models';
-import { AnswerResult, ArtistResult, QuizResults } from './models/quiz-results';
+import { AnswerResult, ArtistResult, QuizResults, QuizResultsCategory } from './models/quiz-results';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 @Injectable({
@@ -9,43 +9,51 @@ const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master
 })
 export class ResultsService {
 
-  quizResults: Record<number, QuizResults> = {}
+  quizCategoryResults: Record<number, QuizResults> = {}
+  quizResults?: QuizResults
+
+  results: { [p in QuizType]?: Record<number, AnswerResult[]> } = {}
 
   constructor(
   ) {
     const data = localStorage.getItem('results')
     if (data) {
-      this.quizResults = JSON.parse(data)
+      this.results = JSON.parse(data)
     }
   }
 
-  setQuizResults(data: QuizResults) {
-    this.quizResults[data.quizNumber] = data
-    localStorage.setItem('results', JSON.stringify(this.quizResults))
+  setQuizResults(quizType: QuizType, data: QuizResultsCategory) {
+    const results = this.results[quizType] || {}
+    results[data.quizNumber] = data.results
+    this.results[quizType] = results
+    localStorage.setItem(`results`, JSON.stringify(this.results))
   }
 
   getAllQuizResults() {
     return this.quizResults
   }
 
-  getArrayOfAllQuizResultsAnswers() {
-    const arrays = Object.entries(this.getAllQuizResults())
-    let resultsArr: any[] = []
-    let questionsArr: AnswerResult[] = []
-    arrays.forEach((entry) => {
-      resultsArr.push(entry[1].results)
-    })
-    resultsArr.forEach((el) => el.forEach((question: any) => questionsArr.push(question)))
-    return questionsArr
-  }
+  // getArtistsResult() {
+  //   return this.quizResultsArtists
+  // }
 
-  getQuizResult(quizId: number) {
-    const quizResult = this.quizResults[quizId]
-    console.log(quizResult)
-    const artistsResults = quizResult.results.map((picture) => {
-      return this.convertResultItemToArtistResult(picture)
-    })
-    return artistsResults
+  // getPicturesResult() {
+  //   return this.quizResultsPictures
+  // }
+
+  // getArrayOfAllQuizResultsAnswers() {
+  //   const arrays = Object.entries(this.getAllQuizResults())
+  //   let resultsArr: any[] = []
+  //   let questionsArr: AnswerResult[] = []
+  //   arrays.forEach((entry) => {
+  //     resultsArr.push(entry[1].categoryResults.results)
+  //   })
+  //   resultsArr.forEach((el) => el.forEach((question: any) => questionsArr.push(question)))
+  //   return questionsArr
+  // }
+
+
+  getQuizResult(quizId: number, category: QuizType) {
   }
 
   convertResultItemToArtistResult(item: AnswerResult): ArtistResult {
@@ -61,15 +69,15 @@ export class ResultsService {
   }
 
   getQuizScore(quizNumber: number, category: QuizType) {
-    const answersArr = this.quizResults[quizNumber]
+    const answersArr = this.results[category]?.[quizNumber]
     if (!answersArr) {
-      return 0
+      return null
     }
-    const correctAnswers = answersArr.results.filter((picture) => picture.isCorrectAnswer === true)
+    const correctAnswers = answersArr.filter((picture) => picture.isCorrectAnswer === true)
     return correctAnswers.length
   }
 
-  isPlayed(quizNumber: number) {
-    return !!this.quizResults[quizNumber]
+  isPlayed(quizNumber: number, category: QuizType) {
+    return this.getQuizScore(quizNumber, category) !== null
   }
 }

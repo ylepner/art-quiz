@@ -1,4 +1,11 @@
+import { QuizType } from "./categories-models"
+
 export interface QuizResults {
+  quizResultsArtists?: QuizResultsCategory,
+  quizResultsPictures?: QuizResultsCategory,
+}
+
+export interface QuizResultsCategory {
   quizNumber: number,
   results: AnswerResult[]
 }
