@@ -1,6 +1,5 @@
 <app-game-field [showTimer]="showTimer" [time]="time" [questions]="questions$ | async" [answerInfoFn]="answerInfoFn"
-  [quizType]="'artists'" [quizId]="gameId$ | async" (gameEnd)="startNewRound()" (quitQuiz)="goToCategories()">
-
+  [quizType]="'pictures'" [quizId]="gameId$ | async" (gameEnd)="startNewRound()" (quitQuiz)="goToCategories()">
   <ng-template #question let-question let-answerSelectedFn="answerSelected">
     <div class="question-container">
       <div class="answers grid grid-cols-2 gap-6">
