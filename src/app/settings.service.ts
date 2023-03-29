@@ -24,7 +24,7 @@ export class SettingsService {
   }
 
   setCustomerSettings(volume: number, time?: number) {
-    this.setVolume(volume);
+    this.setVolume(volume / 100);
     this.setTime(time)
   }
 

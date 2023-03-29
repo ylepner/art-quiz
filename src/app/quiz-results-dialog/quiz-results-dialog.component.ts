@@ -2,6 +2,7 @@ import { DialogRef } from '@angular/cdk/dialog';
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { PicturesService } from '../pictures.service';
+import { SettingsService } from '../settings.service';
 import { SoundsService } from '../sounds.service';
 export interface DialogData {
   correctAnswersNumber: number,
@@ -22,14 +23,15 @@ export class QuizResultsDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: DialogData,
     public dialogRef: DialogRef,
     private soundService: SoundsService,
-    private picturesService: PicturesService
+    private picturesService: PicturesService,
+    private settingsService: SettingsService
   ) {
-    if (data.correctAnswersNumber < this.picturesService.questionsNumber) {
-      this.soundService.playRoundEnd()
-    } else {
-      this.soundService.playGrandResult()
+    if (this.settingsService.getVolume() !== 0) {
+      if (data.correctAnswersNumber < this.picturesService.questionsNumber) {
+        this.soundService.playRoundEnd()
+      } else {
+        this.soundService.playGrandResult()
+      }
     }
-    console.log(data)
   }
-
 }

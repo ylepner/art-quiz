@@ -22,11 +22,11 @@ export class PictureInfoDialogComponent {
     private soundService: SoundsService,
     private settingsService: SettingsService) {
     if (data.isCorrect) {
-      if (settingsService.getVolume() !== 0) {
+      if (this.settingsService.getVolume() !== 0) {
         this.soundService.playCorrectAnswer()
       }
     } else {
-      if (settingsService.getVolume() !== 0) {
+      if (this.settingsService.getVolume() !== 0) {
         this.soundService.playWrongAnswer()
       }
     }

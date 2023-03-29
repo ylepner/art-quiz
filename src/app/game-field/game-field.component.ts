@@ -58,6 +58,9 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   time?: number;
 
   @Input()
+  volume?: number
+
+  @Input()
   quizType!: QuizType
 
   @ContentChild('question')
@@ -77,13 +80,13 @@ export class GameFieldComponent<TData> implements AfterViewInit {
 
   constructor(
     private dialog: MatDialog,
-    private route: ActivatedRoute,
     private settingsService: SettingsService,
     private picturesService: PicturesService,
     private router: Router,
     private resultsService: ResultsService) {
     this.questionsPerGame = this.picturesService.questionsNumber
     this.time = this.settingsService.getTime()
+    this.volume = this.settingsService.getVolume()
     this.timeConst = this.time;
     this.quizzesNumber = this.picturesService.quizzesNumber
   }
@@ -92,9 +95,6 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     if (this.time && this.time > 0) {
       this.startTimer()
     }
-    console.log(this.quizId)
-    console.log(this.quizzesNumber)
-
   }
 
   ngOnDestroy(): void {

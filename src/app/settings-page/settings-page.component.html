@@ -12,7 +12,7 @@
     <div class="volume flex flex-col">
       <label for="volume-input">Volume</label>
       <input id="volume-input" [style.background-size]="volume + '%'" class="volume-input sm:max-w-full" type="range"
-        [(ngModel)]="volume">
+        [(ngModel)]="volume"> {{volume}}
       <label for="volume-input" class="flex pb-0 justify-between">
         <img src="assets/img/bi_volume-mute.png" alt="mute">
         <img src="assets/img//bi_volume-down.png" alt="unmute">
