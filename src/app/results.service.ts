@@ -30,7 +30,8 @@ export class ResultsService {
   }
 
   getAllQuizResults() {
-    return this.quizResults
+    console.log(`getAllQuizResul`, this.results)
+    return this.results
   }
 
   // getArtistsResult() {
@@ -54,6 +55,16 @@ export class ResultsService {
 
 
   getQuizResult(quizId: number, category: QuizType) {
+    if (category === 'artists') {
+      if (this.results.artists) {
+        return this.results['artists'][quizId]
+      }
+    } else {
+      if (this.results.pictures) {
+        return this.results['pictures'][quizId]
+      }
+    }
+    return []
   }
 
   convertResultItemToArtistResult(item: AnswerResult): ArtistResult {

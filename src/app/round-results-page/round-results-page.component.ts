@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { map } from 'rxjs';
-import { ArtistResult, QuizResults, QuizResultsCategory } from '../models/quiz-results';
+import { combineLatest, map } from 'rxjs';
+import { QuizType } from '../models/categories-models';
+import { AnswerResult, ArtistResult, QuizResults, QuizResultsCategory } from '../models/quiz-results';
 import { PicturesService } from '../pictures.service';
 import { ResultsService } from '../results.service';
 
@@ -15,18 +16,25 @@ export class RoundResultsPageComponent {
   currentQuizResult: ArtistResult[] = []
   quizNumber = 0
 
-  quizResults$ = this.route.params.pipe(
+  quizId$ = this.route.params.pipe(
     map((params) => {
       return Number(params['quizId'])
-    }),
-    map((quizId) => {
-      return this.service.getQuizResult(quizId)
     })
   )
 
   quizType$ = this.route.params.pipe(
     map((params) => {
-      return params['quizType'] as string;
+      return params['quizType'] as QuizType;
+    })
+  )
+
+  quizResults$ = combineLatest([this.quizId$, this.quizType$]).pipe(
+    map(([quizId, quizType]) => {
+      return this.service.getQuizResult(quizId, quizType)
+    }),
+    map(val => {
+      // this.service.convertResultItemToArtistResult
+      return val.map((el) => this.service.convertResultItemToArtistResult(el))
     })
   )
 
@@ -34,11 +42,6 @@ export class RoundResultsPageComponent {
     private service: ResultsService,
     private route: ActivatedRoute
   ) {
-    this.getResults()
-  }
-
-  getResults() {
-    this.results = this.service.getAllQuizResults()
   }
 
 }

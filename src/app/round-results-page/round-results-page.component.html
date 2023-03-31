@@ -14,11 +14,11 @@
 </div>
 <div class="round-results-container text-white p-16">
   <div *ngFor="let picture of ( quizResults$ | async)" class="picture cursor-pointer w-48 h-48 m-12 relative">
-    <img [class.no-color]="!picture?.isCorrectAnswer" class="item-image w-48 h-48" src="{{picture?.img}}" alt="image">
-    <div [class.no-color]="!picture?.isCorrectAnswer"
+    <img [class.no-color]="!picture.isCorrectAnswer" class="item-image w-48 h-48" src="{{picture.img}}" alt="image">
+    <div [class.no-color]="!picture.isCorrectAnswer"
       class="item-info w-48 h-48 flex flex-col justify-end p-4 absolute top-0 opacity-0">
-      <div class="picture-title font-extrabold text-lg">{{picture?.name}}</div>
-      <div class="picture-author italic text-base">{{picture?.author}}, {{picture?.year}}</div>
+      <div class="picture-title font-extrabold text-lg">{{picture.name}}</div>
+      <div class="picture-author italic text-base">{{picture.author}}, {{picture.year}}</div>
     </div>
   </div>
 </div>
