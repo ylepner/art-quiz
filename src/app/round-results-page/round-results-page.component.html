@@ -13,6 +13,12 @@
   </div>
 </div>
 <div class="round-results-container text-white p-16">
+  <div class="score-title flex w-full justify-center text-xl text-white">
+    Your score: &nbsp;
+    <span class="score">
+      {{quizScore$ | async}}
+    </span>
+  </div>
   <div *ngFor="let picture of ( quizResults$ | async)" class="picture cursor-pointer w-48 h-48 m-12 relative">
     <img [class.no-color]="!picture.isCorrectAnswer" class="item-image w-48 h-48" src="{{picture.img}}" alt="image">
     <div [class.no-color]="!picture.isCorrectAnswer"

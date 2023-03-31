@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { combineLatest, map } from 'rxjs';
+import { combineLatest, firstValueFrom, map } from 'rxjs';
 import { QuizType } from '../models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults, QuizResultsCategory } from '../models/quiz-results';
 import { PicturesService } from '../pictures.service';
@@ -28,12 +28,17 @@ export class RoundResultsPageComponent {
     })
   )
 
+  quizScore$ = combineLatest([this.quizId$, this.quizType$]).pipe(
+    map(([quizId, quizType]) => {
+      return this.service.getQuizScore(quizId, quizType)
+    })
+  )
+
   quizResults$ = combineLatest([this.quizId$, this.quizType$]).pipe(
     map(([quizId, quizType]) => {
       return this.service.getQuizResult(quizId, quizType)
     }),
     map(val => {
-      // this.service.convertResultItemToArtistResult
       return val.map((el) => this.service.convertResultItemToArtistResult(el))
     })
   )

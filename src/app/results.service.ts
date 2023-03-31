@@ -30,7 +30,7 @@ export class ResultsService {
   }
 
   getAllQuizResults() {
-    console.log(`getAllQuizResul`, this.results)
+    console.log(`getAllQuizResults`, this.results)
     return this.results
   }
 
