@@ -3,7 +3,7 @@
   <ng-template #question let-question let-answerSelectedFn="answerSelected" let-selectedAnswers="selectedAnswers"
     let-currentIndex="currentIndex">
     <div class="question-container">
-      <div class="question-buttons relative">
+      <div class="question-buttons relative flex justify-center">
         <img class="question-img" [src]="question.img" alt="picture">
         <div class="number-buttons absolute flex justify-center">
           <div *ngFor="let question of questions$ | async; let i = index" (click)="setCurrentButton(i)"
