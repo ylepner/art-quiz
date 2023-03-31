@@ -10,17 +10,16 @@ import { ResultsService } from '../results.service';
 })
 export class ScorePageComponent {
 
-  results: AnswerResult[] = []
-  pictures: ArtistResult[] = []
+  pictures: ArtistResult[]
 
   correctAnswers: number = 0
 
   constructor(
     private resultsService: ResultsService
   ) {
-    //this.results = this.resultsService.getArrayOfAllQuizResultsAnswers()
-    // this.pictures = this.results.map((result) => this.resultsService.convertResultItemToArtistResult(result))
-    // this.correctAnswers = this.getCorrectAnswers()
+    this.pictures = this.resultsService.getArtistsResult()
+    console.log(this.pictures)
+    this.correctAnswers = this.getCorrectAnswers()
   }
 
   getCorrectAnswers() {

@@ -11,7 +11,6 @@ export class ResultsService {
 
   quizCategoryResults: Record<number, QuizResults> = {}
   quizResults?: QuizResults
-
   results: { [p in QuizType]?: Record<number, AnswerResult[]> } = {}
 
   constructor(
@@ -34,9 +33,17 @@ export class ResultsService {
     return this.results
   }
 
-  // getArtistsResult() {
-  //   return this.quizResultsArtists
-  // }
+  getArtistsResult() {
+    if (this.results.artists) {
+      const arrays = Object.entries(this.results.artists)
+      let resultsArr: ArtistResult[] = []
+      arrays.forEach((entry) => entry[1].forEach((answer) => {
+        resultsArr.push(this.convertResultItemToArtistResult(answer))
+      }))
+      return resultsArr
+    }
+    return []
+  }
 
   // getPicturesResult() {
   //   return this.quizResultsPictures
