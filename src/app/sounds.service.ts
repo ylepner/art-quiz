@@ -12,7 +12,7 @@ export class SoundsService {
   }
 
   get volume() {
-    return this.settingsService.getVolume()
+    return this.settingsService.getVolume() / 100
   }
 
 
