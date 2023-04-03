@@ -28,11 +28,6 @@ export class ResultsService {
     localStorage.setItem(`results`, JSON.stringify(this.results))
   }
 
-  getAllQuizResults() {
-    console.log(`getAllQuizResults`, this.results)
-    return this.results
-  }
-
   getCategoryResults(quizType: QuizType) {
     let results: Record<number, AnswerResult[]> | undefined
     if (quizType === 'artists') {

@@ -49,11 +49,9 @@ export class RoundResultsPageComponent implements OnDestroy {
   ) {
     this.subscription = this.quizScore$.subscribe((q) => {
       this.quizScore = q
-      console.log(this.quizScore)
     })
     firstValueFrom(this.quizScore$).then((val) => {
       this.quizScore = val
-      console.log(this.quizScore)
     })
   }
 
