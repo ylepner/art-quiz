@@ -134,14 +134,11 @@ export class GameFieldComponent<TData> implements AfterViewInit {
         this.correctAnswers += 1
       }
     }
-    if (!this.dialogTemplate) {
-      console.warn('No dialog template')
-    }
     this.dialog.open(PictureInfoDialogComponent, {
       data: data
     }).afterClosed().subscribe(() => {
       if (this.currentIndex === this.questions!.length - 1) {
-        if (this.quizId) {
+        if (this.quizId !== null) {
           this.resultsService.setQuizResults(
             this.quizType,
             {
@@ -149,6 +146,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
               results: this.questionsResults
             }
           )
+          this.questionsResults = []
         }
         this.openGameResultsDialog()
         return
