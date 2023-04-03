@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { QuizType } from '../models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults } from '../models/quiz-results';
@@ -33,8 +33,16 @@ export class ScorePageComponent {
 
   constructor(
     private resultsService: ResultsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
+  toArtistsScore() {
+    this.router.navigate(['score/artists'])
+  }
+
+  toPicturesScore() {
+    this.router.navigate(['score/pictures'])
+  }
 }
