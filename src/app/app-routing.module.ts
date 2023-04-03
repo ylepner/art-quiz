@@ -36,7 +36,7 @@ const routes: Routes = [
     component: RoundResultsPageComponent
   },
   {
-    path: 'score',
+    path: 'score/:quizType',
     component: ScorePageComponent
   },
   {
