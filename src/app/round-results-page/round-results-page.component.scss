@@ -37,3 +37,7 @@ a:hover {
 .title {
   text-transform: capitalize;
 }
+
+.settings:hover {
+  filter: drop-shadow(0px 0px 4px var(--accent));
+}
