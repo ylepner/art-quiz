@@ -92,7 +92,7 @@ export class ResultsService {
       return null
     }
     const correctAnswers = answersArr.filter((picture) => picture.isCorrectAnswer === true)
-    return correctAnswers.length
+    return { correctAnswers: correctAnswers.length, total: answersArr.length }
   }
 
   isPlayed(quizNumber: number, category: QuizType) {

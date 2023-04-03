@@ -35,7 +35,7 @@ export class PicturesService {
       const isPlayed = this.resultService.isPlayed(i, category)
       return {
         title: String(i + 1),
-        result: quizResult || 0,
+        result: quizResult?.correctAnswers || 0,
         maxScore: this.questionsNumber,
         img: `${PICTURE_URL}${el.imageNum}.jpg`,
         id: i,

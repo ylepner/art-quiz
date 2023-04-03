@@ -16,7 +16,7 @@
   <div class="score-title flex w-full justify-center text-xl text-white">
     Your score: &nbsp;
     <span class="score">
-      {{quizScore$ | async}}
+      {{(quizScore$ | async)?.correctAnswers}} / {{(quizScore$ | async)?.total}}
     </span>
   </div>
   <div *ngFor="let picture of ( quizResults$ | async)" class="picture cursor-pointer w-48 h-48 m-12 relative">

@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { map } from 'rxjs';
+import { QuizType } from '../models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
 
@@ -10,12 +12,18 @@ import { ResultsService } from '../results.service';
 })
 export class ScorePageComponent {
 
-  pictures: ArtistResult[]
+  quizType$ = this.route.params.pipe(
+    map((params) => {
+      return params['quizType'] as QuizType;
+    })
+  )
 
+  pictures: ArtistResult[]
   correctAnswers: number = 0
 
   constructor(
-    private resultsService: ResultsService
+    private resultsService: ResultsService,
+    private route: ActivatedRoute
   ) {
     this.pictures = this.resultsService.getArtistsResult()
     console.log(this.pictures)
