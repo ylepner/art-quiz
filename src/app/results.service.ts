@@ -33,33 +33,27 @@ export class ResultsService {
     return this.results
   }
 
-  getArtistsResult() {
-    if (this.results.artists) {
-      const arrays = Object.entries(this.results.artists)
+  getCategoryResults(quizType: QuizType) {
+    let results: Record<number, AnswerResult[]> | undefined
+    if (quizType === 'artists') {
+      results = this.results.artists
+    } else {
+      results = this.results.pictures
+    }
+    if (results) {
+      const arrays = Object.entries(results)
       let resultsArr: ArtistResult[] = []
+      let correctAnswers = []
       arrays.forEach((entry) => entry[1].forEach((answer) => {
+        if (answer.isCorrectAnswer) {
+          correctAnswers.push(answer)
+        }
         resultsArr.push(this.convertResultItemToArtistResult(answer))
       }))
-      return resultsArr
+      return { results: resultsArr, correctAnswers: correctAnswers.length, total: resultsArr.length }
     }
-    return []
+    return { results: [], correctAnswers: 0, total: 0 }
   }
-
-  // getPicturesResult() {
-  //   return this.quizResultsPictures
-  // }
-
-  // getArrayOfAllQuizResultsAnswers() {
-  //   const arrays = Object.entries(this.getAllQuizResults())
-  //   let resultsArr: any[] = []
-  //   let questionsArr: AnswerResult[] = []
-  //   arrays.forEach((entry) => {
-  //     resultsArr.push(entry[1].categoryResults.results)
-  //   })
-  //   resultsArr.forEach((el) => el.forEach((question: any) => questionsArr.push(question)))
-  //   return questionsArr
-  // }
-
 
   getQuizResult(quizId: number, category: QuizType) {
     if (category === 'artists') {

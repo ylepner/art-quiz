@@ -3,14 +3,11 @@
     <a routerLink="" class="logo">
       <img class="logo-img" src="assets/img/logo.png" alt="logo">
     </a>
-    <!-- <div class="flex items-center"><button (click)="goBack()"
-        class="back-icon hover text-4xl font-bold flex items-center p-16">
-        &lt;</button></div> -->
   </div>
   <div class="nav-panel-links flex w-1/2 justify-between">
     <a routerLink="" class="to-home-btn nav-font">Home</a>
-    <button class="category-title accent nav-font cursor-pointer">Artists</button>
-    <button class="category-title nav-font cursor-pointer">Pictures</button>
+    <a routerLink="/score/artists" class="category-title accent nav-font cursor-pointer">Artists</a>
+    <a routerLink="/score/pictures" class="category-title nav-font cursor-pointer">Pictures</a>
     <div class="results-title">Score</div>
     <a routerLink="/settings" class="settings">
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
@@ -18,13 +15,13 @@
   </div>
 </div>
 <div class="score-title flex w-full justify-center text-xl text-white">
-  Your score: &nbsp;
+  Total score: &nbsp;
   <span class="score">
-    {{correctAnswers}} / {{pictures.length}}
+    {{(categoryScore$ | async)?.correctAnswers}} / {{(categoryScore$ | async)?.total}}
   </span>
 </div>
 <div class="score-container text-white p-16">
-  <div *ngFor="let picture of pictures" class="picture cursor-pointer w-48 h-48 m-12 relative">
+  <div *ngFor="let picture of (categoryResults$ | async)" class="picture cursor-pointer w-48 h-48 m-12 relative">
     <img [class.no-color]="!picture?.isCorrectAnswer" class="item-image w-48 h-48" src="{{picture?.img}}" alt="image">
     <div [class.no-color]="!picture?.isCorrectAnswer"
       class="item-info w-48 h-48 flex flex-col justify-end p-4 absolute top-0 opacity-0">

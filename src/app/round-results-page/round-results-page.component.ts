@@ -12,9 +12,6 @@ import { ResultsService } from '../results.service';
   styleUrls: ['./round-results-page.component.scss']
 })
 export class RoundResultsPageComponent implements OnDestroy {
-  results?: QuizResultsCategory
-  currentQuizResult: ArtistResult[] = []
-  quizNumber = 0
   quizScore: any
 
   quizId$ = this.route.params.pipe(

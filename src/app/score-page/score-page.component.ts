@@ -18,19 +18,23 @@ export class ScorePageComponent {
     })
   )
 
-  pictures: ArtistResult[]
-  correctAnswers: number = 0
+  categoryResults$ = this.quizType$.pipe(
+    map((category) => {
+      return this.resultsService.getCategoryResults(category).results
+    }),
+  )
+
+  categoryScore$ = this.quizType$.pipe(
+    map((category) => {
+      const results = this.resultsService.getCategoryResults(category)
+      return { correctAnswers: results.correctAnswers, total: results.total }
+    })
+  )
 
   constructor(
     private resultsService: ResultsService,
     private route: ActivatedRoute
   ) {
-    this.pictures = this.resultsService.getArtistsResult()
-    console.log(this.pictures)
-    this.correctAnswers = this.getCorrectAnswers()
   }
 
-  getCorrectAnswers() {
-    return this.pictures.filter((el) => el.isCorrectAnswer).length
-  }
 }
