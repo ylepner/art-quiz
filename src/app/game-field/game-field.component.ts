@@ -35,7 +35,6 @@ export class GameFieldComponent<TData> implements AfterViewInit {
 
   @Input()
   quizId: number | null = null;
-
   currentIndex = 0;
   selectedAnswerNumber?: number;
   selectedAnswers: number[] = [];

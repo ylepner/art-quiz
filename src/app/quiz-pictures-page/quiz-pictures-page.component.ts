@@ -77,6 +77,7 @@ export class QuizPicturesPageComponent {
     private settingsService: SettingsService
   ) {
     this.showTimer = this.ifTimer()
+    this.time = this.settingsService.getTime();
   }
 
   ifTimer() {
