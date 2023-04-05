@@ -8,7 +8,7 @@
       <img src="assets/img/close-icon.png" alt="close">
     </button>
   </div>
-  <div class="options pl-20 sm:pl-18 sm:text-center sm:pl-10 sm:pr-10">
+  <div class="options pl-20">
     <div class="volume flex flex-col">
       <label for="volume-input">Volume {{volume}}</label>
       <input id="volume-input" [style.background-size]="volume + '%'" class="volume-input sm:max-w-full" type="range"
@@ -25,7 +25,7 @@
       </div>
     </div>
     <div *ngIf="timeGame" class="time-to-answer flex flex-col sm:items-center">
-      <div class="time-option-title pb-8">Time</div>
+      <div class="time-option-title pb-8">Time to answer</div>
       <div class="time-buttons flex flex-row w-32 justify-between items-center">
         <button (click)="reduceTime()" class="time-button less-time">-</button>
         <div class="time-amount text-2xl">{{time}}</div>
@@ -33,8 +33,10 @@
       </div>
     </div>
   </div>
-  <div class="confirm-buttons">
-    <button (click)="setDefaultSettings()" class="confirm-btn default-btn">Default</button>
-    <button (click)="setCustomerSettings()" class="confirm-btn save-btn ml-4">Save</button>
+  <div class="confirm-btn-container">
+    <div class="confirm-buttons">
+      <button (click)="setDefaultSettings()" class="confirm-btn default-btn">Default</button>
+      <button (click)="setCustomerSettings()" class="confirm-btn save-btn ml-4">Save</button>
+    </div>
   </div>
 </div>
