@@ -19,4 +19,12 @@
   background-image: linear-gradient(var(--accent), var(--accent));
   background-size: 100%;
   background-repeat: no-repeat;
+  transition: background-size 1s ease;
+}
+
+.no-timer {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
 }
