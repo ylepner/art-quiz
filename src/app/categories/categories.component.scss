@@ -40,3 +40,39 @@
 .score:hover {
   color: var(--accent);
 }
+
+@media (max-width: 1110px) and (min-width: 520px) {
+  .logo-img {
+    max-width: 80%;
+  }
+  .nav-titles {
+    width: 80%;
+  }
+  .settings-img {
+    display: initial;
+  }
+}
+
+@media (max-width: 735px) and (min-width: 521px) {
+  .menu-items-container {
+    padding: 0rem;
+  }
+}
+
+@media (max-width: 679px) {
+  .nav-option {
+    display: none;
+  }
+  .nav-titles {
+    display: inline-grid;
+  }
+  .logo {
+    padding-bottom: 27px;
+  }
+  .menu-items-container {
+    padding: 0;
+  }
+  .nav-panel {
+    padding: 2rem;
+  }
+}

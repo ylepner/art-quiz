@@ -4,15 +4,15 @@
       <a routerLink="" class="logo">
         <img class="logo-img" src="assets/img/logo.png" alt="logo">
       </a>
-      <a routerLink="" class="to-home-btn nav-font">Home</a>
+      <a routerLink="" class="to-home-btn nav-font nav-option">Home</a>
       <div class="title nav-font cursor-default">Categories</div>
-      <a routerLink="/score/{{type$ | async}}" class="score nav-font cursor-pointer">Score</a>
+      <a routerLink="/score/{{type$ | async}}" class="score nav-font cursor-pointer nav-option">Score</a>
     </div>
     <a routerLink="/settings" class="settings">
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
     </a>
   </div>
-  <div class="menu-items-container p-16">
+  <div class="menu-items-container p-8">
     <app-menu-item *ngFor="let item of items$ | async" [item]="item" [link]="'/quiz/'+(type$ | async)+'/'+ item.id">
     </app-menu-item>
   </div>

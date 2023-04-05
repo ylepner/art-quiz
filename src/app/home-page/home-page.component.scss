@@ -49,7 +49,7 @@ img {
 .game-button {
   width: 280px;
   height: 62px;
-  border: 3px solid white;
+  border: 2px solid white;
   border-radius: 35px;
   display: flex;
   color: white;
@@ -64,4 +64,22 @@ img {
 
 .settings-icon:hover {
   filter: drop-shadow(0px 0px 4px var(--accent));
+}
+
+@media (min-width: 320px) and (max-width: 768px) {
+  .game-options-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .game-button {
+    border: 1px solid white;
+  }
+  .title-buttons-container {
+    height: 25rem;
+  }
+  .title {
+    font-size: 80px;
+  }
 }
