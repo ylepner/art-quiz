@@ -1,11 +1,11 @@
-<div class="categories-container text-white relative">
+<div class="categories-container text-white">
   <div class="nav-panel flex justify-between text-3xl p-16">
     <div class="nav-titles flex items-center justify-between">
       <a routerLink="" class="logo">
         <img class="logo-img" src="assets/img/logo.png" alt="logo">
       </a>
       <a routerLink="" class="to-home-btn nav-font nav-option">Home</a>
-      <div class="title nav-font cursor-default">Categories</div>
+      <div class="title nav-font cursor-default nav-option">Categories</div>
       <a routerLink="/score/{{type$ | async}}" class="score nav-font cursor-pointer nav-option">Score</a>
     </div>
     <a routerLink="/settings" class="settings">
@@ -15,5 +15,19 @@
   <div class="menu-items-container p-8">
     <app-menu-item *ngFor="let item of items$ | async" [item]="item" [link]="'/quiz/'+(type$ | async)+'/'+ item.id">
     </app-menu-item>
+  </div>
+  <div class="mobile-nav fixed items-center justify-around">
+    <a routerLink="" class="to-home-btn nav-option-mobile">
+      <div class="mobile-nav-icon home-icon"></div>
+      Home
+    </a>
+    <div class="title-mobile cursor-default nav-option-mobile">
+      <div class="mobile-nav-icon title-icon"></div>
+      Categories
+    </div>
+    <a routerLink="/score/{{type$ | async}}" class="cursor-pointer nav-option-mobile">
+      <div class="mobile-nav-icon score-icon"></div>
+      Score
+    </a>
   </div>
 </div>

@@ -41,6 +41,45 @@
   color: var(--accent);
 }
 
+.mobile-nav {
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 75px;
+  background-color: black;
+  display: flex;
+  border: white 1px solid;
+  border-radius: 20px 20px 0 0;
+  font-size: 12px;
+}
+
+.mobile-nav-icon {
+  width: 28px;
+  height: 28px;
+}
+
+.nav-option-mobile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title-mobile {
+  color: var(--accent);
+}
+
+.home-icon {
+  background: url(/assets/svg/fluent_home-24-regular.svg);
+}
+
+.title-icon {
+  background: url(/assets/svg/bx_bxs-category.svg);
+}
+
+.score-icon {
+  background: url(/assets/svg/cil_star.svg);
+}
+
 @media (max-width: 1110px) and (min-width: 520px) {
   .logo-img {
     max-width: 80%;
