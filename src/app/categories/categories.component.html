@@ -16,7 +16,7 @@
     <app-menu-item *ngFor="let item of items$ | async" [item]="item" [link]="'/quiz/'+(type$ | async)+'/'+ item.id">
     </app-menu-item>
   </div>
-  <div class="mobile-nav fixed items-center justify-around">
+  <div class="mobile-nav fixed hidden items-center justify-around">
     <a routerLink="" class="to-home-btn nav-option-mobile">
       <div class="mobile-nav-icon home-icon"></div>
       Home
