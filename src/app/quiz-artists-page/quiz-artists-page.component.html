@@ -12,7 +12,8 @@
       </div>
       <div class="answers-options">
         <button (click)="answerSelectedFn(i)" *ngFor="let answer of question.answers; let i = index"
-          [class.accent]="selectedAnswers[currentIndex] === i" class="answer">{{answer}}</button>
+          [class.accent]="selectedAnswers[currentIndex] === i"
+          class="answer md:text-base lg:m-2 lg:text-lg md:m-1 md:text-base sm:m-0.5 sm:text-sm lg:h-14 md:h-12 sm:h-11">{{answer}}</button>
       </div>
     </div>
   </ng-template>

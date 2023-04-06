@@ -1,12 +1,12 @@
-<div class="main-container text-white flex flex-col justify-between items-center ml-auto mr-auto max-w-4xl h-full">
-  <div [class.no-timer]="!showTimer" class="timer-container flex w-full justify-around items-center pt-5">
+<div class="main-container text-white flex flex-col justify-between items-center ml-auto mr-auto max-w-4xl h-ful p-8">
+  <div [class.no-timer]="!showTimer" class="timer-container flex w-full justify-around items-center lg:pt-5 sm:pt-0">
     <button (click)="openQuitTheGameDialog()" class="stop-icon flex items-center">
       <img class="stop-img" src="assets/img/close-icon.png" alt="close">
     </button>
     <div *ngIf="showTimer" class="timer-bar text-center" [style.background-size]="timerValue + '%'"></div>
     <div *ngIf="showTimer" class="timer-time">{{time | time}}</div>
   </div>
-  <div class="title pt-12 pb-12 mr-auto">{{currentQuestion?.title}}</div>
+  <div class="title lg:pt-12 lg:pb-12 sm:pt-8 sm:pb-8  lg:text-2xl md:text-xl">{{currentQuestion?.title}}</div>
   <div class="answers flex-grow">
     <ng-container [ngTemplateOutlet]="gameTemplate"
       [ngTemplateOutletContext]="{$implicit: currentQuestion?.data, answerSelected: answerSelected, selectedAnswers: selectedAnswers, currentIndex: currentIndex}">
