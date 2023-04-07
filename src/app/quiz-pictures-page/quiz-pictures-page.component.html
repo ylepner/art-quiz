@@ -5,7 +5,7 @@
       <div class="answers grid grid-cols-2 gap-6">
         <button class="answer-button" (click)="answerSelectedFn(i)"
           *ngFor="let answer of question.answers; let i = index">
-          <img class="answer-image w-96 h-72" [src]="answer" alt="picture">
+          <img class="answer-image" [src]="answer" alt="picture">
         </button>
       </div>
     </div>
