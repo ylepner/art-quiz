@@ -10,10 +10,10 @@
             class="question-number" [class.accent]="i < currentIndex"></div>
         </div>
       </div>
-      <div class="answers-options">
+      <div class="answers-options lg:pt-11 sm:gap-2 sm:pt-5">
         <button (click)="answerSelectedFn(i)" *ngFor="let answer of question.answers; let i = index"
           [class.accent]="selectedAnswers[currentIndex] === i"
-          class="answer md:text-base lg:m-2 lg:text-lg md:m-1 md:text-base sm:m-0.5 sm:text-sm lg:h-14 md:h-12 sm:h-11">{{answer}}</button>
+          class="answer md:text-base lg:m-2 lg:text-lg md:m-1 md:text-base sm:m-0.5 sm:text-xs lg:h-14 md:h-12 sm:h-11">{{answer}}</button>
       </div>
     </div>
   </ng-template>

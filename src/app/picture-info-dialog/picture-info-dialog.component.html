@@ -1,14 +1,16 @@
-<div class="dialog-container text-black bg-white flex justify-center items-center flex-col">
-  <div class="picture-info relative">
-    <img class="dialog-img w-full" src="{{data.image}}" alt="image">
-    <div class="wrong-icon absolute bottom-0 p-4">
-      <img [class.hidden]="data.isCorrect" src="assets/img/wrong.png" alt="wrong answer">
-      <img [class.hidden]="!data.isCorrect" src="assets/img/correct.png" alt="correct answer">
+<div class="dialog-container text-black bg-white flex justify-center items-center flex-col p-0 lg:w-96 md:w-96 sm:w-64">
+  <div class="picture-info relative flex justify-center">
+    <img class="dialog-img" src="{{data.image}}" alt="image">
+    <div class="absolute bottom-0 p-4">
+      <div [class.hidden]="data.isCorrect" class="wrong-icon icon-answer lg:w-16 lg:h-16 md:w-14 md:h-14 sm:w-8 sm:h-8">
+      </div>
+      <div [class.hidden]="!data.isCorrect"
+        class="correct-icon icon-answer lg:w-16 lg:h-16 md:w-14 md:h-14 sm:w-8 sm:h-8"></div>
     </div>
   </div>
-  <div class="title text-xl font-semibold p-4">{{data.name}}</div>
+  <div class="title text-xl font-semibold p-4 sm:text-center">{{data.name}}</div>
   <div class="description italic text-base font-medium">{{data.info}}</div>
-  <div class="pt-8">
+  <div class="button-container lg:pt-8 md:pt-4 sm:pt-4">
     <button (click)="dialogRef.close()" class="next-btn">Next</button>
   </div>
 </div>
