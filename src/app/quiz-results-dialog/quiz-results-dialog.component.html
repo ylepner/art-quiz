@@ -3,10 +3,12 @@
   <div class="logo flex justify-center">
     <img src="assets/img/si-glyph_champion-cup.png" alt="results image">
   </div>
-  <div class="title font-extrabold text-3xl p-5">Congratulations!</div>
-  <div class="results font-extrabold text-5xl">{{data.correctAnswersNumber}}/{{data.questionsNumber}} </div>
+  <div class="title lg:font-extrabold lg:text-3xl lg:p-5 md:font-extrabold md:text-3xl md:p-5 sm:text-2xl">
+    Congratulations!</div>
+  <div class="results lg:font-extrabold lg:text-5xl md:font-extrabold md:text-5xl sm:text-4xl">
+    {{data.correctAnswersNumber}}/{{data.questionsNumber}} </div>
   <div class="links w-full flex justify-around pt-16">
-    <a class="link results-link border-black border-1 border-solid m-2" mat-dialog-close
+    <a class="link results-link border-black border-1 border-solid m-2 lg:w-44 md:w-44" mat-dialog-close
       routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}/results">
       Show results
     </a>

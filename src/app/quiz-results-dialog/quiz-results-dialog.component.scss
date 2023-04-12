@@ -10,7 +10,6 @@
 
 
 .link {
-  width: 180px;
   color: black;
   border-radius: 20px;
   border: 1px solid black;
@@ -24,4 +23,13 @@
 
 .results {
   font-family: 'Gilroy-Bold';
+}
+
+@media (max-width: 520px) {
+  img {
+    max-width: 50%;
+  }
+  .quiz-results-container {
+    width: 16rem;
+  }
 }
