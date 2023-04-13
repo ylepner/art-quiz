@@ -38,3 +38,9 @@
   background-image: url(/assets/img/correct.png);
   background-size: cover;
 }
+
+@media (max-width:364px) {
+  .dialog-container {
+    width: 200px;
+  }
+}

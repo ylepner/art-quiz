@@ -1,14 +1,14 @@
 <div *ngIf="data.correctAnswersNumber < getQuestionsNumber()"
-  class="quiz-results-container bg-white text-black rounded-3xl text-center w-fit">
+  class="quiz-results-container bg-white text-black rounded-3xl text-center sm:w-72">
   <div class="logo flex justify-center">
     <img src="assets/img/si-glyph_champion-cup.png" alt="results image">
   </div>
   <div
-    class="title lg:font-extrabold lg:text-3xl lg:p-5 md:font-extrabold md:text-3xl md:p-5 sm:text-2xl sm:font-extrabold sm:pt-4">
-    Congratulations!</div>
+    class="title lg:font-extrabold lg:text-3xl lg:p-5 md:font-extrabold md:text-3xl md:p-5 sm:text-2xl sm:font-extrabold sm:pt-4 sm:text-base">
+    Round Score:</div>
   <div class="results lg:font-extrabold lg:text-5xl md:font-extrabold md:text-5xl sm:text-4xl">
     {{data.correctAnswersNumber}}/{{data.questionsNumber}} </div>
-  <div class="links w-full flex justify-center pt-16 sm:pt-8">
+  <div class="flex justify-center pt-16 sm:pt-8">
     <a class="link results-link border-black border-1 border-solid m-2" mat-dialog-close
       routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}/results">
       Show results
@@ -27,7 +27,7 @@
     <img src="assets/img/grand-result.png" alt="grand result">
   </div>
   <div class="title font-extrabold text-5xl p-5">Grand result!</div>
-  <div class="title-info font-extrabold text-3xl p-5">Congratulations!</div>
+  <div class="title-info font-extrabold text-3xl p-5 sm:text-xl">Congratulations!</div>
   <div class="next-link flex justify-center mt-8 mb-8 sm:mb-0 sm:mt-0">
     <a class="link results-link border-black border-1 border-solid m-2" mat-dialog-close
       routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}/results">
