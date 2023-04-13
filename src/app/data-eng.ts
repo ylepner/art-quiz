@@ -540,7 +540,7 @@ export const images = [
     imageNum: '89'
   },
   {
-    author: 'Vasily tropinin',
+    author: 'Vasily Tropinin',
     name: 'Girl with a pot of roses',
     year: '1850',
     imageNum: '90'
