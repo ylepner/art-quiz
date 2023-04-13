@@ -34,4 +34,8 @@ export class QuizResultsDialogComponent {
       }
     }
   }
+
+  getQuestionsNumber() {
+    return this.picturesService.questionsNumber
+  }
 }
