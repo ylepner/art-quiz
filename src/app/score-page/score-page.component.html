@@ -1,34 +1,55 @@
-<div class="nav-panel flex justify-between text-2xl p-16 text-white items-center">
+<div class="nav-panel flex justify-between text-2xl p-16 md:p-12 sm:p-8 text-white items-center">
   <div class="flex items-center">
     <a routerLink="" class="logo">
       <img class="logo-img" src="assets/img/logo.png" alt="logo">
     </a>
   </div>
-  <div class="nav-panel-links flex w-1/2 justify-between">
-    <a routerLink="" class="to-home-btn nav-font">Home</a>
+  <div
+    class="nav-panel-links flex w-1/2 justify-between items-center sm:w-full sm:text-lg sm:justify-around sm:pl-2 md:w-full md:text-lg md:justify-around md:pl-2">
     <button (click)="toArtistsScore()" [class.accent]="(quizType$ | async) === 'artists'"
       class="category-title nav-font cursor-pointer">Artists</button>
     <button (click)="toPicturesScore()" [class.accent]="(quizType$ | async) === 'pictures'"
       class="category-title nav-font cursor-pointer">Pictures</button>
-    <div class="results-title cursor-default">Score</div>
+    <div class="results-title cursor-default md:hidden sm:hidden">Score</div>
     <a routerLink="/settings" class="settings">
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
     </a>
   </div>
 </div>
-<div class="score-title flex w-full justify-center text-xl text-white">
-  Total score: &nbsp;
-  <span class="score">
-    {{(categoryScore$ | async)?.correctAnswers}} / {{(categoryScore$ | async)?.total}}
-  </span>
-</div>
-<div class="score-container text-white p-16">
-  <div *ngFor="let picture of (categoryResults$ | async)" class="picture cursor-pointer w-48 h-48 m-12 relative">
-    <img [class.no-color]="!picture?.isCorrectAnswer" class="item-image w-48 h-48" src="{{picture?.img}}" alt="image">
+<div class="score-container text-white">
+  <div class="score-title flex w-full justify-center text-xl text-white">
+    Total score: &nbsp;
+    <span class="score">
+      {{(categoryScore$ | async)?.correctAnswers}} / {{(categoryScore$ | async)?.total}}
+    </span>
+  </div>
+  <div *ngFor="let picture of (categoryResults$ | async)"
+    class="picture cursor-pointer w-48 h-48 md:w-32 md:h-32 sm:w-28 sm:h-28 relative m-4">
+    <img [class.no-color]="!picture?.isCorrectAnswer" class="item-image w-full" src="{{picture?.img}}" alt="image">
     <div [class.no-color]="!picture?.isCorrectAnswer"
-      class="item-info w-48 h-48 flex flex-col justify-end p-4 absolute top-0 opacity-0">
-      <div class="picture-title font-extrabold text-lg">{{picture?.name}}</div>
-      <div class="picture-author italic text-base">{{picture?.author}}, {{picture?.year}}</div>
+      class="item-info w-full h-full flex flex-col justify-end md:justify-center sm:justify-center p-4 absolute top-0 opacity-0 sm:p-1">
+      <div class="picture-title font-extrabold text-lg sm:text-sm sm:leading-4">{{picture?.name}}</div>
+      <div class="picture-author italic text-base sm:text-xs sm:leading-4">{{picture?.author}}, {{picture?.year}}</div>
     </div>
   </div>
+</div>
+<div class="mobile-nav hidden fixed items-center justify-around text-white">
+  <a routerLink="" class="to-home-btn nav-option-mobile">
+    <div class="mobile-nav-icon home-icon"></div>
+    Home
+  </a>
+  <div class="title-mobile cursor-default nav-option-mobile">
+    <div class="mobile-nav-icon title-icon"></div>
+    Results
+  </div>
+  <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/categories/{{quizType$ | async}}"
+    class="cursor-pointer nav-option-mobile">
+    <div class="mobile-nav-icon score-icon"></div>
+    Artists
+  </a>
+  <a *ngIf="(quizType$ | async) === 'pictures'" routerLink="/categories/{{quizType$ | async}}"
+    class="cursor-pointer nav-option-mobile">
+    <div class="mobile-nav-icon score-icon"></div>
+    Pictures
+  </a>
 </div>

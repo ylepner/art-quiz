@@ -20,7 +20,7 @@
 <div class="round-results-container text-white p-16 sm:p-8">
   <div class="score-title flex w-full text-xl text-white justify-center">
     Round score: &nbsp;
-    <span class="score">
+    <span class="score accent">
       {{(quizScore$ | async)?.correctAnswers}} / {{(quizScore$ | async)?.total}}
     </span>
   </div>
@@ -28,9 +28,9 @@
     class="picture cursor-pointer w-48 h-48 md:w-36 md:h-36 sm:w-28 sm:h-28 relative m-4">
     <img [class.no-color]="!picture.isCorrectAnswer" class="item-image w-full" src="{{picture.img}}" alt="image">
     <div [class.no-color]="!picture.isCorrectAnswer"
-      class="item-info w-full h-full flex flex-col justify-end md:justify-center p-4 absolute top-0 opacity-0 sm:p-1">
-      <div class="picture-title font-extrabold text-lg sm:text-base">{{picture.name}}</div>
-      <div class="picture-author italic text-base sm:text-sm">{{picture.author}}, {{picture.year}}</div>
+      class="item-info w-full h-full flex flex-col justify-end md:justify-center sm:justify-center p-4 absolute top-0 opacity-0 sm:p-1">
+      <div class="picture-title font-extrabold text-lg sm:text-sm sm:leading-4">{{picture.name}}</div>
+      <div class="picture-author italic text-base sm:text-xs sm:leading-4">{{picture.author}}, {{picture.year}}</div>
     </div>
   </div>
 </div>
