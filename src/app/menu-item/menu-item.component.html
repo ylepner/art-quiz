@@ -5,7 +5,7 @@
       {{item?.maxScore}}
     </a>
   </div>
-  <a [routerLink]="link" class="item-img">
+  <a [routerLink]="link" class="item-img" [class.not-played]="!item?.isPlayed">
     <img src="{{item?.img}}" alt="image" class="item-image w-48 h-50">
     <div class="play-again-div absolute w-full font-semibold hidden">
       <div *ngIf="item?.isPlayed" class="play-again-button text-black text-xl flex items-center justify-around w-full">

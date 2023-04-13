@@ -29,17 +29,12 @@
   font-size: inherit;
 }
 
-// @media (max-width: 735px) and (min-width: 520px) {
-//   .item-header {
-//     font-size: 1rem;
-//   }
-//   .menu-item-container {
-//     width: 8rem;
-//   }
-// }
-
 @media (max-width: 450px)  {
   .menu-item-container {
       width: 8rem;
     }
+}
+
+.not-played {
+  filter: grayscale(1);
 }
