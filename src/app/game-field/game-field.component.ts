@@ -134,6 +134,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       }
     }
     this.dialog.open(PictureInfoDialogComponent, {
+      panelClass: 'custom-dialog-container',
       data: data
     }).afterClosed().subscribe(() => {
       if (this.currentIndex === this.questions!.length - 1) {
@@ -161,6 +162,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
 
   openGameResultsDialog() {
     const dialogRef = this.dialog.open(QuizResultsDialogComponent, {
+      panelClass: 'custom-dialog-container',
       data: {
         correctAnswersNumber: this.correctAnswers,
         hasMoreQuizzes: this.quizId !== this.quizzesNumber - 1,
@@ -208,6 +210,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
 
   stopGame() {
     const dialogRef = this.dialog.open(GameOverDialogComponent, {
+      panelClass: 'custom-dialog-container',
       data: {
         quizNumber: this.quizId,
         quizName: this.quizType
@@ -229,7 +232,9 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   }
 
   openQuitTheGameDialog() {
-    this.dialogRef = this.dialog.open(QuitGameDialogComponent, {})
+    this.dialogRef = this.dialog.open(QuitGameDialogComponent, {
+      panelClass: 'custom-dialog-container',
+    })
     this.dialogRef.afterClosed().subscribe((data) => {
       if (data) {
         this.closeQuiz()
