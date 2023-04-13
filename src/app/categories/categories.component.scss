@@ -22,6 +22,12 @@
   font-size: 1.5rem;
 }
 
+@media (max-width: 768px) and (min-width: 520px) {
+  .nav-font {
+    font-size: 18px;
+  }
+}
+
 .nav-titles {
   width: 50%;
 }
@@ -32,7 +38,13 @@
   flex-wrap: wrap;
   justify-content: center;
   overflow-y: scroll;
-  height: calc(100vh - 225px);
+  height: calc(100vh - 25%);
+}
+
+@media (max-width: 521px) {
+  .menu-items-container {
+  height: calc(100vh - 25%);
+  }
 }
 
 .to-home-btn:hover {
@@ -81,7 +93,7 @@
   background: url(/assets/svg/cil_star.svg);
 }
 
-@media (max-width: 1110px) and (min-width: 520px) {
+@media (max-width: 1110px) and (min-width: 521px) {
   .logo-img {
     max-width: 80%;
   }
@@ -91,23 +103,17 @@
   .settings-img {
     display: initial;
   }
-}
-
-@media (max-width: 735px) and (min-width: 521px) {
   .menu-items-container {
     padding: 0rem;
   }
 }
 
-@media (max-width: 679px) {
+@media (max-width: 520px) {
   .nav-option {
     display: none;
   }
   .nav-titles {
     display: inline-grid;
-  }
-  .logo {
-    padding-bottom: 27px;
   }
   .menu-items-container {
     padding: 0;

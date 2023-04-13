@@ -1,14 +1,13 @@
 <div class="categories-container text-white">
-  <div class="nav-panel flex justify-between text-3xl p-16">
+  <div class="nav-panel flex justify-between text-3xl p-16 md:p-12">
     <div class="nav-titles flex items-center justify-between">
       <a routerLink="" class="logo">
         <img class="logo-img" src="assets/img/logo.png" alt="logo">
       </a>
-      <a routerLink="" class="to-home-btn nav-font nav-option">Home</a>
       <div class="title nav-font cursor-default nav-option">Categories</div>
       <a routerLink="/score/{{type$ | async}}" class="score nav-font cursor-pointer nav-option">Score</a>
     </div>
-    <a routerLink="/settings" class="settings">
+    <a routerLink="/settings" class="settings flex items-center">
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
     </a>
   </div>
