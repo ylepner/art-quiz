@@ -1,4 +1,4 @@
-<div class="nav-panel flex justify-between text-2xl md:text-xl sm:p-8 p-16 text-white items-center">
+<div class="nav-panel flex justify-between text-2xl md:text-xl sm:p-8 p-16 text-white">
   <a routerLink="" class="logo">
     <img class="logo-img" src="assets/img/logo.png" alt="logo">
   </a>
@@ -21,9 +21,9 @@
     class="picture cursor-pointer w-48 h-48 md:w-36 md:h-36 sm:w-28 sm:h-28 relative m-4">
     <img [class.no-color]="!picture.isCorrectAnswer" class="item-image w-full" src="{{picture.img}}" alt="image">
     <div [class.no-color]="!picture.isCorrectAnswer"
-      class="item-info w-full h-full flex flex-col justify-end p-4 absolute top-0 opacity-0">
-      <div class="picture-title font-extrabold text-lg">{{picture.name}}</div>
-      <div class="picture-author italic text-base">{{picture.author}}, {{picture.year}}</div>
+      class="item-info w-full h-full flex flex-col justify-end sm:justify-center p-4 absolute top-0 opacity-0 sm:p-1">
+      <div class="picture-title font-extrabold text-lg sm:text-base">{{picture.name}}</div>
+      <div class="picture-author italic text-base sm:text-sm">{{picture.author}}, {{picture.year}}</div>
     </div>
   </div>
 </div>
@@ -36,12 +36,12 @@
     <div class="mobile-nav-icon title-icon"></div>
     Results
   </div>
-  <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/score/{{quizType$ | async}}"
+  <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/categories/{{quizType$ | async}}"
     class="cursor-pointer nav-option-mobile">
     <div class="mobile-nav-icon score-icon"></div>
     Artists
   </a>
-  <a *ngIf="(quizType$ | async) === 'pictures'" routerLink="/score/{{quizType$ | async}}"
+  <a *ngIf="(quizType$ | async) === 'pictures'" routerLink="/categories/{{quizType$ | async}}"
     class="cursor-pointer nav-option-mobile">
     <div class="mobile-nav-icon score-icon"></div>
     Pictures
