@@ -2,8 +2,15 @@
   <a routerLink="" class="logo">
     <img class="logo-img" src="assets/img/logo.png" alt="logo">
   </a>
-  <div class="nav-panel-links flex w-1/2 justify-between md:items-center sm:justify-end">
-    <a routerLink="" class="to-home-btn nav-font sm:hidden">Home</a>
+  <div class="nav-panel-links flex w-1/2 justify-between md:items-center sm:justify-end items-center">
+    <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/categories/{{quizType$ | async}}"
+      class="nav-font sm:hidden">
+      to Artists
+    </a>
+    <a *ngIf="(quizType$ | async) === 'pictures'" routerLink="/categories/{{quizType$ | async}}"
+      class="nav-font sm:hidden">
+      to Pictures
+    </a>
     <div class="results-title sm:hidden">Results</div>
     <a routerLink="/settings" class="settings">
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
@@ -21,7 +28,7 @@
     class="picture cursor-pointer w-48 h-48 md:w-36 md:h-36 sm:w-28 sm:h-28 relative m-4">
     <img [class.no-color]="!picture.isCorrectAnswer" class="item-image w-full" src="{{picture.img}}" alt="image">
     <div [class.no-color]="!picture.isCorrectAnswer"
-      class="item-info w-full h-full flex flex-col justify-end sm:justify-center p-4 absolute top-0 opacity-0 sm:p-1">
+      class="item-info w-full h-full flex flex-col justify-end md:justify-center p-4 absolute top-0 opacity-0 sm:p-1">
       <div class="picture-title font-extrabold text-lg sm:text-base">{{picture.name}}</div>
       <div class="picture-author italic text-base sm:text-sm">{{picture.author}}, {{picture.year}}</div>
     </div>
