@@ -34,7 +34,7 @@
     }
     .item-img:hover {
       .play-again-div {
-        display: none;
+        display: none!important;
       }
     }
 }
