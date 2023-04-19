@@ -42,7 +42,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Build
-        run: npm run build
+        run: npm run build:ghpages
       - name: Setup Pages
         uses: actions/configure-pages@v1
       - name: Upload artifact
