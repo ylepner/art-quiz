@@ -1,5 +1,5 @@
 .categories-container {
-  height: 100vh;
+  height: 100dvh;
 }
 
 .settings-img {
@@ -38,12 +38,12 @@
   flex-wrap: wrap;
   justify-content: center;
   overflow-y: scroll;
-  height: calc(100vh - 25%);
+  height: calc(100dvh - 25%);
 }
 
 @media (max-width: 521px) {
   .menu-items-container {
-  height: calc(100vh - 25%);
+  height: calc(100dvh - 25%);
   }
 }
 
