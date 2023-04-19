@@ -32,6 +32,11 @@
     .item-header {
       font-size: 14px;
     }
+    .item-img:hover {
+      .play-again-div {
+        display: none;
+      }
+    }
 }
 
 .not-played {
