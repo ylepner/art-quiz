@@ -12,13 +12,14 @@
 }
 
 .timer-bar {
-  width: 80%;
-  height: 3px;
+  width: 70%;
   background: #A4A4A4;
   background-image: linear-gradient(var(--accent), var(--accent));
   background-size: 100%;
   background-repeat: no-repeat;
   transition: background-size 1s ease;
+  padding: 3px;
+  border-radius: 10px;
 }
 
 .no-timer {
