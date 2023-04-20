@@ -19,7 +19,8 @@
 </div>
 <div class="round-results-container text-white p-16 sm:p-8">
   <div class="score-title flex w-full text-xl text-white justify-center">
-    Round score: &nbsp;
+    <div *ngIf="(quizScore$ | async)?.correctAnswers !== (quizScore$ | async)?.total">Round score: &nbsp;</div>
+    <div *ngIf="(quizScore$ | async)?.correctAnswers === (quizScore$ | async)?.total">Great result ! &nbsp;</div>
     <span class="score accent">
       {{(quizScore$ | async)?.correctAnswers}} / {{(quizScore$ | async)?.total}}
     </span>
