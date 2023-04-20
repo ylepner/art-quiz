@@ -190,13 +190,13 @@ export class GameFieldComponent<TData> implements AfterViewInit {
       if (this.time) {
         this.time--
         this.timerValue = this.timerValue - this.getTimerSegment()
-        // if (this.selectedAnswerNumber !== undefined) {
-        //   clearInterval(this.timerInterval)
-        // }
-        // if (this.time === 0 && this.selectedAnswerNumber === undefined) {
-        //   clearInterval(this.timerInterval)
-        //   this.stopGame()
-        // }
+        if (this.selectedAnswerNumber !== undefined) {
+          clearInterval(this.timerInterval)
+        }
+        if (this.time === 0 && this.selectedAnswerNumber === undefined) {
+          clearInterval(this.timerInterval)
+          this.stopGame()
+        }
       }
     }, 1000)
   }
