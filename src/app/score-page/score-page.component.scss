@@ -15,10 +15,6 @@
   color: var(--accent);
 }
 
-a:hover {
-  color: var(--accent);
-}
-
 .no-color {
   filter: grayscale(1);
 }
@@ -93,8 +89,9 @@ a:hover {
   background: url(/assets/svg/bx_bxs-category.svg);
 }
 
-.score-icon {
-  background: url(/assets/svg/cil_star.svg);
+.category-icon {
+  background: url(/assets/svg/back-button-svgrepo-com.svg);
+  background-size: cover;
 }
 
 @media (max-width: 679px) {
@@ -116,5 +113,11 @@ a:hover {
   .mobile-nav {
     display: flex;
     z-index: 1;
+  }
+}
+
+@media (min-width: 521px) {
+  a:hover {
+    color: var(--accent);
   }
 }

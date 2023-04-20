@@ -42,14 +42,13 @@
     <div class="mobile-nav-icon title-icon"></div>
     Results
   </div>
-  <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/categories/{{quizType$ | async}}"
-    class="cursor-pointer nav-option-mobile">
-    <div class="mobile-nav-icon score-icon"></div>
+  <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/categories/{{quizType$ | async}}" class="nav-option-mobile">
+    <div class="mobile-nav-icon category-icon"></div>
     Artists
   </a>
   <a *ngIf="(quizType$ | async) === 'pictures'" routerLink="/categories/{{quizType$ | async}}"
-    class="cursor-pointer nav-option-mobile">
-    <div class="mobile-nav-icon score-icon"></div>
+    class="nav-option-mobile">
+    <div class="mobile-nav-icon category-icon"></div>
     Pictures
   </a>
 </div>
