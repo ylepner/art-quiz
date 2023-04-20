@@ -40,9 +40,31 @@
     .not-played {
       filter: grayscale(1);
     }
+    .item-results {
+      display: none;
+    }
+    .item-results-mobile{
+      display: flex;
+      color: var(--accent);
+      text-decoration: underline;
+    }
 }
 
 .not-played {
   -webkit-filter: grayscale(1);
   filter: grayscale(1);
+}
+
+.star-icon {
+  background-image: url(/assets/svg/Gold_Star.svg);
+  background-size: cover;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 25%;
+  right: 10%;
+}
+
+.golden {
+  color: gold!important;
 }

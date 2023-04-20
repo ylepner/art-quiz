@@ -1,9 +1,14 @@
 <div class="menu-item-container w-48 relative m-4 block">
   <div class="item-header flex w-full justify-between pb-3 font-semibold">
-    <div class="category-title">Category {{item?.title}}</div>
+    <div class="category-title">Quiz {{item?.title}}</div>
     <a class="item-results" *ngIf="item?.isPlayed" routerLink="{{link}}/results">{{item?.result}} /
       {{item?.maxScore}}
     </a>
+    <a class="item-results-mobile hidden" *ngIf="item?.isPlayed" routerLink="{{link}}/results">{{item?.result}} /
+      {{item?.maxScore}}
+    </a>
+    <div class="star-icon" *ngIf="item?.result === item?.maxScore">
+    </div>
   </div>
   <a [routerLink]="link" class="item-img" [class.not-played]="!item?.isPlayed">
     <img src="{{item?.img}}" alt="image" class="item-image w-48 h-50">
