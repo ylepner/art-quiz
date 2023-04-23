@@ -1,4 +1,4 @@
-export const images = [
+export const imagesEng = [
   {
     author: 'Pavel Fedotov',
     name: `Major's Matchmaking`,
@@ -1446,4 +1446,4 @@ export const images = [
   },
 ];
 
-export default images;
+export default imagesEng;
