@@ -12,11 +12,13 @@
     <fieldset class="fieldset flex justify-around">
       <div class="pr-5">
         <label class="pr-3" for="en-lan">eng</label>
-        <input class="radio-input w-5 h-5" type="radio" name="radio" id="en-lan" value="eng" checked>
+        <input [(ngModel)]="language" (ngModelChange)="setLanguage($event)" class="radio-input w-5 h-5 cursor-pointer"
+          type="radio" name="radio" id="en-lan" value="eng" checked>
       </div>
       <div>
         <label class="pr-3" for="rus-lan">рус</label>
-        <input class="radio-input w-5 h-5" type="radio" name="radio" id="rus-lan" value="rus">
+        <input [(ngModel)]="language" (ngModelChange)="setLanguage($event)" class="radio-input w-5 h-5 cursor-pointer"
+          type="radio" name="radio" id="rus-lan" value="rus">
       </div>
     </fieldset>
   </div>
