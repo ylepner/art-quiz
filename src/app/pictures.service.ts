@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import images from './data-eng';
+import imagesEng from './data-eng';
+import imagesRus from './data';
 import { QuizType, CategoryItem } from './models/categories-models';
 import { PictureItem } from './models/pictures-models';
 import { QuestionArtists, QuestionPictures } from './models/question-models';
 import { ResultsService } from './results.service';
+import { SettingsService } from './settings.service';
+import { Subscription, map } from 'rxjs';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 
@@ -14,20 +17,34 @@ const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master
 export class PicturesService {
   questionsPerGame: number = 3;
   quizzesInCategory: number
+  images: PictureItem[] = []
+  language = ''
+
+  images$ = this.settingsService.language$.pipe(map((value) => {
+    if (value === 'eng') {
+      return imagesEng
+    } else {
+      return imagesRus
+    }
+  }))
+
+  subscription: Subscription;
 
   constructor(
-    private resultService: ResultsService
+    private resultService: ResultsService,
+    private settingsService: SettingsService
   ) {
-    this.quizzesInCategory = (Math.floor(images.length / 2)) / this.questionsPerGame
+    this.subscription = this.images$.subscribe((images) => this.images = images)
+    this.quizzesInCategory = (Math.floor(this.images.length / 2)) / this.questionsPerGame
   }
 
   getCategories(category: QuizType): CategoryItem[] {
-    let data: PictureItem[] = []
+    let data = this.images
     if (category === 'artists') {
-      data = images.slice(0, images.length / 2)
+      data = this.images.slice(0, this.images.length / 2)
     }
     if (category === 'pictures') {
-      data = images.slice(images.length / 2, -1)
+      data = this.images.slice(this.images.length / 2, -1)
     }
     const filteredData = data.filter((el, i) => i % this.questionsNumber === 0)
     const categoryData = filteredData.map((el, i) => {
@@ -48,7 +65,7 @@ export class PicturesService {
   getArtistsGame(gameId: number): QuestionArtists[] {
     let quizQuestions: QuestionArtists[] = []
     const questionsPerGame = 3
-    quizQuestions = images.slice(gameId * questionsPerGame, (gameId + 1) * questionsPerGame).map((picture) => {
+    quizQuestions = this.images.slice(gameId * questionsPerGame, (gameId + 1) * questionsPerGame).map((picture) => {
       const correctAnswer = Math.floor(Math.random() * 4)
       const answers = this.getAnswersOptions(picture, correctAnswer)
       return {
@@ -66,7 +83,7 @@ export class PicturesService {
 
   getPicturesGame(gameId: number) {
     let quizQuestions: QuestionPictures[] = []
-    let picturesArr = images.slice(images.length / 2, -1)
+    let picturesArr = this.images.slice(this.images.length / 2, -1)
     quizQuestions = picturesArr.slice(gameId * this.questionsPerGame, (gameId + 1) * this.questionsPerGame).map((picture) => {
       const correctAnswer = Math.floor(Math.random() * 4)
       const answers = this.getImagesAnswers(picture, correctAnswer)
@@ -83,7 +100,7 @@ export class PicturesService {
   }
 
   getAllAuthors() {
-    const allAuthors = images.map((picture) => picture.author)
+    const allAuthors = this.images.map((picture) => picture.author)
     return [...new Set(allAuthors)]
   }
 
@@ -108,13 +125,13 @@ export class PicturesService {
     let answers = ['', '', '', '']
     answers[correctAnswer] = `${PICTURE_URL}${picture.imageNum}.jpg`;
     for (let i = 0; i < 4; i++) {
-      const randomNumber = Math.floor(Math.random() * (images.length - 1))
+      const randomNumber = Math.floor(Math.random() * (this.images.length - 1))
       const answer = `${PICTURE_URL}${randomNumber}.jpg`;
       if (answers[i] === '' && !answers.includes(answer))
         answers[i] = answer
     }
     if (answers.includes('')) {
-      answers[answers.indexOf('')] = `${PICTURE_URL}${Math.floor(Math.random() * (images.length - 1))}.jpg`;
+      answers[answers.indexOf('')] = `${PICTURE_URL}${Math.floor(Math.random() * (this.images.length - 1))}.jpg`;
     }
     return answers
   }
@@ -125,5 +142,9 @@ export class PicturesService {
 
   get quizzesNumber() {
     return this.quizzesInCategory
+  }
+
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe()
   }
 }

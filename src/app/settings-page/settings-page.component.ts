@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { SettingsService } from '../settings.service';
 
@@ -11,6 +11,10 @@ export class SettingsPageComponent {
 
   volume = 0
   time: number | undefined = 0
+  language = 'eng'
+
+  @Output()
+  languageChange = new EventEmitter()
 
   constructor(
     private router: Router,
@@ -18,7 +22,7 @@ export class SettingsPageComponent {
   ) {
     this.time = this.service.getTime();
     this.volume = this.service.getVolume();
-
+    this.language = this.service.getLanguage();
   }
 
   addTime() {
@@ -57,11 +61,15 @@ export class SettingsPageComponent {
   }
 
   setCustomerSettings() {
-    this.service.setCustomerSettings(this.volume, this.time)
+    this.service.setCustomerSettings(this.volume, this.language, this.time,)
     this.goBack()
   }
 
   goBack() {
     history.back()
+  }
+
+  setLanguage(value: string) {
+    this.service.setLanguage(value)
   }
 }

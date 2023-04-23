@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
-import images from './data-eng';
+import imagesRus from './data-eng';
+import imagesEng from './data';
 import { QuizType } from './models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults, QuizResultsCategory } from './models/quiz-results';
+import { PictureItem } from './models/pictures-models';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 @Injectable({
@@ -12,6 +14,8 @@ export class ResultsService {
   quizCategoryResults: Record<number, QuizResults> = {}
   quizResults?: QuizResults
   results: { [p in QuizType]?: Record<number, AnswerResult[]> } = {}
+  images: PictureItem[] = []
+  language = ''
 
   constructor(
   ) {
@@ -64,7 +68,7 @@ export class ResultsService {
   }
 
   convertResultItemToArtistResult(item: AnswerResult): ArtistResult {
-    const picture = images[item.questionNumber]
+    const picture = this.images[item.questionNumber]
     return {
       img: `${PICTURE_URL}${picture.imageNum}.jpg`,
       number: item.questionNumber,

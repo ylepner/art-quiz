@@ -1,4 +1,5 @@
 export interface Settings {
   volume: number,
-  time?: number
+  time?: number,
+  language: string
 }
