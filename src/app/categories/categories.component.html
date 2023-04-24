@@ -4,8 +4,10 @@
       <a routerLink="" class="logo">
         <img class="logo-img" src="assets/img/logo.png" alt="logo">
       </a>
-      <div class="title nav-font cursor-default nav-option">Categories</div>
-      <a routerLink="/score/{{type$ | async}}" class="score nav-font cursor-pointer nav-option">Score</a>
+      <div class="title nav-font cursor-default nav-option">{{'categories.title' |
+        translate }}</div>
+      <a routerLink="/score/{{type$ | async}}" class="score nav-font cursor-pointer nav-option">{{'categories.toScore' |
+        translate }}</a>
     </div>
     <a routerLink="/settings" class="settings flex items-center">
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
@@ -18,15 +20,15 @@
   <div class="mobile-nav fixed hidden items-center justify-around">
     <a routerLink="" class="to-home-btn nav-option-mobile">
       <div class="mobile-nav-icon home-icon"></div>
-      Home
+      {{'categories.toHome' | translate }}
     </a>
     <div class="title-mobile cursor-default nav-option-mobile">
       <div class="mobile-nav-icon title-icon"></div>
-      Categories
+      {{'categories.title' | translate }}
     </div>
     <a routerLink="/score/{{type$ | async}}" class="cursor-pointer nav-option-mobile">
       <div class="mobile-nav-icon score-icon"></div>
-      Score
+      {{'categories.toScore' | translate }}
     </a>
   </div>
 </div>

@@ -1,6 +1,7 @@
 <div class="menu-item-container w-48 relative m-4 block">
   <div class="item-header flex w-full justify-between pb-3 font-semibold">
-    <div class="category-title">Quiz {{item?.title}}</div>
+    <div class="category-title">{{'item.title' |
+      translate }} {{item?.title}}</div>
     <a class="item-results" *ngIf="item?.isPlayed" routerLink="{{link}}/results">{{item?.result}} /
       {{item?.maxScore}}
     </a>
