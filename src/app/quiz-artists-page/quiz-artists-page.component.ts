@@ -17,10 +17,20 @@ import { QuizQuestion } from '../game-field/game-field.component';
 const NUMBER_OF_QUIZZES = 11
 
 function toQuizArtQuestion(questionArtist: QuestionArtists): QuizQuestion<QuestionArtists> {
+  const title = getTitle()
   return {
-    title: `Who is the author of this picture?`,
+    title: title,
     pictureNumber: questionArtist.number,
     data: questionArtist
+  }
+}
+
+function getTitle() {
+  const language = localStorage.getItem('language' || 'en')
+  if (language === 'en') {
+    return `Who is the author of this picture?`
+  } else {
+    return `Кто автор этой картины?`
   }
 }
 @Component({
