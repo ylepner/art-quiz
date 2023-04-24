@@ -16,10 +16,10 @@
     <div class="play-again-div absolute w-full font-semibold hidden">
       <div *ngIf="item?.isPlayed" class="play-again-button text-black text-xl flex items-center justify-around w-full">
         <img src="assets/img/return-icon1.png" alt="play again" class="w-6">
-        Play again
+        {{'item.playAgain' | translate }}
       </div>
       <div *ngIf="!item?.isPlayed" class="play-again-button text-black text-xl flex items-center justify-around w-full">
-        Play
+        {{'item.play' | translate }}
       </div>
     </div>
   </a>

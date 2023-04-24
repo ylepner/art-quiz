@@ -10,7 +10,9 @@
     "toHome": "Home"
   },
   "item": {
-    "title": "Quiz"
+    "title": "Quiz",
+    "play": "Play",
+    "playAgain": "Play again"
   },
   "score": {
     "title": "Score",
