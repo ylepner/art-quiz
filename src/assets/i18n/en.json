@@ -1,0 +1,40 @@
+{
+  "home": {
+    "buttonArtists": "Artist quiz",
+    "buttonPictures": "Pictures quiz"
+  },
+  "categories": {
+    "title": "Categories",
+    "toScore": "Score",
+    "itemTitle": "Quiz",
+    "toHome": "Home"
+  },
+  "item": {
+    "title": "Quiz"
+  },
+  "score": {
+    "title": "Score",
+    "artists": "Artists",
+    "pictures": "Pictures",
+    "totalScore": "Total score",
+    "toArtists": "Artists",
+    "toPictures": "Pictures",
+    "toHome": "Home"
+  },
+  "roundResults": {
+    "title": "Results",
+    "toArtists": "to Artists",
+    "toPictures": "to Pictures",
+    "roundScore": "Round score",
+    "greatScore": "Great result",
+    "toHome": "Home",
+    "toArtistsNav": "Artists",
+    "toPicturesNav": "Pictures"
+  },
+  "artistQuiz": {
+    "question": "Who is the author of this picture?"
+  },
+  "picturesQuiz": {
+    "question": "Which is Альбрехт Дюрер picture?"
+  }
+}

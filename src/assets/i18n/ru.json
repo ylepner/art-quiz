@@ -1,0 +1,36 @@
+{
+  "home": {
+    "buttonArtists": "Квиз по авторам",
+    "buttonPictures": "Квиз по картинам"
+  },
+  "categories": {
+    "title": "Категории",
+    "toScore": "Результаты",
+    "itemTitle": "Квиз",
+    "toHome": "Главная"
+  },
+  "item": {
+    "title": "Квиз"
+  },
+  "score": {
+    "title": "Результаты",
+    "artists": "Авторы",
+    "pictures": "Картины",
+    "totalScore": "Общий счет",
+    "toArtists": "Авторы",
+    "toHome": "Главная"
+  },
+  "roundResults": {
+    "title": "Результаты",
+    "toArtists": "к Авторам",
+    "toPictures": "к Картинам",
+    "roundScore": "Счет раунда",
+    "greatScore": "Great result",
+    "toHome": "Главная",
+    "toArtistsNav": "Авторы",
+    "toPicturesNav": "Картины"
+  },
+  "artistQuiz": {
+    "question": "Кто автор этой картины?"
+  }
+}
