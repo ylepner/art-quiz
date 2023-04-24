@@ -14,10 +14,20 @@ import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
 
 function toQuizPicQuestion(questionPicture: QuestionPictures): QuizQuestion<QuestionPictures> {
+  const title = getTitle(questionPicture.author)
   return {
-    title: `Which is ${questionPicture.author} picture?`,
+    title: title,
     pictureNumber: questionPicture.number,
     data: questionPicture
+  }
+}
+
+function getTitle(author: string) {
+  const language = localStorage.getItem('language' || 'en')
+  if (language === 'en') {
+    return `Which is ${author} picture?`
+  } else {
+    return `Автором какой картины является ${author}?`
   }
 }
 
