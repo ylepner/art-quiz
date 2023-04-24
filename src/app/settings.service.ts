@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Settings } from './models/settings-models';
 import { BehaviorSubject } from 'rxjs';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -10,10 +11,11 @@ export class SettingsService {
   private settings: Settings = {
     volume: 0,
     time: 0,
-    language: 'eng'
+    language: 'en'
   }
 
-  constructor() {
+  constructor(
+  ) {
     const settingsData = localStorage.getItem('settings')
     if (settingsData) {
       this.settings = JSON.parse(settingsData)
@@ -23,10 +25,10 @@ export class SettingsService {
   setDefaultSettings() {
     this.setVolume(0);
     this.setTime(undefined);
-    this.setLanguage('eng')
+    this.setLanguage('en')
   }
 
-  setCustomerSettings(volume: number, language = 'eng', time?: number) {
+  setCustomerSettings(volume: number, language = 'en', time?: number) {
     this.setVolume(volume);
     this.setTime(time);
     this.setLanguage(language)
@@ -61,8 +63,8 @@ export class SettingsService {
   }
 
   getLanguage() {
-    return localStorage.getItem('language') ?? 'eng'
+    return localStorage.getItem('language') ?? 'en'
   }
 
-  language$ = new BehaviorSubject('eng')
+  language$ = new BehaviorSubject('en')
 }

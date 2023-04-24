@@ -11,7 +11,7 @@ export class SettingsPageComponent {
 
   volume = 0
   time: number | undefined = 0
-  language = 'eng'
+  language = ''
 
   @Output()
   languageChange = new EventEmitter()

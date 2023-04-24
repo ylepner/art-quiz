@@ -21,7 +21,7 @@ export class PicturesService {
   language = ''
 
   images$ = this.settingsService.language$.pipe(map((value) => {
-    if (value === 'eng') {
+    if (value === 'en') {
       return imagesEng
     } else {
       return imagesRus
@@ -142,9 +142,5 @@ export class PicturesService {
 
   get quizzesNumber() {
     return this.quizzesInCategory
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe()
   }
 }
