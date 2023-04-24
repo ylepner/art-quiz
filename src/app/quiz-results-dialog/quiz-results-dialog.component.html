@@ -5,19 +5,19 @@
   </div>
   <div
     class="title lg:font-extrabold lg:text-3xl lg:p-5 md:font-extrabold md:text-3xl md:p-5 sm:text-2xl sm:font-extrabold sm:pt-4 sm:text-base">
-    Round Score:</div>
+    {{'quizResultsDialog.title' | translate }}:</div>
   <div class="results lg:font-extrabold lg:text-5xl md:font-extrabold md:text-5xl sm:text-4xl">
     {{data.correctAnswersNumber}}/{{data.questionsNumber}} </div>
   <div class="flex justify-center pt-16 sm:pt-8">
     <a class="link results-link border-black border-1 border-solid m-2" mat-dialog-close
       routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}/results">
-      Show results
+      {{'quizResultsDialog.toResults' | translate }}
     </a>
     <a *ngIf="data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer"
-      routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}" mat-dialog-close>Next
-      quiz</a>
+      routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}" mat-dialog-close>{{'quizResultsDialog.nextButton' |
+      translate }}</a>
     <a *ngIf="!data.hasMoreQuizzes" class="link next-quiz-link m-2 cursor-pointer" routerLink=""
-      mat-dialog-close>Home</a>
+      mat-dialog-close>{{'quizResultsDialog.toHome' | translate }}</a>
   </div>
 </div>
 
@@ -26,16 +26,17 @@
   <div class="logo-grand flex justify-center sm:p-2">
     <img src="assets/img/grand-result.png" alt="grand result">
   </div>
-  <div class="title font-extrabold text-5xl p-5">Grand result!</div>
-  <div class="title-info font-extrabold text-3xl p-5 sm:text-xl">Congratulations!</div>
+  <div class="title font-extrabold text-5xl p-5">{{'quizResultsDialog.titleGrand' | translate }}!</div>
+  <div class="title-info font-extrabold text-3xl p-5 sm:text-xl">{{'quizResultsDialog.congrat' | translate }}!</div>
   <div class="next-link flex justify-center mt-8 mb-8 sm:mb-0 sm:mt-0">
     <a class="link results-link border-black border-1 border-solid m-2" mat-dialog-close
       routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}/results">
-      Show results
+      {{'quizResultsDialog.toResults' | translate }}
     </a>
     <a *ngIf="data.hasMoreQuizzes" routerLink="/quiz/{{data.quizName}}/{{data.quizNumber}}"
-      class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>Next</a>
+      class="link next-quiz-link m-2 cursor-pointer" mat-dialog-close>{{'quizResultsDialog.nextButton' | translate
+      }}</a>
     <a *ngIf="!data.hasMoreQuizzes" routerLink="" class="link next-quiz-link m-2 cursor-pointer"
-      mat-dialog-close>Home</a>
+      mat-dialog-close>{{'quizResultsDialog.toHome' | translate }}</a>
   </div>
 </div>

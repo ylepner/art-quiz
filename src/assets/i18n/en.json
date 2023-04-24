@@ -41,8 +41,16 @@
     "nextButton": "next"
   },
   "quitGame": {
-    "question": "Do you really want to <br> quit the game?",
+    "question": "Do you really want to quit the game?",
     "cancel": "Cancel",
     "confirm": "Yes"
+  },
+  "quizResultsDialog": {
+    "title": "Round Score",
+    "toResults": "Show results",
+    "nextButton": "Next quiz",
+    "titleGrand": "Grand result",
+    "congrat": "Congratulations",
+    "toHome": "Home"
   }
 }
