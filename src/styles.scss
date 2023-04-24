@@ -25,6 +25,10 @@ body {
   padding: 0;
 }
 
+.custom-dialog-container .mat-dialog-actions {
+  margin-bottom: 0;
+}
+
 @font-face {
   font-family: "Gilroy";
   src: url("assets/fonts/Gilroy-Light.otf") format("opentype");

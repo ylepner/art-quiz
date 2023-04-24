@@ -9,7 +9,7 @@
 }
 
 .btn {
-  width: 180px;
+  width: 50%;
   color: black;
   border-radius: 20px;
   padding: 10px;
@@ -17,4 +17,28 @@
 
 .btn-cancel {
   border: 1px solid black;
+}
+
+@media (max-width: 520px) {
+  img {
+    max-width: 50%;
+  }
+  .game-over-container {
+    padding: 0px;
+  }
+}
+
+@media (max-width:364px) {
+  .game-over-container {
+    width: 200px;
+  }
+  .game-over-container .title{
+    font-size: 2rem;
+  }
+  .title-info {
+    font-size: 1.2rem;
+  }
+  .btn {
+    width: 42%;
+  }
 }
