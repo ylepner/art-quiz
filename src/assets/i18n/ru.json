@@ -38,8 +38,8 @@
   },
   "quitGame": {
     "question": "Вы действительно хотите покинуть игру?",
-    "cancel": "Отмена",
-    "yes": "Да"
+    "reject": "Отмена",
+    "confirm": "Да"
   },
   "quizResultsDialog": {
     "title": "Результаты квиза",
@@ -48,5 +48,11 @@
     "titleGrand": "Лучший результат",
     "congrat": "Поздравляем",
     "toHome": "Главная"
+  },
+  "gameOver": {
+    "title": "Игра закончена",
+    "playAgain": "Играть cновa?",
+    "confirm": "Да",
+    "reject": "Нет"
   }
 }

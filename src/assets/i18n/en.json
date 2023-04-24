@@ -42,7 +42,7 @@
   },
   "quitGame": {
     "question": "Do you really want to quit the game?",
-    "cancel": "Cancel",
+    "reject": "Cancel",
     "confirm": "Yes"
   },
   "quizResultsDialog": {
@@ -52,5 +52,11 @@
     "titleGrand": "Grand result",
     "congrat": "Congratulations",
     "toHome": "Home"
+  },
+  "gameOver": {
+    "title": "Game over",
+    "playAgain": "Play again?",
+    "confirm": "Yes",
+    "reject": "No"
   }
 }
