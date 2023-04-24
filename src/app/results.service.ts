@@ -4,6 +4,8 @@ import imagesEng from './data';
 import { QuizType } from './models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults, QuizResultsCategory } from './models/quiz-results';
 import { PictureItem } from './models/pictures-models';
+import { SettingsService } from './settings.service';
+import { Subscription, map } from 'rxjs';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 @Injectable({
@@ -17,12 +19,24 @@ export class ResultsService {
   images: PictureItem[] = []
   language = ''
 
+  images$ = this.settingsService.language$.pipe(map((value) => {
+    if (value === 'en') {
+      return imagesEng
+    } else {
+      return imagesRus
+    }
+  }))
+
+  subscription: Subscription;
+
   constructor(
+    private settingsService: SettingsService
   ) {
     const data = localStorage.getItem('results')
     if (data) {
       this.results = JSON.parse(data)
     }
+    this.subscription = this.images$.subscribe((images) => this.images = images)
   }
 
   setQuizResults(quizType: QuizType, data: QuizResultsCategory) {
