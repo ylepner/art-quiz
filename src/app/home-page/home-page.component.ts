@@ -10,15 +10,10 @@ import { SettingsService } from '../settings.service';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
-  language = ''
   constructor(
-    private translate: TranslateService,
     private settingsService: SettingsService
   ) {
-    translate.addLangs(['en', 'ru']);
-    translate.setDefaultLang('en');
-    this.language = this.settingsService.getLanguage()
-    this.translate.use(this.language);
+    this.settingsService.setTranslation();
   }
 }
 

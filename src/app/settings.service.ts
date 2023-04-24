@@ -15,6 +15,7 @@ export class SettingsService {
   }
 
   constructor(
+    private translate: TranslateService
   ) {
     const settingsData = localStorage.getItem('settings')
     if (settingsData) {
@@ -67,4 +68,13 @@ export class SettingsService {
   }
 
   language$ = new BehaviorSubject('en')
+
+  setTranslation() {
+    this.translate.addLangs(['en', 'ru']);
+    this.translate.setDefaultLang('en');
+    const language = localStorage.getItem('language' || 'en')
+    if (language) {
+      this.translate.use(language);
+    }
+  }
 }

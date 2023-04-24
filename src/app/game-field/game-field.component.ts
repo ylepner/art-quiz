@@ -88,6 +88,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
     this.volume = this.settingsService.getVolume()
     this.timeConst = this.time;
     this.quizzesNumber = this.picturesService.quizzesNumber
+    this.settingsService.setTranslation();
   }
 
   ngAfterViewInit() {
