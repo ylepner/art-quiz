@@ -36,5 +36,13 @@
   },
   "picturesQuiz": {
     "question": "Which is Альбрехт Дюрер picture?"
+  },
+  "pictureInfo": {
+    "nextButton": "next"
+  },
+  "quitGame": {
+    "question": "Do you really want to <br> quit the game?",
+    "cancel": "Cancel",
+    "confirm": "Yes"
   }
 }

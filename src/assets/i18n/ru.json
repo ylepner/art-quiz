@@ -32,5 +32,13 @@
   },
   "artistQuiz": {
     "question": "Кто автор этой картины?"
+  },
+  "pictureInfo": {
+    "nextButton": "далее"
+  },
+  "quitGame": {
+    "question": "Вы действительно хотите покинуть игру?",
+    "cancel": "Отмена",
+    "yes": "Да"
   }
 }
