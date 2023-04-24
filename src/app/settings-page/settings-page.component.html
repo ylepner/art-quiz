@@ -9,18 +9,20 @@
     </button>
   </div>
   <div class="language-settings flex pl-20 sm:justify-center md:pb-4 lg:pb-4">
-    <fieldset class="fieldset flex justify-around">
-      <div class="pr-5">
-        <label class="pr-3" for="en-lan">eng</label>
-        <input [(ngModel)]="language" (ngModelChange)="setLanguage($event)" class="radio-input w-5 h-5 cursor-pointer"
-          type="radio" name="radio" id="en-lan" value="eng" checked>
-      </div>
-      <div>
-        <label class="pr-3" for="rus-lan">рус</label>
-        <input [(ngModel)]="language" (ngModelChange)="setLanguage($event)" class="radio-input w-5 h-5 cursor-pointer"
-          type="radio" name="radio" id="rus-lan" value="rus">
-      </div>
-    </fieldset>
+    <form action="">
+      <fieldset class="fieldset flex justify-around">
+        <div class="pr-5">
+          <label class="pr-3" for="en-lan">eng</label>
+          <input [(ngModel)]="language" class="radio-input w-5 h-5 cursor-pointer" type="radio" name="radio" id="en-lan"
+            value="en">
+        </div>
+        <div>
+          <label class="pr-3" for="rus-lan">рус</label>
+          <input [(ngModel)]="language" class="radio-input w-5 h-5 cursor-pointer" type="radio" name="radio"
+            id="rus-lan" value="ru">
+        </div>
+      </fieldset>
+    </form>
   </div>
   <div class="options pl-20">
     <div class="volume flex flex-col">
