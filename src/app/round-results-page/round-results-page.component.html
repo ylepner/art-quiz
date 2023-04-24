@@ -5,13 +5,13 @@
   <div class="nav-panel-links flex w-1/2 justify-between md:items-center sm:justify-end items-center">
     <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/categories/{{quizType$ | async}}"
       class="nav-font sm:hidden">
-      to Artists
+      {{'roundResults.toArtists' | translate }}
     </a>
     <a *ngIf="(quizType$ | async) === 'pictures'" routerLink="/categories/{{quizType$ | async}}"
       class="nav-font sm:hidden">
-      to Pictures
+      {{'roundResults.toPicturesNav' | translate }}
     </a>
-    <div class="results-title sm:hidden">Results</div>
+    <div class="results-title sm:hidden">{{'roundResults.title' | translate }}</div>
     <a routerLink="/settings" class="settings">
       <img class="settings-img" src="assets/img/carbon_settings.png" alt="settings">
     </a>
@@ -19,8 +19,11 @@
 </div>
 <div class="round-results-container text-white p-16 sm:p-8">
   <div class="score-title flex w-full text-xl text-white justify-center">
-    <div *ngIf="(quizScore$ | async)?.correctAnswers !== (quizScore$ | async)?.total">Round score: &nbsp;</div>
-    <div *ngIf="(quizScore$ | async)?.correctAnswers === (quizScore$ | async)?.total">Great result ! &nbsp;</div>
+    <div *ngIf="(quizScore$ | async)?.correctAnswers !== (quizScore$ | async)?.total">{{'roundResults.roundScore' |
+      translate
+      }}: &nbsp;</div>
+    <div *ngIf="(quizScore$ | async)?.correctAnswers === (quizScore$ | async)?.total">{{'roundResults.greatScore' |
+      translate }} ! &nbsp;</div>
     <span class="score accent">
       {{(quizScore$ | async)?.correctAnswers}} / {{(quizScore$ | async)?.total}}
     </span>
@@ -38,20 +41,20 @@
 <div class="mobile-nav fixed hidden items-center justify-around text-white">
   <a routerLink="" class="to-home-btn nav-option-mobile">
     <div class="mobile-nav-icon home-icon"></div>
-    Home
+    {{'roundResults.toHome' | translate }}
   </a>
   <div class="title-mobile cursor-default nav-option-mobile">
     <div class="mobile-nav-icon title-icon"></div>
-    Results
+    {{'roundResults.title' | translate }}
   </div>
   <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/categories/{{quizType$ | async}}"
     class="cursor-pointer nav-option-mobile">
     <div class="mobile-nav-icon score-icon"></div>
-    Artists
+    {{'roundResults.toArtistsNav' | translate }}
   </a>
   <a *ngIf="(quizType$ | async) === 'pictures'" routerLink="/categories/{{quizType$ | async}}"
     class="cursor-pointer nav-option-mobile">
     <div class="mobile-nav-icon score-icon"></div>
-    Pictures
+    {{'roundResults.toPicturesNav' | translate }}
   </a>
 </div>
