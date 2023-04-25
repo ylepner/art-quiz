@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import imagesRus from './data-eng';
-import imagesEng from './data';
+import imagesEng from './data-eng';
+import imagesRus from './data';
 import { QuizType } from './models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults, QuizResultsCategory } from './models/quiz-results';
 import { PictureItem } from './models/pictures-models';
@@ -17,7 +17,6 @@ export class ResultsService {
   quizResults?: QuizResults
   results: { [p in QuizType]?: Record<number, AnswerResult[]> } = {}
   images: PictureItem[] = []
-  language = ''
 
   images$ = this.settingsService.language$.pipe(map((value) => {
     if (value === 'en') {

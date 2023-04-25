@@ -42,7 +42,6 @@ export class SettingsService {
   setVolume(value: number) {
     this.settings.volume = value
     this.saveToLocalStorage()
-    console.log(localStorage.getItem('language'))
   }
 
   getTime() {
@@ -58,16 +57,18 @@ export class SettingsService {
     localStorage.setItem('settings', JSON.stringify(this.settings))
   }
 
+  language$ = new BehaviorSubject('en')
+
   setLanguage(language: string) {
     localStorage.setItem('language', language)
+    this.settings.language = language
     this.language$.next(language)
+    this.saveToLocalStorage()
   }
 
   getLanguage() {
     return localStorage.getItem('language') ?? 'en'
   }
-
-  language$ = new BehaviorSubject('en')
 
   setTranslation() {
     this.translate.addLangs(['en', 'ru']);

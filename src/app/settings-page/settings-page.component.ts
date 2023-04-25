@@ -45,6 +45,7 @@ export class SettingsPageComponent {
     this.service.setDefaultSettings()
     this.volume = this.service.getVolume()
     this.timeGame = false
+    this.language = 'en'
     this.goBack()
   }
 
@@ -61,7 +62,7 @@ export class SettingsPageComponent {
   }
 
   setCustomerSettings() {
-    this.service.setCustomerSettings(this.volume, this.language, this.time,)
+    this.service.setCustomerSettings(this.volume, this.language, this.time)
     this.goBack()
   }
 

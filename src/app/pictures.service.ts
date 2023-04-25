@@ -34,6 +34,7 @@ export class PicturesService {
     private resultService: ResultsService,
     private settingsService: SettingsService
   ) {
+    this.language = this.settingsService.getLanguage()
     this.subscription = this.images$.subscribe((images) => this.images = images)
     this.quizzesInCategory = (Math.floor(this.images.length / 2)) / this.questionsPerGame
   }
