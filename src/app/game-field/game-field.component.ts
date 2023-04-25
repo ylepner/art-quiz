@@ -227,7 +227,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
         this.selectedAnswers = []
         this.startTimer()
       } else {
-        this.router.navigate(['categories/artists'])
+        this.router.navigate([`categories/${this.quizType}`])
       }
     })
   }
