@@ -5,14 +5,14 @@
   },
   "categories": {
     "title": "Categories",
-    "toScore": "Score",
+    "toScore": "Total score",
     "itemTitle": "Quiz",
     "toHome": "Home"
   },
   "item": {
     "title": "Quiz",
     "play": "Play",
-    "playAgain": "Play again"
+    "score": "Score"
   },
   "score": {
     "title": "Score",
@@ -24,7 +24,7 @@
     "toHome": "Home"
   },
   "roundResults": {
-    "title": "Results",
+    "title": "Round results",
     "toArtists": "to Artists",
     "toPictures": "to Pictures",
     "roundScore": "Round score",

@@ -5,17 +5,17 @@
   },
   "categories": {
     "title": "Категории",
-    "toScore": "Результаты",
+    "toScore": "Общий счет",
     "itemTitle": "Квиз",
     "toHome": "Главная"
   },
   "item": {
     "title": "Квиз",
     "play": "Играть",
-    "playAgain": "Играть снова"
+    "score": "Счет"
   },
   "score": {
-    "title": "Результаты",
+    "title": "Общий счет",
     "artists": "Авторы",
     "pictures": "Картины",
     "totalScore": "Общий счет",
@@ -23,7 +23,7 @@
     "toHome": "Главная"
   },
   "roundResults": {
-    "title": "Результаты",
+    "title": "Результаты раунда",
     "toArtists": "к Авторам",
     "toPictures": "к Картинам",
     "roundScore": "Счет раунда",
