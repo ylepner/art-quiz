@@ -60,5 +60,13 @@
     "playAgain": "Play again?",
     "confirm": "Yes",
     "reject": "No"
+  },
+  "settings": {
+    "title": "Settings",
+    "volume": "Volume",
+    "timeGame": "Time game",
+    "timeToAnswer": "Time to answer",
+    "defaultBtn": "Default",
+    "saveBtn": "Save"
   }
 }

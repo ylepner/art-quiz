@@ -56,5 +56,13 @@
     "playAgain": "Играть cновa?",
     "confirm": "Да",
     "reject": "Нет"
+  },
+  "settings": {
+    "title": "Настройки",
+    "volume": "Громкость",
+    "timeGame": "Игра на время",
+    "timeToAnswer": "Время на ответ",
+    "defaultBtn": "По умолчанию",
+    "saveBtn": "Сохранить"
   }
 }

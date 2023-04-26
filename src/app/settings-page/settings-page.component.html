@@ -2,7 +2,7 @@
   <div class="nav-settings flex justify-between text-3xl p-16">
     <div class="flex items-center"><button (click)="goBack()" class="back-icon hover text-4xl flex items-center">
         &lt;</button>
-      <div class="back-title text-2xl pl-4 cursor-default">Settings </div>
+      <div class="back-title text-2xl pl-4 cursor-default">{{'settings.title' | translate}}</div>
     </div>
     <button (click)="goBack()" class="sm:hidden hover">
       <img src="assets/img/close-icon.png" alt="close">
@@ -26,7 +26,7 @@
   </div>
   <div class="options pl-20">
     <div class="volume flex flex-col">
-      <label for="volume-input">Volume {{volume}}</label>
+      <label for="volume-input">{{'settings.volume' | translate}} {{volume}}</label>
       <input id="volume-input" [style.background-size]="volume + '%'" class="volume-input sm:max-w-full" type="range"
         [(ngModel)]="volume">
       <label for="volume-input" class="flex pb-0 justify-between">
@@ -35,13 +35,13 @@
       </label>
     </div>
     <div class="time-game flex flex-col pb-8 sm:items-center">
-      <label for="time-toggle">Time game</label>
+      <label for="time-toggle">{{'settings.timeGame' | translate}}</label>
       <div class="input-div flex items-center w-28 justify-between">
         {{time ? 'On' : 'Off'}} <input id="time-toggle" class="toggle-button" type="checkbox" [(ngModel)]="timeGame">
       </div>
     </div>
     <div *ngIf="timeGame" class="time-to-answer flex flex-col sm:items-center">
-      <div class="time-option-title pb-8">Time to answer</div>
+      <div class="time-option-title pb-8">{{'settings.timeToAnswer' | translate}}</div>
       <div class="time-buttons flex flex-row w-32 justify-between items-center">
         <button (click)="reduceTime()" class="time-button less-time">-</button>
         <div class="time-amount text-2xl">{{time}}</div>
@@ -51,8 +51,10 @@
   </div>
   <div class="confirm-btn-container">
     <div class="confirm-buttons">
-      <button (click)="setDefaultSettings()" class="confirm-btn default-btn">Default</button>
-      <button (click)="setCustomerSettings()" class="confirm-btn save-btn ml-4">Save</button>
+      <button (click)="setDefaultSettings()" class="confirm-btn default-btn">{{'settings.defaultBtn' |
+        translate}}</button>
+      <button (click)="setCustomerSettings()" class="confirm-btn save-btn ml-4">{{'settings.saveBtn' |
+        translate}}</button>
     </div>
   </div>
 </div>
