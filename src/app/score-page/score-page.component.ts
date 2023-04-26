@@ -4,6 +4,7 @@ import { map } from 'rxjs';
 import { QuizType } from '../models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-score-page',
@@ -34,8 +35,10 @@ export class ScorePageComponent {
   constructor(
     private resultsService: ResultsService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private settingsService: SettingsService
   ) {
+    this.settingsService.setTranslation();
   }
 
   toArtistsScore() {
