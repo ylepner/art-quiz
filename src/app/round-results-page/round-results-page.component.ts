@@ -5,6 +5,7 @@ import { QuizType } from '../models/categories-models';
 import { AnswerResult, ArtistResult, QuizResults, QuizResultsCategory } from '../models/quiz-results';
 import { PicturesService } from '../pictures.service';
 import { ResultsService } from '../results.service';
+import { SettingsService } from '../settings.service';
 
 @Component({
   selector: 'app-round-results-page',
@@ -45,10 +46,12 @@ export class RoundResultsPageComponent implements OnDestroy {
 
   constructor(
     private service: ResultsService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private settingsService: SettingsService
   ) {
-    this.subscription = this.quizScore$.subscribe((q) => {
-      this.quizScore = q
+    this.settingsService.setTranslation();
+    this.subscription = this.quizScore$.subscribe((data) => {
+      this.quizScore = data
     })
     firstValueFrom(this.quizScore$).then((val) => {
       this.quizScore = val

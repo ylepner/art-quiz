@@ -26,6 +26,7 @@ export class QuizResultsDialogComponent {
     private picturesService: PicturesService,
     private settingsService: SettingsService
   ) {
+    this.settingsService.setTranslation();
     if (this.settingsService.getVolume() !== 0) {
       if (data.correctAnswersNumber < this.picturesService.questionsNumber) {
         this.soundService.playRoundEnd()
