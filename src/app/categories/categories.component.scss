@@ -126,3 +126,9 @@
     z-index: 1;
   }
 }
+
+@media (max-width: 570px) {
+  .nav-titles {
+    width: 90%;
+  }
+}
