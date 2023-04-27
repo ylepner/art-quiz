@@ -49,12 +49,12 @@
   </div>
   <a *ngIf="(quizType$ | async) === 'artists'" routerLink="/categories/{{quizType$ | async}}"
     class="cursor-pointer nav-option-mobile">
-    <div class="mobile-nav-icon score-icon"></div>
+    <div class="mobile-nav-icon category-icon"></div>
     {{'roundResults.toArtistsNav' | translate }}
   </a>
   <a *ngIf="(quizType$ | async) === 'pictures'" routerLink="/categories/{{quizType$ | async}}"
     class="cursor-pointer nav-option-mobile">
-    <div class="mobile-nav-icon score-icon"></div>
+    <div class="mobile-nav-icon category-icon"></div>
     {{'roundResults.toPicturesNav' | translate }}
   </a>
 </div>
