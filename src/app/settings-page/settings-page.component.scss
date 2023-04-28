@@ -106,7 +106,7 @@ label {
 }
 
 .confirm-btn {
-  width: 50%;
+  width: 280px;
   padding: 10px;
   border: 2px solid white;
   border-radius: 35px;
@@ -122,7 +122,7 @@ label {
   display: flex;
   width: 100%;
   justify-content: end;
-  padding: 0 3rem;
+  padding: 3rem 0 0 3rem;
 }
 
 .save-btn {
@@ -133,7 +133,7 @@ label {
 }
 
 .hover:hover {
-    filter: drop-shadow(0px 0px 4px var(--accent));
+  filter: drop-shadow(0px 0px 4px var(--accent));
 }
 
 @media (min-width: 521px) and (max-width: 768px) {
@@ -182,4 +182,18 @@ label {
     font-size: 18px;
     padding: 8px;
   }
+  .confirm-buttons {
+    padding: 0 2rem;
+  }
 }
+
+@media (min-width: 768px) {
+  .default-btn:hover {
+  background-color: var(--accent);
+}
+  .save-btn:hover {
+    background-color: white;
+  }
+}
+
+
