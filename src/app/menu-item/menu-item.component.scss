@@ -6,7 +6,7 @@
   color: var(--accent);
 }
 
-.play-again-div {
+.score-div {
   background-color: #ffffffb0;
   height: 20%;
   position: absolute;
@@ -16,7 +16,7 @@
 }
 
 .item-img:hover {
-  .play-again-div {
+  .score-div {
     display: flex!important;
   }
 }
@@ -33,7 +33,7 @@
       font-size: 14px;
     }
     .item-img:hover {
-      .play-again-div {
+      .score-div {
         display: none!important;
       }
     }
@@ -46,7 +46,6 @@
     .item-results-mobile{
       display: flex;
       color: var(--accent);
-      text-decoration: underline;
     }
 }
 
@@ -60,3 +59,13 @@
 .golden {
   color: gold!important;
 }
+
+@media (min-width: 768px) {
+  .menu-item-container:hover {
+  transform: scale(1.05);
+}
+  .score-div:hover {
+    background-color: var(--accent);
+  }
+}
+
