@@ -106,8 +106,8 @@ label {
 }
 
 .confirm-btn {
-  width: 280px;
-  height: 62px;
+  width: 50%;
+  padding: 10px;
   border: 2px solid white;
   border-radius: 35px;
   display: flex;
@@ -177,5 +177,9 @@ label {
   }
   .language-settings {
     padding: 0 3rem 1rem 3rem;
+  }
+  .confirm-btn {
+    font-size: 18px;
+    padding: 8px;
   }
 }
