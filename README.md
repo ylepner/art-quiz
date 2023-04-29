@@ -1,4 +1,13 @@
 # ArtQuiz
+Have some fun by playing the art history game 🎨
+
+Game includes two types of quizzes: Artists and Pictures.
+
+You need to guess the artists who made famous paintings or guess what picture the author painted.
+
+Test your knowledge and get points for correct answers ⭐ 
+
+## [Try it!](https://artquiz-ylepner.netlify.app)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
