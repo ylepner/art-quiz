@@ -9,6 +9,7 @@ import { QuizPicturesPageComponent } from './quiz-pictures-page/quiz-pictures-pa
 import { RoundResultsPageComponent } from './round-results-page/round-results-page.component';
 import { ScorePageComponent } from './score-page/score-page.component';
 import { SettingsPageComponent } from './settings-page/settings-page.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path: '',
     component: HomePageComponent
+  },
+  {
+    path: '**',
+    component: PageNotFoundComponent,
   }
 ];
 
