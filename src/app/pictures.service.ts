@@ -10,12 +10,13 @@ import { SettingsService } from './settings.service';
 import { Subscription, map } from 'rxjs';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
+const questionsPerGame = 5;
 
 @Injectable({
   providedIn: 'root'
 })
 export class PicturesService {
-  questionsPerGame: number = 3;
+
   quizzesInCategory: number
   images: PictureItem[] = []
   language = ''
@@ -36,7 +37,7 @@ export class PicturesService {
   ) {
     this.language = this.settingsService.getLanguage()
     this.subscription = this.images$.subscribe((images) => this.images = images)
-    this.quizzesInCategory = (Math.floor(this.images.length / 2)) / this.questionsPerGame
+    this.quizzesInCategory = (Math.floor(this.images.length / 2)) / questionsPerGame
   }
 
   getCategories(category: QuizType): CategoryItem[] {
@@ -65,7 +66,6 @@ export class PicturesService {
 
   getArtistsGame(gameId: number): QuestionArtists[] {
     let quizQuestions: QuestionArtists[] = []
-    const questionsPerGame = 3
     quizQuestions = this.images.slice(gameId * questionsPerGame, (gameId + 1) * questionsPerGame).map((picture) => {
       const correctAnswer = Math.floor(Math.random() * 4)
       const answers = this.getAnswersOptions(picture, correctAnswer)
@@ -85,7 +85,7 @@ export class PicturesService {
   getPicturesGame(gameId: number) {
     let quizQuestions: QuestionPictures[] = []
     let picturesArr = this.images.slice(this.images.length / 2, -1)
-    quizQuestions = picturesArr.slice(gameId * this.questionsPerGame, (gameId + 1) * this.questionsPerGame).map((picture) => {
+    quizQuestions = picturesArr.slice(gameId * questionsPerGame, (gameId + 1) * questionsPerGame).map((picture) => {
       const correctAnswer = Math.floor(Math.random() * 4)
       const answers = this.getImagesAnswers(picture, correctAnswer)
       return {
@@ -138,7 +138,7 @@ export class PicturesService {
   }
 
   get questionsNumber() {
-    return this.questionsPerGame
+    return questionsPerGame
   }
 
   get quizzesNumber() {
