@@ -29,7 +29,7 @@
   margin: 0;
   vertical-align: top;
   background: #ffffff;
-  border: 1px solid #bbc1e1;
+  border: 1px solid #ffffff ;
   border-radius: 30px;
   outline: none;
   cursor: pointer;
@@ -56,6 +56,38 @@
 .toggle-button:checked {
   background-color: var(--accent);
 }
+
+.radio-input {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  width: 1.9rem;
+  height: 1.9rem;
+  vertical-align: top;
+  background: #ffffff;
+  border: 3px solid #ffffff;
+  border-radius: 30px;
+  outline: none;
+  cursor: pointer;
+}
+
+.radio-input::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: 3px;
+  top: 1.5px;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  transform: translateX(0);
+}
+
+.radio-input:checked {
+  background-color: var(--accent);
+}
+
 
 .volume-input{
   -webkit-appearance: none;
