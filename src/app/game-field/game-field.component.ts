@@ -65,12 +65,6 @@ export class GameFieldComponent<TData> implements AfterViewInit {
   @ContentChild('question')
   gameTemplate!: TemplateRef<TData>;
 
-  @ViewChild('answerDialog')
-  dialogTemplate!: TemplateRef<any>
-
-  @ContentChild('dialog')
-  answerTemplate!: TemplateRef<TData>;
-
   @Output()
   gameEnd = new EventEmitter<AnswerResult[]>()
 
