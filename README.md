@@ -7,7 +7,7 @@ You need to guess the artists who made famous paintings or guess what picture th
 
 Test your knowledge and get points for correct answers ⭐ 
 
-## [Try it!](https://artquiz-ylepner.netlify.app)
+## [Try it!](https://ylepner.github.io/art-quiz/)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.0.
 
