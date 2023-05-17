@@ -12,14 +12,14 @@
     <form action="">
       <fieldset class="fieldset flex justify-around">
         <div class="pr-5">
-          <label [class.accent]="language === 'en'" class="pr-3" for="en-lan">eng</label>
+          <label class="pr-3" for="en-lan">eng</label>
           <div class="input-language sm:flex sm:justify-center">
             <input [(ngModel)]="language" class="radio-input w-5 h-5 cursor-pointer" type="radio" name="radio"
               id="en-lan" value="en">
           </div>
         </div>
         <div>
-          <label [class.accent]="language === 'ru'" class="pr-3" for="rus-lan">рус</label>
+          <label class="pr-3" for="rus-lan">рус</label>
           <div class="input-language sm:flex sm:justify-center">
             <input [(ngModel)]="language" class="radio-input w-5 h-5 cursor-pointer" type="radio" name="radio"
               id="rus-lan" value="ru">
