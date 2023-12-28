@@ -119,6 +119,7 @@ export class GameFieldComponent<TData> implements AfterViewInit {
 
   openPictureInfoDialog(selectedAnswerNumber: number) {
     const data = this.answerInfoFn(this.currentQuestion!, selectedAnswerNumber)
+    console.log(data)
     const isCorrect = data.isCorrect;
     const questionNumber = this.currentQuestion?.pictureNumber
     if (this.currentQuestion) {

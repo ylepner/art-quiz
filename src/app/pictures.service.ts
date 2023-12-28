@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import imagesEng from './data-eng';
 import imagesRus from './data';
 import { QuizType, CategoryItem } from './models/categories-models';
@@ -7,7 +6,7 @@ import { PictureItem } from './models/pictures-models';
 import { QuestionArtists, QuestionPictures } from './models/question-models';
 import { ResultsService } from './results.service';
 import { SettingsService } from './settings.service';
-import { Subscription, map } from 'rxjs';
+import { Subscription, firstValueFrom, map } from 'rxjs';
 
 const PICTURE_URL = 'https://raw.githubusercontent.com/ylepner/image-data/master/img/'
 const questionsPerGame = 5;
@@ -64,9 +63,10 @@ export class PicturesService {
     return categoryData
   }
 
-  getArtistsGame(gameId: number): QuestionArtists[] {
+  async getArtistsGame(gameId: number): Promise<QuestionArtists[]> {
     let quizQuestions: QuestionArtists[] = []
-    quizQuestions = this.images.slice(gameId * questionsPerGame, (gameId + 1) * questionsPerGame).map((picture) => {
+    const images = await firstValueFrom(this.images$)
+    quizQuestions = images.slice(gameId * questionsPerGame, (gameId + 1) * questionsPerGame).map((picture) => {
       const correctAnswer = Math.floor(Math.random() * 4)
       const answers = this.getAnswersOptions(picture, correctAnswer)
       return {

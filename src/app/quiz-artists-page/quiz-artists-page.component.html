@@ -2,12 +2,13 @@
   [quizType]="'artists'" [quizId]="gameId$ | async" (gameEnd)="startNewRound()" (quitQuiz)="goToCategories()">
   <ng-template #question let-question let-answerSelectedFn="answerSelected" let-selectedAnswers="selectedAnswers"
     let-currentIndex="currentIndex">
-    <div class="question-container">
+    <div class="question-container" *ngIf="question">
       <div class="question-buttons relative flex justify-center">
         <img class="question-img" [src]="question.img" alt="picture">
         <div class="number-buttons absolute flex justify-center">
           <div *ngFor="let question of questions$ | async; let i = index" (click)="setCurrentButton(i)"
-            class="question-number" [class.accent]="i < currentIndex"></div>
+            class="question-number" [class.accent]="i < currentIndex">
+          </div>
         </div>
       </div>
       <div class="answers-options lg:pt-11 sm:gap-2 sm:pt-5">

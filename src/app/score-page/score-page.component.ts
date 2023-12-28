@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute, Route, Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { map } from 'rxjs';
 import { QuizType } from '../models/categories-models';
-import { AnswerResult, ArtistResult, QuizResults } from '../models/quiz-results';
 import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
 

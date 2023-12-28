@@ -2,8 +2,6 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, firstValueFrom, map, Subscription } from 'rxjs';
 import { QuizType } from '../models/categories-models';
-import { AnswerResult, ArtistResult, QuizResults, QuizResultsCategory } from '../models/quiz-results';
-import { PicturesService } from '../pictures.service';
 import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
 

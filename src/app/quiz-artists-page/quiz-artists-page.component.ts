@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { firstValueFrom, map } from 'rxjs';
+import { firstValueFrom, map, switchMap } from 'rxjs';
 import { QuestionArtists } from '../models/question-models';
 import { PicturesService } from '../pictures.service';
 import { DialogData } from '../picture-info-dialog/picture-info-dialog.component';
-import { MatDialog } from '@angular/material/dialog';
-import { ResultsService } from '../results.service';
 import { SettingsService } from '../settings.service';
 import { QuizQuestion } from '../game-field/game-field.component';
 
@@ -21,7 +19,7 @@ function toQuizArtQuestion(questionArtist: QuestionArtists): QuizQuestion<Questi
 }
 
 function getTitle() {
-  const language = localStorage.getItem('language' || 'en')
+  const language = localStorage.getItem('language') || 'en'
   if (language === 'en') {
     return `Who is the author of this picture?`
   } else {
@@ -44,8 +42,8 @@ export class QuizArtistsPageComponent {
   )
 
   questions$ = this.gameId$.pipe(
-    map((gameId) => {
-      return this.pictureService.getArtistsGame(gameId).map(x => toQuizArtQuestion(x))
+    switchMap(async (gameId) => {
+      return (await this.pictureService.getArtistsGame(gameId)).map(x => toQuizArtQuestion(x))
     }),
   )
 
@@ -64,6 +62,7 @@ export class QuizArtistsPageComponent {
 
   answerInfoFn(quizQuestion: QuizQuestion<QuestionArtists>, selectedAnswer: number): DialogData {
     const artistData = quizQuestion.data
+    console.log(artistData)
     return {
       isCorrect: artistData.correctAnswer === selectedAnswer,
       image: artistData.img,
