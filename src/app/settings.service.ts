@@ -20,6 +20,7 @@ export class SettingsService {
     const settingsData = localStorage.getItem('settings')
     if (settingsData) {
       this.settings = JSON.parse(settingsData)
+      this.language$.next(this.settings.language)
     }
   }
 

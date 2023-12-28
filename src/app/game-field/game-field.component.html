@@ -7,7 +7,8 @@
     <div *ngIf="showTimer" class="timer-bar text-center" [style.background-size]="timerValue + '%'"></div>
     <div *ngIf="showTimer" class="timer-time">{{time | time}}</div>
   </div>
-  <div class="title lg:pt-12 lg:pb-12 md:pt-8 md:pb-8 sm:pt-8 sm:pb-8 lg:text-2xl md:text-xl">{{currentQuestion?.title}}
+  <div class="title lg:pt-12 lg:pb-12 md:pt-8 md:pb-8 sm:pt-8 sm:pb-8 lg:text-2xl md:text-xl">{{'artistQuiz.question' |
+    translate }}
   </div>
   <div class="answers flex-grow">
     <ng-container [ngTemplateOutlet]="gameTemplate"

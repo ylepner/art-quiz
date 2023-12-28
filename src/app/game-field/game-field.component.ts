@@ -1,7 +1,6 @@
-import { AfterViewInit, Component, ContentChild, EventEmitter, Input, Output, TemplateRef, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, ContentChild, EventEmitter, Input, Output, TemplateRef } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { ActivatedRoute, Router } from '@angular/router';
-import { map } from 'rxjs';
+import { Router } from '@angular/router';
 import { GameOverDialogComponent } from '../game-over-dialog/game-over-dialog.component';
 import { QuizType } from '../models/categories-models';
 import { AnswerResult } from '../models/quiz-results';
